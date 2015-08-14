@@ -36,6 +36,7 @@
             this.Deducible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBotones = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -103,14 +104,30 @@
             // pnlBotones
             // 
             this.pnlBotones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlBotones.Controls.Add(this.btnHome);
             this.pnlBotones.Controls.Add(this.btnEliminar);
             this.pnlBotones.Controls.Add(this.btnBuscar);
             this.pnlBotones.Controls.Add(this.btnActualizar);
             this.pnlBotones.Controls.Add(this.btnCancelar);
-            this.pnlBotones.Location = new System.Drawing.Point(12, 29);
+            this.pnlBotones.Location = new System.Drawing.Point(12, 17);
             this.pnlBotones.Name = "pnlBotones";
-            this.pnlBotones.Size = new System.Drawing.Size(133, 311);
+            this.pnlBotones.Size = new System.Drawing.Size(133, 328);
             this.pnlBotones.TabIndex = 33;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Enabled = false;
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 250);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 9;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnEliminar
             // 
@@ -118,7 +135,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 164);
+            this.btnEliminar.Location = new System.Drawing.Point(12, 138);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(110, 50);
             this.btnEliminar.TabIndex = 8;
@@ -132,7 +149,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(12, 19);
+            this.btnBuscar.Location = new System.Drawing.Point(12, 26);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(110, 50);
             this.btnBuscar.TabIndex = 7;
@@ -147,7 +164,7 @@
             this.btnActualizar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizar.Location = new System.Drawing.Point(12, 89);
+            this.btnActualizar.Location = new System.Drawing.Point(12, 82);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(110, 50);
             this.btnActualizar.TabIndex = 5;
@@ -162,7 +179,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 242);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 194);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -191,6 +208,7 @@
             this.txtActualizarPorcentaje.Name = "txtActualizarPorcentaje";
             this.txtActualizarPorcentaje.Size = new System.Drawing.Size(164, 20);
             this.txtActualizarPorcentaje.TabIndex = 35;
+            this.txtActualizarPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtActualizarPorcentaje_KeyPress);
             // 
             // lblActualizarPorcentaje
             // 
@@ -227,6 +245,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ControlBox = false;
             this.Controls.Add(this.grpActualizar);
             this.Controls.Add(this.pnlBotones);
             this.Controls.Add(this.txtTipo);
@@ -263,5 +282,6 @@
         private System.Windows.Forms.Label lblActualizarPorcentaje;
         private System.Windows.Forms.TextBox txtActualizarTipo;
         private System.Windows.Forms.Label lblActualizarTipo;
+        private System.Windows.Forms.Button btnHome;
     }
 }

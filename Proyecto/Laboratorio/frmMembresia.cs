@@ -57,5 +57,21 @@ namespace Laboratorio
         {
             funLimpiar();
         }
+
+
+        private void txtPorcentaje_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
