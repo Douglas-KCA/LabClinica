@@ -37,7 +37,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT ncodpuesto, ndescpuesto FROM PUESTO"), clasConexion.funConexion());
+                "SELECT ncodpuesto, ndescpuesto FROM MAPUESTO"), clasConexion.funConexion());
                 MySqlDataReader _reader = _comando.ExecuteReader();
 
                 while (_reader.Read())
@@ -70,7 +70,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into PUESTO (ndescpuesto) values ('{0}')",
+                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MAPUESTO (ndescpuesto) values ('{0}')",
                         txtPuesto.Text), clasConexion.funConexion());
                     comando.ExecuteNonQuery();
                     funActualizar();
@@ -87,7 +87,28 @@ namespace Laboratorio
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtPuesto.Clear();
+            funActualizar();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
             this.Close();
+        }
+
+        private void frmPuesto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
 
     }
