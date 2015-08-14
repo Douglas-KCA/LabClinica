@@ -28,6 +28,20 @@ namespace Laboratorio
             InitializeComponent();
             funActualizar();
         }
+
+        void funCancelar()
+        {
+            txtActualizarTarifa.Clear();
+            txtTarifa.Clear();
+            btnBuscar.Enabled = true;
+            txtTarifa.Enabled = true;
+            grpActualizar.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnEliminar.Enabled = false;
+            funActualizar();
+            //grdConsultaMembresia.LostFocus=0;
+        }
         /*-----------------------------------------------------------------------------------------------
         * Esta funcion hace una consulta y muestra todos los datos disponibles en el data grid view
         * ----------------------------------------------------------------------------------------------
@@ -36,24 +50,21 @@ namespace Laboratorio
         {
             string sCodigo;
             string sTarifa;
-            string sDeducible;
             int iContador = 0;
             grdTarifa.Rows.Clear();
             try
             {
-                MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT ncodtarifa, nporcentajetarifa, ndeducible FROM TRTARIFASEGURO"), clasConexion.funConexion());
-                MySqlDataReader _reader = _comando.ExecuteReader();
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT ncodtarifa, nporcentajetarifa FROM MATARIFASEGURO"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
 
-                while (_reader.Read())
+                while (mReader.Read())
                 {
-                    sCodigo = _reader.GetString(0);
-                    sTarifa = _reader.GetString(1);
-                    sDeducible = _reader.GetString(2);
-                    grdTarifa.Rows.Insert(iContador, sCodigo, sTarifa, sDeducible);
+                    sCodigo = mReader.GetString(0);
+                    sTarifa = mReader.GetString(1);
+                    grdTarifa.Rows.Insert(iContador, sCodigo, sTarifa);
                     sCodigo = "";
                     sTarifa = "";
-                    sDeducible = "";
                     iContador++;
                 }
 
@@ -73,7 +84,6 @@ namespace Laboratorio
         {
             string sCodigo;
             string sTarifa;
-            string sDeducible;
             int iContador = 0;
             bool existe = false;
             grdTarifa.Rows.Clear();
@@ -81,33 +91,38 @@ namespace Laboratorio
             try
             {
 
-                if ((String.IsNullOrEmpty(txtTarifa.Text)) && (String.IsNullOrEmpty(txtDeducible.Text)))
+                if (String.IsNullOrEmpty(txtTarifa.Text))
                 {
                     MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    funActualizar();
                 }
                 else
                 {
-                    MySqlCommand _comando = new MySqlCommand(String.Format(
-                    "SELECT ncodtarifa, nporcentajetarifa, ndeducible FROM TRTARIFASEGURO WHERE nporcentajetarifa = '{0}' or ndeducible = '{1}' ", txtTarifa.Text, txtDeducible.Text), clasConexion.funConexion());
-                    MySqlDataReader _reader = _comando.ExecuteReader();
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT ncodtarifa, nporcentajetarifa FROM MATARIFASEGURO WHERE nporcentajetarifa = '{0}' ", txtTarifa.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
 
-                    while (_reader.Read())
+                    while (mReader.Read())
                     {
                         existe = true;
-                        sCodigo = _reader.GetString(0);
-                        sTarifa = _reader.GetString(1);
-                        sDeducible = _reader.GetString(2);
-                        grdTarifa.Rows.Insert(iContador, sCodigo, sTarifa, sDeducible);
+                        sCodigo = mReader.GetString(0);
+                        sTarifa = mReader.GetString(1);
+                        grdTarifa.Rows.Insert(iContador, sCodigo, sTarifa);
                         sCodigo = "";
                         sTarifa = "";
-                        sDeducible = "";
                         iContador++;
                     }
 
+
+                    btnCancelar.Enabled = true;
                     if (existe == false)
                     {
                         MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        funActualizar();
+                        btnCancelar.Enabled = false;
+                        txtTarifa.Clear();
                     }
+
                 }
 
 
@@ -118,6 +133,7 @@ namespace Laboratorio
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
         }
         /*----------------------------------------------------------------------------------------------------
          * Esta funcion regresa el form a su forma original
@@ -126,39 +142,42 @@ namespace Laboratorio
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtDeducible.Clear();
-            txtTarifa.Clear();
-            funActualizar();
+            funCancelar();
         }
 
         private void grdTarifa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sCodigo, sTarifa, sDeducible;
+            btnActualizar.Enabled = true;
+            btnCancelar.Enabled = true;
+            grpActualizar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnBuscar.Enabled = false;
+            txtTarifa.Clear();
+            txtTarifa.Enabled = false;
+
+            string sCodigo, sTarifa;
             DataGridViewRow fila = grdTarifa.CurrentRow;
             sCodigo = Convert.ToString(fila.Cells[0].Value);
             sTarifa = Convert.ToString(fila.Cells[1].Value);
-            sDeducible = Convert.ToString(fila.Cells[2].Value);
             sCodigoTabla = sCodigo;
-            txtTarifa.Text = sTarifa;
-            txtDeducible.Text = sDeducible;
-            
-
-
+            txtActualizarTarifa.Text = sTarifa;
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
-                
-                    MySqlCommand comando = new MySqlCommand(string.Format("UPDATE TRTARIFASEGURO SET nporcentajetarifa ='{0}', ndeducible = '{1}' WHERE ncodtarifa = '{2}'",
-                        txtTarifa.Text, txtDeducible.Text, sCodigoTabla), clasConexion.funConexion());
-                    comando.ExecuteNonQuery();
+                if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MATARIFASEGURO SET nporcentajetarifa = '{0}' WHERE ncodtarifa = '{1}'",
+                    txtActualizarTarifa.Text, sCodigoTabla), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
                     funActualizar();
                     MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtTarifa.Clear();
-                    txtDeducible.Clear();
-
+                    txtTarifa.Text = "";
+                    funCancelar();
+                    funActualizar();
+                }
 
             }
             catch
@@ -171,20 +190,47 @@ namespace Laboratorio
         {
             try
             {
-
-                MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM TRTARIFASEGURO WHERE ncodtarifa = '{0}'",
+                if (MessageBox.Show("¿Desea eliminar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MATARIFASEGURO WHERE ncodtarifa = '{0}'",
                     sCodigoTabla), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se elimino con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtTarifa.Clear();
-                txtDeducible.Clear();
-
-
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtTarifa.Text = "";
+                    funCancelar();
+                    funActualizar();
+                }
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTarifa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtActualizarTarifa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
             }
         }
 

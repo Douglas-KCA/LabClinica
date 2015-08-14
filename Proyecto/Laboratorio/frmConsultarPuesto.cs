@@ -29,6 +29,20 @@ namespace Laboratorio
          * Esta funcion hace una consulta y muestra todos los datos disponibles en el data grid view
          * ----------------------------------------------------------------------------------------------
          * */
+
+        void funCancelar()
+        {
+            txtActualizarPuesto.Clear();
+            txtPuesto.Clear();
+            btnBuscar.Enabled = true;
+            txtPuesto.Enabled = true;
+            grpActualizar.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnEliminar.Enabled = false;
+            funActualizar();
+            //grdConsultaMembresia.LostFocus=0;
+        }
         void funActualizar()
         {
             string sNumero;
@@ -37,14 +51,14 @@ namespace Laboratorio
             grdPuesto.Rows.Clear();
             try
             {
-                MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT ncodpuesto, ndescpuesto FROM PUESTO"), clasConexion.funConexion());
-                MySqlDataReader _reader = _comando.ExecuteReader();
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT ncodpuesto, ndescpuesto FROM MAPUESTO"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
 
-                while (_reader.Read())
+                while (mReader.Read())
                 {
-                    sNumero = _reader.GetString(0);
-                    sPuesto = _reader.GetString(1);
+                    sNumero = mReader.GetString(0);
+                    sPuesto = mReader.GetString(1);
                     grdPuesto.Rows.Insert(iContador, sNumero, sPuesto);
                     sNumero = "";
                     sPuesto = "";
@@ -64,7 +78,7 @@ namespace Laboratorio
          * */
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string sNumero;
+            string sCodigo;
             string sPuesto;
             int iContador = 0;
             bool existe = false;
@@ -76,28 +90,35 @@ namespace Laboratorio
                 if (String.IsNullOrEmpty(txtPuesto.Text))
                 {
                     MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    funActualizar();
                 }
                 else
                 {
-                    MySqlCommand _comando = new MySqlCommand(String.Format(
-                    "SELECT ncodpuesto, ndescpuesto FROM PUESTO WHERE ndescpuesto = '{0}' ", txtPuesto.Text), clasConexion.funConexion());
-                    MySqlDataReader _reader = _comando.ExecuteReader();
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT ncodpuesto, ndescpuesto FROM MAPuesto WHERE ndescpuesto = '{0}' ", txtPuesto.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
 
-                    while (_reader.Read())
+                    while (mReader.Read())
                     {
                         existe = true;
-                        sNumero = _reader.GetString(0);
-                        sPuesto = _reader.GetString(1);
-                        grdPuesto.Rows.Insert(iContador, sNumero, sPuesto);
-                        sNumero = "";
+                        sCodigo = mReader.GetString(0);
+                        sPuesto = mReader.GetString(1);
+                        grdPuesto.Rows.Insert(iContador, sCodigo, sPuesto);
+                        sCodigo = "";
                         sPuesto = "";
                         iContador++;
                     }
 
+
+                    btnCancelar.Enabled = true;
                     if (existe == false)
                     {
                         MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        funActualizar();
+                        btnCancelar.Enabled = false;
+                        txtPuesto.Clear();
                     }
+
                 }
 
 
@@ -107,38 +128,49 @@ namespace Laboratorio
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtPuesto.Clear();
-            funActualizar();
+
+            funCancelar();
         }
 
         private void grdPuesto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnActualizar.Enabled = true;
+            btnCancelar.Enabled = true;
+            grpActualizar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnBuscar.Enabled = false;
+            txtPuesto.Clear();
+            txtPuesto.Enabled = false;
+
             string sCodigo, sPuesto;
             DataGridViewRow fila = grdPuesto.CurrentRow;
             sCodigo = Convert.ToString(fila.Cells[0].Value);
             sPuesto = Convert.ToString(fila.Cells[1].Value);
             sCodigoTabla = sCodigo;
-            txtPuesto.Text = sPuesto;
-            
+            txtActualizarPuesto.Text = sPuesto;
+
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
-
-                MySqlCommand comando = new MySqlCommand(string.Format("UPDATE PUESTO SET ndescpuesto ='{0}' WHERE ncodpuesto = '{1}'",
-                    txtPuesto.Text, sCodigoTabla), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtPuesto.Clear();
-                
-
+                if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MAPUESTO SET ndescpuesto = '{0}' WHERE ncodpuesto = '{1}'",
+                    txtActualizarPuesto.Text, sCodigoTabla), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPuesto.Text = "";
+                    funCancelar();
+                    funActualizar();
+                }
 
             }
             catch
@@ -151,20 +183,46 @@ namespace Laboratorio
         {
             try
             {
-
-                MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM Puesto WHERE ncodpuesto = '{0}'",
+                if (MessageBox.Show("¿Desea eliminar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MAPUESTO WHERE ncodpuesto = '{0}'",
                     sCodigoTabla), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se elimino con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtPuesto.Clear();
-                
-
-
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPuesto.Text = "";
+                    funCancelar();
+                    funActualizar();
+                }
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtPuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtActualizarPuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
             }
         }
     }
