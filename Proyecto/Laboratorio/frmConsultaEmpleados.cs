@@ -49,35 +49,71 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT persona.ncodpersona, cdireccionpersona,cemailpersona,cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM PERSONA,PUESTO,EMPLEADO WHERE PUESTO.ncodpuesto=EMPLEADO.ncodpuesto and persona.ncodpersona = empleado.ncodpersona"), clasConexion.funConexion());
+                "SELECT mapersona.ncodpersona, cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM MAPERSONA,MAPUESTO,TREMPLEADO WHERE MAPUESTO.ncodpuesto=TREMPLEADO.ncodpuesto and mapersona.ncodpersona = trempleado.ncodpersona"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
                 {
                     sCodigo = mReader.GetString(0);
-                    sDireccion = mReader.GetString(1);
-                    sEmail = mReader.GetString(2);
-                    sNombre = mReader.GetString(3);
-                    sApellido = mReader.GetString(4);
-                    sDpi = mReader.GetString(5);
-                    sFecha = mReader.GetString(6);
-                    sSexo = mReader.GetString(7);
-                    sNit = mReader.GetString(8);
-                    sPuesto = mReader.GetString(9);
-                    grdConsultarEmpleados.Rows.Insert(iContador,sCodigo, sDpi ,sNombre, sApellido,sSexo,sFecha,sDireccion,sEmail,sNit,sPuesto);
+                    sNombre = mReader.GetString(1);
+                    sApellido = mReader.GetString(2);
+                    sDpi = mReader.GetString(3);
+                    sFecha = mReader.GetString(4);
+                    sSexo = mReader.GetString(5);
+                    sNit = mReader.GetString(6);
+                    sPuesto = mReader.GetString(7);
+                    grdConsultarEmpleados.Rows.Insert(iContador,sCodigo, sDpi ,sNombre, sApellido,sSexo,sFecha,sNit,sPuesto);
+
+                    MessageBox.Show(sCodigo);
+                    //Llenar Combo Box Direccion
+
+                   MySqlCommand mComandocmbDire = new MySqlCommand(String.Format(
+                   "SELECT cdireccion FROM trdireccion WHERE trdireccion.ncodpersona = '{0}' ",sCodigo), clasConexion.funConexion());
+                    MySqlDataReader mReadercmbDire = mComandocmbDire.ExecuteReader();
+
+                    while(mReadercmbDire.Read())
+                    {
+                        cmbDirecion.Items.Add(mReadercmbDire.GetString(0)); 
+                    }
+                    mReadercmbDire.Close();
+                    /*
+                    //Llenar Combo Box Telefono
+                    MessageBox.Show(sCodigo);
+                    MySqlCommand mComandocmbTel = new MySqlCommand(String.Format(
+                   "SELECT ctelefono FROM trtelefono WHERE trtelefono.ncodpersona = '{0}' ", sCodigo), clasConexion.funConexion());
+                    MySqlDataReader mReadercmbTel = mComandocmbTel.ExecuteReader();
+
+                    while (mReadercmbTel.Read())
+                    {
+                        cmbTelefono.Items.Add(mReadercmbTel.GetString(0));
+                    }
+                    mReadercmbTel.Close();
+
+                    //Llenar Combo Box Email
+                    MessageBox.Show(sCodigo);
+                    MySqlCommand mComandocmbEmail = new MySqlCommand(String.Format(
+                   "SELECT cemail FROM tremail WHERE tremail.ncodpersona = '{0}' ", sCodigo), clasConexion.funConexion());
+                    MySqlDataReader mReadercmbEmail = mComandocmbEmail.ExecuteReader();
+
+                    while (mReadercmbEmail.Read())
+                    {
+                        cmbEmail.Items.Add(mReadercmbEmail.GetString(0));
+                    }
+                    mReadercmbEmail.Close();
+                    */
                     sCodigo = "";
-                    sDireccion="";
-                    sEmail="";
-                    sNombre="";
-                    sApellido="";
-                    sDpi="";
-                    sFecha="";
-                    sSexo="";
-                    sNit="";
+                    sDireccion = "";
+                    sEmail = "";
+                    sNombre = "";
+                    sApellido = "";
+                    sDpi = "";
+                    sFecha = "";
+                    sSexo = "";
+                    sNit = "";
                     sPuesto = "";
                     iContador++;
+                    
                 }
-
             }
             catch
             {
@@ -210,6 +246,11 @@ namespace Laboratorio
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             funUpdate(sCodigoUp, sDpiUp, sNombreUp, sApellidoUp, sSexoUp, sFechaUp, sDireccionUp, sEmailUp, sNitUp, sPuestoUp);
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
