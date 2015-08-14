@@ -144,13 +144,16 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MUESTRA SET crequerimientos = '{0}', cdescmuestra ='{1}' WHERE ncodmuestra = '{2}'",
-                txtActualizarRequerimientos.Text, txtActualizarDescripcion.Text, sActualizarCodigo), clasConexion.funConexion());
-                mComando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funCancelar();
-                funActualizar();
+                if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MUESTRA SET crequerimientos = '{0}', cdescmuestra ='{1}' WHERE ncodmuestra = '{2}'",
+                    txtActualizarRequerimientos.Text, txtActualizarDescripcion.Text, sActualizarCodigo), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funCancelar();
+                    funActualizar();
+                }
             }
             catch
             {
@@ -167,18 +170,26 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MUESTRA WHERE ncodmuestra = '{0}'",
-                sActualizarCodigo), clasConexion.funConexion());
-                mComando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funCancelar();
-                funActualizar();
+                if (MessageBox.Show("¿Desea eliminar el dato seleccionado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MUESTRA WHERE ncodmuestra = '{0}'",
+                    sActualizarCodigo), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funCancelar();
+                    funActualizar();
+                }
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
