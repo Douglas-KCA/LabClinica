@@ -409,7 +409,6 @@ C:\Users\DylanIsaac\Documents\GitHub\LaboratorioClinicoDiseno\Proyecto\Laborator
 C:\Users\DylanIsaac\Documents\GitHub\LaboratorioClinicoDiseno\Proyecto\Laboratorio\obj\Debug\Laboratorio.Properties.Resources.resources
 C:\Users\DylanIsaac\Documents\GitHub\LaboratorioClinicoDiseno\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSucursal.resources
 C:\Users\DylanIsaac\Documents\GitHub\LaboratorioClinicoDiseno\Proyecto\Laboratorio\obj\Debug\Laboratorio.csproj.GenerateResource.Cache
-<<<<<<< HEAD
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
@@ -442,7 +441,6 @@ C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\L
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.Properties.Resources.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSucursal.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csproj.GenerateResource.Cache
-=======
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
