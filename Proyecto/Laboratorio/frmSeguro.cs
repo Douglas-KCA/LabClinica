@@ -26,30 +26,66 @@ namespace Laboratorio
             InitializeComponent();
             funBuscarAseguro();
             funBuscarTarifa();
+            funActualizar();
+        }
+
+        void funActualizar()
+        {
+
+            string sCodigo;
+            string sTarifa;
+            string sAseguradora;
+            string sDeducible;
+            int iContador = 0;
+            grdPuesto.Rows.Clear();
+
+            try
+            {
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT trseguro.ncodseguro as codigo, maaseguradora.cempresaseguro as aseguradora, matarifaseguro.nporcentajetarifa as tarifa, trseguro.ndeducible as deducible from trseguro, maaseguradora, matarifaseguro where trseguro.ncodtarifa = matarifaseguro.ncodtarifa and trseguro.ncodaseguradora = maaseguradora.ncodaseguradora"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+
+                while (mReader.Read())
+                {
+                    sCodigo = mReader.GetString(0);
+                    sAseguradora = mReader.GetString(1);
+                    sTarifa = mReader.GetString(2);
+                    sDeducible = mReader.GetString(3);
+                    grdPuesto.Rows.Insert(iContador, sCodigo, sAseguradora, sTarifa, sDeducible);
+                    sCodigo = "";
+                    sTarifa = "";
+                    sAseguradora = "";
+                    sDeducible = "";
+                    iContador++;
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         void funBuscarTarifa()
         {
             string sCodigo;
             string sTarifa;
-            string sDeducible;
             int iContador = 0;
             cmbTarifa.Items.Clear();
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodtarifa, nporcentajetarifa, ndeducible FROM TRTARIFASEGURO"), clasConexion.funConexion());
+                "SELECT ncodtarifa, nporcentajetarifa FROM MATARIFASEGURO"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
                 {
                     sCodigo = mReader.GetString(0);
                     sTarifa = mReader.GetString(1);
-                    sDeducible = mReader.GetString(2);
-                    cmbTarifa.Items.Add(sCodigo + ". Tarifa: " + sTarifa + " Deducible: "+ sDeducible);
+                    cmbTarifa.Items.Add(sCodigo + ". Tarifa: " + sTarifa);
                     sCodigo = "";
                     sTarifa = "";
-                    sDeducible = "";
                     iContador++;
                 }
 
@@ -71,7 +107,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodaseguradora, cempresaseguro FROM TRASEGURADORA"), clasConexion.funConexion());
+                "SELECT ncodaseguradora, cempresaseguro FROM MAASEGURADORA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -125,31 +161,32 @@ namespace Laboratorio
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            string sTarifa, sAseguradora;
             
 
 
             try
             {
-                string sCodAseguradora = "";
-                string sCodigoAseguradora = "";
-                string sCodTarifa = "";
-                string sCodigoTarifa = "";
-                sCodAseguradora = cmbAseguradora.SelectedItem.ToString();
-                sCodigoAseguradora = funCortador(sCodAseguradora);
-                sCodTarifa = cmbTarifa.SelectedItem.ToString();
-                sCodigoTarifa = funCortador(sCodTarifa);
-               
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MRSEGURO (ncodtarifa, ncodaseguradora) values ('{0}','{1}')",
-                        sCodigoTarifa,sCodigoAseguradora), clasConexion.funConexion());
+                sTarifa = funCortador(cmbTarifa.SelectedItem.ToString());
+                sAseguradora = funCortador(cmbAseguradora.SelectedItem.ToString());
+                if (String.IsNullOrEmpty(txtDeducible.Text))
+                {
+                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TRSEGURO (ndeducible, ncodtarifa, ncodaseguradora) values ('{0}', '{1}','{2}')",
+                        txtDeducible.Text, sTarifa, sAseguradora), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
+                    funActualizar();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-               
+                    txtDeducible.Clear();
+                }
 
             }
             catch
             {
-                MessageBox.Show("Seleccione los Valores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -158,6 +195,23 @@ namespace Laboratorio
         {
             funBuscarAseguro();
             funBuscarTarifa();
+            funActualizar();
+            txtDeducible.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtDeducible_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

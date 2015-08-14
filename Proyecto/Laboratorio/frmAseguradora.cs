@@ -86,6 +86,12 @@ namespace Laboratorio
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            txtNombre.Clear();
+            funActualizar();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

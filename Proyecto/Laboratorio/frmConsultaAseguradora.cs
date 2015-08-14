@@ -198,5 +198,10 @@ namespace Laboratorio
             sNombre = Convert.ToString(fila.Cells[1].Value);
             txtActualizarNombre.Text = sNombre;
         }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
