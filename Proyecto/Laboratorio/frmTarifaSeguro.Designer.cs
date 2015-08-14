@@ -30,14 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTarifaSeguro));
             this.pnlBotones = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblTarifa = new System.Windows.Forms.Label();
-            this.lblDeducible = new System.Windows.Forms.Label();
             this.txtTarifa = new System.Windows.Forms.TextBox();
-            this.txtDeducible = new System.Windows.Forms.TextBox();
             this.grdTarifa = new System.Windows.Forms.DataGridView();
-            this.Tarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deducible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdTarifa)).BeginInit();
@@ -46,19 +44,34 @@
             // pnlBotones
             // 
             this.pnlBotones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlBotones.Controls.Add(this.btnHome);
             this.pnlBotones.Controls.Add(this.btnGuardar);
             this.pnlBotones.Controls.Add(this.btnCancelar);
-            this.pnlBotones.Location = new System.Drawing.Point(12, 24);
+            this.pnlBotones.Location = new System.Drawing.Point(10, 24);
             this.pnlBotones.Name = "pnlBotones";
-            this.pnlBotones.Size = new System.Drawing.Size(133, 311);
+            this.pnlBotones.Size = new System.Drawing.Size(136, 311);
             this.pnlBotones.TabIndex = 9;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(14, 205);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(12, 118);
+            this.btnGuardar.Location = new System.Drawing.Point(14, 44);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(110, 50);
             this.btnGuardar.TabIndex = 5;
@@ -72,7 +85,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 209);
+            this.btnCancelar.Location = new System.Drawing.Point(14, 125);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -93,51 +106,29 @@
             this.lblTarifa.Text = "Tarifa de Pago:";
             this.lblTarifa.Click += new System.EventHandler(this.lblTarifa_Click);
             // 
-            // lblDeducible
-            // 
-            this.lblDeducible.AutoSize = true;
-            this.lblDeducible.BackColor = System.Drawing.Color.Transparent;
-            this.lblDeducible.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeducible.Location = new System.Drawing.Point(162, 66);
-            this.lblDeducible.Name = "lblDeducible";
-            this.lblDeducible.Size = new System.Drawing.Size(78, 19);
-            this.lblDeducible.TabIndex = 12;
-            this.lblDeducible.Text = "Deducible:";
-            // 
             // txtTarifa
             // 
             this.txtTarifa.Location = new System.Drawing.Point(274, 25);
             this.txtTarifa.Name = "txtTarifa";
             this.txtTarifa.Size = new System.Drawing.Size(398, 20);
             this.txtTarifa.TabIndex = 13;
-            // 
-            // txtDeducible
-            // 
-            this.txtDeducible.Location = new System.Drawing.Point(274, 65);
-            this.txtDeducible.Name = "txtDeducible";
-            this.txtDeducible.Size = new System.Drawing.Size(398, 20);
-            this.txtDeducible.TabIndex = 14;
+            this.txtTarifa.TextChanged += new System.EventHandler(this.txtTarifa_TextChanged);
+            this.txtTarifa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTarifa_KeyPress);
             // 
             // grdTarifa
             // 
             this.grdTarifa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdTarifa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Tarifa,
             this.Deducible});
-            this.grdTarifa.Location = new System.Drawing.Point(166, 101);
+            this.grdTarifa.Location = new System.Drawing.Point(166, 89);
             this.grdTarifa.Name = "grdTarifa";
-            this.grdTarifa.Size = new System.Drawing.Size(506, 234);
+            this.grdTarifa.Size = new System.Drawing.Size(506, 246);
             this.grdTarifa.TabIndex = 15;
-            // 
-            // Tarifa
-            // 
-            this.Tarifa.HeaderText = "Tarifa";
-            this.Tarifa.Name = "Tarifa";
             // 
             // Deducible
             // 
             this.Deducible.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Deducible.HeaderText = "Deducible";
+            this.Deducible.HeaderText = "Tarifa";
             this.Deducible.Name = "Deducible";
             // 
             // frmTarifaSeguro
@@ -146,14 +137,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(684, 364);
+            this.ControlBox = false;
             this.Controls.Add(this.grdTarifa);
-            this.Controls.Add(this.txtDeducible);
             this.Controls.Add(this.txtTarifa);
-            this.Controls.Add(this.lblDeducible);
             this.Controls.Add(this.lblTarifa);
             this.Controls.Add(this.pnlBotones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTarifaSeguro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarifa del Seguro";
             this.pnlBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdTarifa)).EndInit();
@@ -168,11 +159,9 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblTarifa;
-        private System.Windows.Forms.Label lblDeducible;
         private System.Windows.Forms.TextBox txtTarifa;
-        private System.Windows.Forms.TextBox txtDeducible;
         private System.Windows.Forms.DataGridView grdTarifa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tarifa;
+        private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deducible;
     }
 }

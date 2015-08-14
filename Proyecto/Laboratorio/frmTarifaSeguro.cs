@@ -34,23 +34,20 @@ namespace Laboratorio
         {
 
             string sTarifa;
-            string sDeducible;
             int iContador = 0;
             grdTarifa.Rows.Clear();
 
             try
             {
                 MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT nporcentajetarifa, ndeducible FROM TRTARIFASEGURO"), clasConexion.funConexion());
+                "SELECT nporcentajetarifa FROM MATARIFASEGURO"), clasConexion.funConexion());
                 MySqlDataReader _reader = _comando.ExecuteReader();
 
                 while (_reader.Read())
                 {
                     sTarifa = _reader.GetString(0);
-                    sDeducible = _reader.GetString(1);
-                    grdTarifa.Rows.Insert(iContador, sTarifa, sDeducible);
+                    grdTarifa.Rows.Insert(iContador, sTarifa);
                     sTarifa = "";
-                    sDeducible = "";
                     iContador++;
                 }
 
@@ -68,18 +65,17 @@ namespace Laboratorio
         {
             try
             {
-                if ((String.IsNullOrEmpty(txtTarifa.Text)) && (String.IsNullOrEmpty(txtDeducible.Text)))
+                if ((String.IsNullOrEmpty(txtTarifa.Text)))
                 {
                     MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 else
                 {
-                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into TRTARIFASEGURO (nporcentajetarifa, ndeducible) values ('{0}','{1}')",
-                    txtTarifa.Text, txtDeducible.Text), clasConexion.funConexion());
+                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MATARIFASEGURO (nporcentajetarifa) values ('{0}')",
+                    txtTarifa.Text), clasConexion.funConexion());
                     comando.ExecuteNonQuery();
                     funActualizar();
                     txtTarifa.Clear();
-                    txtDeducible.Clear();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -92,7 +88,29 @@ namespace Laboratorio
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            txtTarifa.Clear();
+            funActualizar();
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
             this.Close();
+        }
+
+        private void txtTarifa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTarifa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }
