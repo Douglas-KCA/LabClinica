@@ -199,5 +199,11 @@ namespace Laboratorio
             frmConsultaEmpleados ver = new frmConsultaEmpleados();
             ver.Show();
         }
+
+        private void sbmConsultaryModifExamenes_Click(object sender, EventArgs e)
+        {
+            frmConsultaTipoExamen ver = new frmConsultaTipoExamen();
+            ver.Show();
+        }
     }
 }

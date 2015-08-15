@@ -35,14 +35,14 @@ namespace Laboratorio
 
             try
             {
-                MySqlCommand _comando = new MySqlCommand(String.Format(
+                MySqlCommand mComando = new MySqlCommand(String.Format(
                 "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA"), clasConexion.funConexion());
-                MySqlDataReader _reader = _comando.ExecuteReader();
+                MySqlDataReader mReader = mComando.ExecuteReader();
 
-                while (_reader.Read())
+                while (mReader.Read())
                 {
-                    sCodigo = _reader.GetString(0);
-                    sNombre = _reader.GetString(1);
+                    sCodigo = mReader.GetString(0);
+                    sNombre = mReader.GetString(1);
                     grdAseguradora.Rows.Insert(iContador, sCodigo, sNombre);
                     sCodigo = "";
                     sNombre = "";

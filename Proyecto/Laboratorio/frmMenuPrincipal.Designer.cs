@@ -45,7 +45,7 @@
             this.sbmConsultaMuestra = new System.Windows.Forms.ToolStripMenuItem();
             this.mExamenes = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmExamenesIngresar = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbmConsultarExamenes = new System.Windows.Forms.ToolStripMenuItem();
+            this.sbmConsultaryModifExamenes = new System.Windows.Forms.ToolStripMenuItem();
             this.mCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmIngresarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmModificarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,7 +204,7 @@
             // 
             this.mExamenes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbmExamenesIngresar,
-            this.sbmConsultarExamenes});
+            this.sbmConsultaryModifExamenes});
             this.mExamenes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mExamenes.Name = "mExamenes";
             this.mExamenes.Size = new System.Drawing.Size(87, 23);
@@ -217,11 +217,12 @@
             this.sbmExamenesIngresar.Text = "Ingresar";
             this.sbmExamenesIngresar.Click += new System.EventHandler(this.sbmIngresarExamenes_Click);
             // 
-            // sbmConsultarExamenes
+            // sbmConsultaryModifExamenes
             // 
-            this.sbmConsultarExamenes.Name = "sbmConsultarExamenes";
-            this.sbmConsultarExamenes.Size = new System.Drawing.Size(216, 24);
-            this.sbmConsultarExamenes.Text = "Modificar y Consultar";
+            this.sbmConsultaryModifExamenes.Name = "sbmConsultaryModifExamenes";
+            this.sbmConsultaryModifExamenes.Size = new System.Drawing.Size(216, 24);
+            this.sbmConsultaryModifExamenes.Text = "Modificar y Consultar";
+            this.sbmConsultaryModifExamenes.Click += new System.EventHandler(this.sbmConsultaryModifExamenes_Click);
             // 
             // mCotizacion
             // 
@@ -495,7 +496,7 @@
         private System.Windows.Forms.ToolStripMenuItem sbmIngresarMuestra;
         private System.Windows.Forms.ToolStripMenuItem mExamenes;
         private System.Windows.Forms.ToolStripMenuItem sbmExamenesIngresar;
-        private System.Windows.Forms.ToolStripMenuItem sbmConsultarExamenes;
+        private System.Windows.Forms.ToolStripMenuItem sbmConsultaryModifExamenes;
         private System.Windows.Forms.ToolStripMenuItem mCotizacion;
         private System.Windows.Forms.ToolStripMenuItem sbmIngresarCotizacion;
         private System.Windows.Forms.ToolStripMenuItem sbmModificarCotizacion;
