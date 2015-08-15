@@ -39,7 +39,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MEMBRESIA(ctipomembresia, cporcentaje)  values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaMEMBRESIA(ctipomembresia, cporcentaje)  values ('{0}','{1}')",
                     txtTipoMembresia.Text, txtPorcentaje.Text), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,6 +56,22 @@ namespace Laboratorio
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             funLimpiar();
+        }
+
+
+        private void txtPorcentaje_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

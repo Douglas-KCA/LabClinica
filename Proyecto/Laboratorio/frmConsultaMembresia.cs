@@ -52,7 +52,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT * FROM MEMBRESIA"), clasConexion.funConexion());
+                "SELECT * FROM MaMEMBRESIA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -96,7 +96,7 @@ namespace Laboratorio
                 else
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT * FROM MEMBRESIA WHERE ctipomembresia = '{0}' ", txtTipo.Text), clasConexion.funConexion());
+                    "SELECT * FROM MaMEMBRESIA WHERE ctipomembresia = '{0}' ", txtTipo.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -129,13 +129,16 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MEMBRESIA SET ctipomembresia = '{0}', cporcentaje ='{1}' WHERE ncodmembresia = '{2}'",
-                txtActualizarTipo.Text, txtActualizarPorcentaje.Text, sActualizarCodigo), clasConexion.funConexion());
-                mComando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funCancelar();
-                funActualizar();
+                if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MaMEMBRESIA SET ctipomembresia = '{0}', cporcentaje ='{1}' WHERE ncodmembresia = '{2}'",
+                    txtActualizarTipo.Text, txtActualizarPorcentaje.Text, sActualizarCodigo), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funCancelar();
+                    funActualizar();
+                }
             }
             catch
             {
@@ -167,18 +170,36 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MEMBRESIA WHERE ncodmembresia = '{0}'",
-                sActualizarCodigo), clasConexion.funConexion());
-                mComando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funCancelar();
-                funActualizar();
+                if (MessageBox.Show("¿Desea Eliminar el dato seleccionado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MaMEMBRESIA WHERE ncodmembresia = '{0}'",
+                    sActualizarCodigo), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funCancelar();
+                    funActualizar();
+                }
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtActualizarPorcentaje_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

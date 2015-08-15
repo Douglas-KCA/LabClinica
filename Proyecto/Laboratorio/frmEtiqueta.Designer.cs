@@ -37,10 +37,11 @@
             this.cmbCodMuestra = new System.Windows.Forms.ComboBox();
             this.cmbCodPaciente = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblInfoPaciente = new System.Windows.Forms.Label();
             this.lblTipoMuestra = new System.Windows.Forms.Label();
+            this.lblInfoPaciente = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -49,6 +50,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnHome);
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Location = new System.Drawing.Point(12, 29);
@@ -61,7 +63,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(12, 80);
+            this.btnGuardar.Location = new System.Drawing.Point(12, 61);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(110, 50);
             this.btnGuardar.TabIndex = 5;
@@ -76,7 +78,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 168);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 129);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -132,6 +134,36 @@
             this.panel2.Size = new System.Drawing.Size(475, 193);
             this.panel2.TabIndex = 39;
             // 
+            // lblTipoMuestra
+            // 
+            this.lblTipoMuestra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoMuestra.Location = new System.Drawing.Point(120, 16);
+            this.lblTipoMuestra.Name = "lblTipoMuestra";
+            this.lblTipoMuestra.Size = new System.Drawing.Size(229, 23);
+            this.lblTipoMuestra.TabIndex = 2;
+            this.lblTipoMuestra.Text = "label2";
+            this.lblTipoMuestra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblInfoPaciente
+            // 
+            this.lblInfoPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoPaciente.Location = new System.Drawing.Point(123, 161);
+            this.lblInfoPaciente.Name = "lblInfoPaciente";
+            this.lblInfoPaciente.Size = new System.Drawing.Size(229, 23);
+            this.lblInfoPaciente.TabIndex = 1;
+            this.lblInfoPaciente.Text = "label1";
+            this.lblInfoPaciente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(123, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 114);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnImprimir
             // 
             this.btnImprimir.Enabled = false;
@@ -147,35 +179,20 @@
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // pictureBox1
+            // btnHome
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(123, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 114);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblInfoPaciente
-            // 
-            this.lblInfoPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoPaciente.Location = new System.Drawing.Point(123, 161);
-            this.lblInfoPaciente.Name = "lblInfoPaciente";
-            this.lblInfoPaciente.Size = new System.Drawing.Size(229, 23);
-            this.lblInfoPaciente.TabIndex = 1;
-            this.lblInfoPaciente.Text = "label1";
-            this.lblInfoPaciente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblTipoMuestra
-            // 
-            this.lblTipoMuestra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoMuestra.Location = new System.Drawing.Point(120, 16);
-            this.lblTipoMuestra.Name = "lblTipoMuestra";
-            this.lblTipoMuestra.Size = new System.Drawing.Size(229, 23);
-            this.lblTipoMuestra.TabIndex = 2;
-            this.lblTipoMuestra.Text = "label2";
-            this.lblTipoMuestra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHome.Enabled = false;
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(10, 196);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 7;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmEtiqueta
             // 
@@ -183,6 +200,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(684, 366);
+            this.ControlBox = false;
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.cmbCodPaciente);
@@ -216,5 +234,6 @@
         private System.Windows.Forms.Label lblInfoPaciente;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnHome;
     }
 }

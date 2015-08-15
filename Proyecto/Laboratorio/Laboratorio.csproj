@@ -65,6 +65,12 @@
   <ItemGroup>
     <Compile Include="clasConexion.cs" />
     <Compile Include="clasTipoUsuario.cs" />
+    <Compile Include="frmConsultaPacienteEtiqueta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaPacienteEtiqueta.Designer.cs">
+      <DependentUpon>frmConsultaPacienteEtiqueta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAseguradora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     <Compile Include="frmSucursal.Designer.cs">
       <DependentUpon>frmSucursal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmConsultaPacienteEtiqueta.resx">
+      <DependentUpon>frmConsultaPacienteEtiqueta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAseguradora.resx">
       <DependentUpon>frmAseguradora.cs</DependentUpon>
     </EmbeddedResource>

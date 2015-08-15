@@ -154,5 +154,10 @@ namespace Laboratorio
             btnGuardar.Enabled = true;
             btnImprimir.Enabled = false;
         }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

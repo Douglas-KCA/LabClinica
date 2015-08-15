@@ -36,12 +36,14 @@
             this.lblTipoMembresia = new System.Windows.Forms.Label();
             this.txtTipoMembresia = new System.Windows.Forms.TextBox();
             this.txtPorcentaje = new System.Windows.Forms.TextBox();
+            this.btnHome = new System.Windows.Forms.Button();
             this.pnlBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotones
             // 
             this.pnlBotones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlBotones.Controls.Add(this.btnHome);
             this.pnlBotones.Controls.Add(this.btnGuardar);
             this.pnlBotones.Controls.Add(this.btnCancelar);
             this.pnlBotones.Location = new System.Drawing.Point(12, 29);
@@ -54,7 +56,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(12, 72);
+            this.btnGuardar.Location = new System.Drawing.Point(12, 56);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(110, 50);
             this.btnGuardar.TabIndex = 5;
@@ -68,7 +70,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 172);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 131);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -84,9 +86,9 @@
             this.lblPorcentaje.Font = new System.Drawing.Font("Calibri", 12F);
             this.lblPorcentaje.Location = new System.Drawing.Point(151, 168);
             this.lblPorcentaje.Name = "lblPorcentaje";
-            this.lblPorcentaje.Size = new System.Drawing.Size(82, 19);
+            this.lblPorcentaje.Size = new System.Drawing.Size(124, 19);
             this.lblPorcentaje.TabIndex = 35;
-            this.lblPorcentaje.Text = "Porcentaje:";
+            this.lblPorcentaje.Text = "Porcentaje (0.00):";
             // 
             // lblTipoMembresia
             // 
@@ -112,6 +114,21 @@
             this.txtPorcentaje.Name = "txtPorcentaje";
             this.txtPorcentaje.Size = new System.Drawing.Size(502, 20);
             this.txtPorcentaje.TabIndex = 37;
+            this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(10, 205);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 7;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmMembresia
             // 
@@ -119,6 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ControlBox = false;
             this.Controls.Add(this.txtPorcentaje);
             this.Controls.Add(this.txtTipoMembresia);
             this.Controls.Add(this.lblPorcentaje);
@@ -143,5 +161,6 @@
         private System.Windows.Forms.Label lblTipoMembresia;
         private System.Windows.Forms.TextBox txtTipoMembresia;
         private System.Windows.Forms.TextBox txtPorcentaje;
+        private System.Windows.Forms.Button btnHome;
     }
 }
