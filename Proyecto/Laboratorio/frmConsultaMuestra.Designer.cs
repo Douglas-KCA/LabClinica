@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaMuestra));
             this.pnlBotones = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@
             this.Tarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deducible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnHome = new System.Windows.Forms.Button();
             this.pnlBotones.SuspendLayout();
             this.grpActualizar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdConsultaMuestra)).BeginInit();
@@ -63,6 +63,20 @@
             this.pnlBotones.Name = "pnlBotones";
             this.pnlBotones.Size = new System.Drawing.Size(133, 328);
             this.pnlBotones.TabIndex = 34;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 251);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 9;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnEliminar
             // 
@@ -224,21 +238,6 @@
             // 
             this.Porcentaje.HeaderText = "Descipcion";
             this.Porcentaje.Name = "Porcentaje";
-            // 
-            // btnHome
-            // 
-            this.btnHome.Enabled = false;
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(12, 251);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 9;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmConsultaMuestra
             // 

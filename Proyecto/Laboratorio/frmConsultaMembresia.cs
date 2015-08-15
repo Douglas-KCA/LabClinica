@@ -52,7 +52,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT * FROM MEMBRESIA"), clasConexion.funConexion());
+                "SELECT * FROM MaMEMBRESIA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -96,7 +96,7 @@ namespace Laboratorio
                 else
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT * FROM MEMBRESIA WHERE ctipomembresia = '{0}' ", txtTipo.Text), clasConexion.funConexion());
+                    "SELECT * FROM MaMEMBRESIA WHERE ctipomembresia = '{0}' ", txtTipo.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -131,7 +131,7 @@ namespace Laboratorio
             {
                 if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MEMBRESIA SET ctipomembresia = '{0}', cporcentaje ='{1}' WHERE ncodmembresia = '{2}'",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MaMEMBRESIA SET ctipomembresia = '{0}', cporcentaje ='{1}' WHERE ncodmembresia = '{2}'",
                     txtActualizarTipo.Text, txtActualizarPorcentaje.Text, sActualizarCodigo), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     funActualizar();
@@ -172,7 +172,7 @@ namespace Laboratorio
             {
                 if (MessageBox.Show("¿Desea Eliminar el dato seleccionado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MEMBRESIA WHERE ncodmembresia = '{0}'",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MaMEMBRESIA WHERE ncodmembresia = '{0}'",
                     sActualizarCodigo), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     funActualizar();

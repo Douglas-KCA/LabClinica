@@ -39,7 +39,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MEMBRESIA(ctipomembresia, cporcentaje)  values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaMEMBRESIA(ctipomembresia, cporcentaje)  values ('{0}','{1}')",
                     txtTipoMembresia.Text, txtPorcentaje.Text), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
