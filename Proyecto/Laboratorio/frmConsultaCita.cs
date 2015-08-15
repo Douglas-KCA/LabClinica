@@ -35,7 +35,7 @@ namespace Laboratorio
             String sPaciente;
             try
             {
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombresucursal FROM SUCURSAL"), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -51,12 +51,12 @@ namespace Laboratorio
 
             try
             {
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM PACIENTE"), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
                 while (mReader.Read())
                 {
                     sPersona = mReader.GetString(0);
-                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM PERSONA WHERE ncodpersona = '{0}' ", sPersona), clasConexion.funConexion());
+                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPersona), clasConexion.funConexion());
                     MySqlDataReader mReader2 = mComando2.ExecuteReader();
                     while (mReader2.Read())
                     {
@@ -95,7 +95,7 @@ namespace Laboratorio
             grdCita.Rows.Clear();
             try
             {
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT * FROM CITA WHERE dfechacita >= CURRENT_DATE()"), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT * FROM TrCITA WHERE dfechacita >= CURRENT_DATE()"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -106,17 +106,17 @@ namespace Laboratorio
                     sFecha = mReader.GetString(3);
                     sTiempo = mReader.GetString(4);
 
-                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM PACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
+                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
                     MySqlDataReader mReader2 = mComando2.ExecuteReader();
                     if (mReader2.Read())
                         sPaciente = mReader2.GetString(0);
 
-                    MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM PERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
+                    MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
                     MySqlDataReader mReader3 = mComando3.ExecuteReader();
                     if (mReader3.Read())
                         sPaciente = mReader3.GetString(0) + " "+ mReader3.GetString(1);
                      
-                    MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM SUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
+                    MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
                     MySqlDataReader mReader4 = mComando4.ExecuteReader();
                     if (mReader4.Read())
                         sSucursal = mReader4.GetString(0);
@@ -155,7 +155,7 @@ namespace Laboratorio
                 else
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT * FROM CITA WHERE ncodigocita = '{0}' ", txtCita.Text), clasConexion.funConexion());
+                    "SELECT * FROM TrCITA WHERE ncodigocita = '{0}' ", txtCita.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -167,17 +167,17 @@ namespace Laboratorio
                         sFecha = mReader.GetString(3);
                         sTiempo = mReader.GetString(4);
 
-                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM PACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
+                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
                         MySqlDataReader mReader2 = mComando2.ExecuteReader();
                         if (mReader2.Read())
                             sPaciente = mReader2.GetString(0);
 
-                        MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM PERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
+                        MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
                         MySqlDataReader mReader3 = mComando3.ExecuteReader();
                         if (mReader3.Read())
                             sPaciente = mReader3.GetString(0) + " " + mReader3.GetString(1);
 
-                        MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM SUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
+                        MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
                         MySqlDataReader mReader4 = mComando4.ExecuteReader();
                         if (mReader4.Read())
                             sSucursal = mReader4.GetString(0);
@@ -212,26 +212,39 @@ namespace Laboratorio
             {
                 String[] nombres = cmbActualizarPaciente.Text.Split(' ');
 
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM PERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}' ", nombres[0], nombres[1]), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}' ", nombres[0], nombres[1]), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
                 if (mReader.Read())
                     sCodigoPersona = mReader.GetString(0);
 
-                MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpaciente FROM PACIENTE WHERE ncodpersona = '{0}' ", sCodigoPersona), clasConexion.funConexion());
+                MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpaciente FROM TrPACIENTE WHERE ncodpersona = '{0}' ", sCodigoPersona), clasConexion.funConexion());
                 MySqlDataReader mReader2 = mComando2.ExecuteReader();
                 if (mReader2.Read())
                     sCodigoPaciente = mReader2.GetString(0);
-
-                MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT ncodsucursal FROM SUCURSAL WHERE cnombresucursal = '{0}' ", cmbActualizarSucursal.Text), clasConexion.funConexion());
+                
+                MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT ncodsucursal FROM MaSUCURSAL WHERE cnombresucursal = '{0}' ", cmbActualizarSucursal.Text), clasConexion.funConexion());
                 MySqlDataReader mReader3 = mComando3.ExecuteReader();
                 if (mReader3.Read())
                     sCodigoSucursal = mReader3.GetString(0);
 
-                MySqlCommand comando = new MySqlCommand(string.Format("UPDATE CITA SET ncodsucursal = '{0}', ncodpaciente = '{1}',  dfechacita = '{2}', choracita = '{3}' WHERE ncodigocita = '{4}'",
-                sCodigoSucursal, sCodigoPaciente, dtpActualizarCitas.Text, cmbActualizarHora.Text+":"+cmbActualizarMinutos.Text, grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funActualizar();
+                
+                MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT ncodigocita FROM TrCITA WHERE dfechacita = '{0}' AND choracita = '{1}' AND ncodsucursal = '{2}'", dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, sCodigoSucursal), clasConexion.funConexion());
+                MySqlDataReader mReader4 = mComando4.ExecuteReader();
+                if (mReader4.Read())
+                {
+                    MessageBox.Show("Ya se tiene una cita para ese momento o lugar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (MessageBox.Show("Seguro que quiere actualizar los datos", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        MySqlCommand comando = new MySqlCommand(string.Format("UPDATE TrCITA SET ncodsucursal = '{0}', ncodpaciente = '{1}',  dfechacita = '{2}', choracita = '{3}' WHERE ncodigocita = '{4}'",
+                        sCodigoSucursal, sCodigoPaciente, dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        funActualizar();
+                    }
+                }
             }
             catch
             {
@@ -255,18 +268,26 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM CITA WHERE ncodigocita = '{0}'",
-                grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funActualizar();
-                cmbActualizarPaciente.Text = cmbActualizarSucursal.Text = cmbActualizarHora.Text = cmbActualizarMinutos.Text = "";
+                if (MessageBox.Show("Seguro que quiere eliminar los datos", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM TrCITA WHERE ncodigocita = '{0}'",
+                    grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                    comando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funActualizar();
+                    cmbActualizarPaciente.Text = cmbActualizarSucursal.Text = cmbActualizarHora.Text = cmbActualizarMinutos.Text = "";
+                }
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

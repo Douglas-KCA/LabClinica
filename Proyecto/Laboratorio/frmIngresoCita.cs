@@ -28,7 +28,7 @@ namespace Laboratorio
             String sPaciente;
 
             try{
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombresucursal FROM SUCURSAL"), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read()){
@@ -42,11 +42,11 @@ namespace Laboratorio
 
             try
             {
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM PACIENTE"), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
                 while(mReader.Read()){
                     sPersona = mReader.GetString(0);
-                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM PERSONA WHERE ncodpersona = '{0}' ", sPersona), clasConexion.funConexion());
+                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPersona), clasConexion.funConexion());
                     MySqlDataReader mReader2 = mComando2.ExecuteReader();
                     while (mReader2.Read())
                     {
@@ -77,32 +77,33 @@ namespace Laboratorio
                 else{
                     String[] nombres = cmbPaciente.Text.Split(' ');
                     
-                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM PERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}' ", nombres[0],nombres[1]), clasConexion.funConexion());
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}' ", nombres[0],nombres[1]), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
                     if (mReader.Read())
                         sCodigoPersona = mReader.GetString(0);
 
-                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpaciente FROM PACIENTE WHERE ncodpersona = '{0}' ", sCodigoPersona), clasConexion.funConexion());
+                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpaciente FROM TrPACIENTE WHERE ncodpersona = '{0}' ", sCodigoPersona), clasConexion.funConexion());
                     MySqlDataReader mReader2 = mComando2.ExecuteReader();
                     if (mReader2.Read())
                         sCodigoPaciente = mReader2.GetString(0);
 
-                    MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT ncodsucursal FROM SUCURSAL WHERE cnombresucursal = '{0}' ", cmbSucursal.Text), clasConexion.funConexion());
+                    MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT ncodsucursal FROM MaSUCURSAL WHERE cnombresucursal = '{0}' ", cmbSucursal.Text), clasConexion.funConexion());
                     MySqlDataReader mReader3 = mComando3.ExecuteReader();
                     if (mReader3.Read())
                         sCodigoSucursal = mReader3.GetString(0);
 
-                    MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT ncodigocita FROM CITA WHERE dfechacita = '{0}' AND choracita = '{1}'", dtpCitas.Text, cmbHora.Text + ":" + cmbMinutos.Text), clasConexion.funConexion());
+                    MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT ncodigocita FROM TrCITA WHERE dfechacita = '{0}' AND choracita = '{1}' AND ncodsucursal = '{2}'", dtpCitas.Text, cmbHora.Text + ":" + cmbMinutos.Text, sCodigoSucursal), clasConexion.funConexion());
                     MySqlDataReader mReader4 = mComando4.ExecuteReader();
                     if (mReader4.Read()) {
-                        MessageBox.Show("Ya se tiene una cita para esa fecha y hora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ya se tiene una cita para ese momento o lugar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MySqlCommand comando4 = new MySqlCommand(string.Format("INSERT into CITA (ncodsucursal, ncodpaciente, dfechacita, choracita) values ('{0}','{1}','{2}','{3}')",
+                        MySqlCommand comando4 = new MySqlCommand(string.Format("INSERT into TrCITA (ncodsucursal, ncodpaciente, dfechacita, choracita) values ('{0}','{1}','{2}','{3}')",
                         sCodigoSucursal, sCodigoPaciente, dtpCitas.Text, cmbHora.Text + ":" + cmbMinutos.Text), clasConexion.funConexion());
                         comando4.ExecuteNonQuery();
                         MessageBox.Show("La cita se Genero con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cmbHora.Text = cmbMinutos.Text = cmbPaciente.Text = cmbSucursal.Text = "";
                     }
                 }
             }catch{
@@ -119,6 +120,11 @@ namespace Laboratorio
             cmbMinutos.Text = "";
             cmbPaciente.Text = "";
             cmbSucursal.Text = "";
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
