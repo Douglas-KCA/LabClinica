@@ -44,7 +44,7 @@
             this.sbmIngresarMuestra = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmConsultaMuestra = new System.Windows.Forms.ToolStripMenuItem();
             this.mExamenes = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbmIngresarExamenes = new System.Windows.Forms.ToolStripMenuItem();
+            this.sbmExamenesIngresar = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmConsultarExamenes = new System.Windows.Forms.ToolStripMenuItem();
             this.mCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmIngresarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,19 +203,19 @@
             // mExamenes
             // 
             this.mExamenes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sbmIngresarExamenes,
+            this.sbmExamenesIngresar,
             this.sbmConsultarExamenes});
             this.mExamenes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mExamenes.Name = "mExamenes";
             this.mExamenes.Size = new System.Drawing.Size(87, 23);
             this.mExamenes.Text = "Examenes";
             // 
-            // sbmIngresarExamenes
+            // sbmExamenesIngresar
             // 
-            this.sbmIngresarExamenes.Name = "sbmIngresarExamenes";
-            this.sbmIngresarExamenes.Size = new System.Drawing.Size(216, 24);
-            this.sbmIngresarExamenes.Text = "Ingresar";
-            this.sbmIngresarExamenes.Click += new System.EventHandler(this.sbmIngresarExamenes_Click);
+            this.sbmExamenesIngresar.Name = "sbmExamenesIngresar";
+            this.sbmExamenesIngresar.Size = new System.Drawing.Size(216, 24);
+            this.sbmExamenesIngresar.Text = "Ingresar";
+            this.sbmExamenesIngresar.Click += new System.EventHandler(this.sbmIngresarExamenes_Click);
             // 
             // sbmConsultarExamenes
             // 
@@ -494,7 +494,7 @@
         private System.Windows.Forms.ToolStripMenuItem sbmCrearEtiqueta;
         private System.Windows.Forms.ToolStripMenuItem sbmIngresarMuestra;
         private System.Windows.Forms.ToolStripMenuItem mExamenes;
-        private System.Windows.Forms.ToolStripMenuItem sbmIngresarExamenes;
+        private System.Windows.Forms.ToolStripMenuItem sbmExamenesIngresar;
         private System.Windows.Forms.ToolStripMenuItem sbmConsultarExamenes;
         private System.Windows.Forms.ToolStripMenuItem mCotizacion;
         private System.Windows.Forms.ToolStripMenuItem sbmIngresarCotizacion;

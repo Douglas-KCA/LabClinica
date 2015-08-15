@@ -103,7 +103,8 @@ namespace Laboratorio
 
         private void sbmIngresarExamenes_Click(object sender, EventArgs e)
         {
-
+            frmTipoExamen muestra = new frmTipoExamen();
+            muestra.Show();
         }
 
         private void insertarToolStripMenuItem_Click(object sender, EventArgs e)
