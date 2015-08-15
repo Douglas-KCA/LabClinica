@@ -35,14 +35,14 @@ namespace Laboratorio
 
             try
             {
-                MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT ncodaseguradora, cempresaseguro FROM MAASEGURADORA"), clasConexion.funConexion());
-                MySqlDataReader _reader = _comando.ExecuteReader();
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
 
-                while (_reader.Read())
+                while (mReader.Read())
                 {
-                    sCodigo = _reader.GetString(0);
-                    sNombre = _reader.GetString(1);
+                    sCodigo = mReader.GetString(0);
+                    sNombre = mReader.GetString(1);
                     grdAseguradora.Rows.Insert(iContador, sCodigo, sNombre);
                     sCodigo = "";
                     sNombre = "";
@@ -68,7 +68,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MAASEGURADORA (cempresaseguro) values ('{0}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaASEGURADORA (cempresaseguro) values ('{0}')",
                     txtNombre.Text), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     funActualizar();
