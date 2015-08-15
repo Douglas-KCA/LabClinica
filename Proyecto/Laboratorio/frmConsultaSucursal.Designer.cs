@@ -45,6 +45,7 @@
             this.txtActualizarUbicacion = new System.Windows.Forms.TextBox();
             this.lblActualizarNombre = new System.Windows.Forms.Label();
             this.txtActualizarNombre = new System.Windows.Forms.TextBox();
+            this.btnHome = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdSucursal)).BeginInit();
             this.grpActualizar.SuspendLayout();
@@ -53,6 +54,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnHome);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.btnActualizar);
@@ -67,7 +69,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 164);
+            this.btnEliminar.Location = new System.Drawing.Point(12, 131);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(110, 50);
             this.btnEliminar.TabIndex = 8;
@@ -95,7 +97,7 @@
             this.btnActualizar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizar.Location = new System.Drawing.Point(12, 89);
+            this.btnActualizar.Location = new System.Drawing.Point(12, 75);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(110, 50);
             this.btnActualizar.TabIndex = 5;
@@ -109,7 +111,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 242);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 187);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -149,9 +151,9 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(272, 25);
+            this.txtNombre.Location = new System.Drawing.Point(249, 25);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(400, 20);
+            this.txtNombre.Size = new System.Drawing.Size(401, 20);
             this.txtNombre.TabIndex = 34;
             // 
             // lblNombre
@@ -212,12 +214,27 @@
             this.txtActualizarNombre.Size = new System.Drawing.Size(152, 20);
             this.txtActualizarNombre.TabIndex = 0;
             // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 243);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // frmConsultaSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ControlBox = false;
             this.Controls.Add(this.grpActualizar);
             this.Controls.Add(this.grdSucursal);
             this.Controls.Add(this.txtNombre);
@@ -254,5 +271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreSucursal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ubicacionSucursal;
+        private System.Windows.Forms.Button btnHome;
     }
 }

@@ -40,6 +40,7 @@
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ubicacionSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnHome = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdSucursal)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(12, 103);
+            this.btnGuardar.Location = new System.Drawing.Point(12, 39);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(110, 50);
             this.btnGuardar.TabIndex = 5;
@@ -63,7 +64,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 184);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 95);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -75,18 +76,19 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnHome);
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Location = new System.Drawing.Point(12, 30);
+            this.panel1.Location = new System.Drawing.Point(12, 107);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(133, 311);
+            this.panel1.Size = new System.Drawing.Size(133, 234);
             this.panel1.TabIndex = 7;
             // 
             // txtUbicacion
             // 
-            this.txtUbicacion.Location = new System.Drawing.Point(272, 71);
+            this.txtUbicacion.Location = new System.Drawing.Point(98, 71);
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(400, 20);
+            this.txtUbicacion.Size = new System.Drawing.Size(574, 20);
             this.txtUbicacion.TabIndex = 9;
             // 
             // lblUbicacion
@@ -94,7 +96,7 @@
             this.lblUbicacion.AutoSize = true;
             this.lblUbicacion.BackColor = System.Drawing.Color.Transparent;
             this.lblUbicacion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUbicacion.Location = new System.Drawing.Point(161, 71);
+            this.lblUbicacion.Location = new System.Drawing.Point(12, 70);
             this.lblUbicacion.Name = "lblUbicacion";
             this.lblUbicacion.Size = new System.Drawing.Size(77, 19);
             this.lblUbicacion.TabIndex = 8;
@@ -102,9 +104,9 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(272, 30);
+            this.txtNombre.Location = new System.Drawing.Point(98, 30);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(400, 20);
+            this.txtNombre.Size = new System.Drawing.Size(574, 20);
             this.txtNombre.TabIndex = 11;
             // 
             // lblNombre
@@ -112,7 +114,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(161, 30);
+            this.lblNombre.Location = new System.Drawing.Point(12, 29);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(64, 19);
             this.lblNombre.TabIndex = 10;
@@ -146,11 +148,26 @@
             this.ubicacionSucursal.HeaderText = "Ubicacion";
             this.ubicacionSucursal.Name = "ubicacionSucursal";
             // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 151);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // frmSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ControlBox = false;
             this.Controls.Add(this.grdSucursal);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
@@ -181,5 +198,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreSucursal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ubicacionSucursal;
+        private System.Windows.Forms.Button btnHome;
     }
 }

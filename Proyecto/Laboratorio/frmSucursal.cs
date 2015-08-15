@@ -38,7 +38,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodsucursal, cnombresucursal, cubicacion FROM SUCURSAL"), clasConexion.funConexion());
+                "SELECT ncodsucursal, cnombresucursal, cubicacion FROM MaSUCURSAL"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -73,7 +73,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into SUCURSAL(cnombresucursal, cubicacion)  values ('{0}','{1}')",
+                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MaSUCURSAL(cnombresucursal, cubicacion)  values ('{0}','{1}')",
                     txtNombre.Text, txtUbicacion.Text), clasConexion.funConexion());
                     comando.ExecuteNonQuery();
                     funActualizar();
@@ -96,6 +96,11 @@ namespace Laboratorio
         {
             txtNombre.Text = "";
             txtUbicacion.Text = "";
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
