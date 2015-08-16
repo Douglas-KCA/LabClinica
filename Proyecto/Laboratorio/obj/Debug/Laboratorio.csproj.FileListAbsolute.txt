@@ -512,3 +512,4 @@ C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\L
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmFactura.resources

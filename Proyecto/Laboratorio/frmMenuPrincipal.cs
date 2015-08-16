@@ -205,5 +205,11 @@ namespace Laboratorio
             frmConsultaTipoExamen ver = new frmConsultaTipoExamen();
             ver.Show();
         }
+
+        private void smGenerarFactura_Click(object sender, EventArgs e)
+        {
+            frmFactura ver = new frmFactura();
+            ver.Show();
+        }
     }
 }
