@@ -50,7 +50,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodaseguradora, cempresaseguro FROM MAASEGURADORA"), clasConexion.funConexion());
+                "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -92,7 +92,7 @@ namespace Laboratorio
                 else
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT ncodaseguradora, cempresaseguro FROM MAASEGURADORA WHERE cempresaseguro = '{0}' ", txtNombre.Text), clasConexion.funConexion());
+                    "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA WHERE cempresaseguro = '{0}' ", txtNombre.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -134,7 +134,7 @@ namespace Laboratorio
             {
                 if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MAASEGURADORA SET cempresaseguro = '{0}' WHERE ncodaseguradora = '{1}'",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MaASEGURADORA SET cempresaseguro = '{0}' WHERE ncodaseguradora = '{1}'",
                     txtActualizarNombre.Text, sCodigoTabla), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     funActualizar();
@@ -166,7 +166,7 @@ namespace Laboratorio
             {
                 if (MessageBox.Show("¿Desea eliminar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MAASEGURADORA WHERE ncodaseguradora = '{0}'",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MaASEGURADORA WHERE ncodaseguradora = '{0}'",
                     sCodigoTabla), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     funActualizar();

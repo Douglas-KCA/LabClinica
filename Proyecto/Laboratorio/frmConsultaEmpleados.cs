@@ -64,7 +64,7 @@ namespace Laboratorio
                     sPuesto = mReader.GetString(7);
                     grdConsultarEmpleados.Rows.Insert(iContador,sCodigo, sDpi ,sNombre, sApellido,sSexo,sFecha,sNit,sPuesto);
 
-                    MessageBox.Show(sCodigo);
+                    
                     //Llenar Combo Box Direccion
 
                    MySqlCommand mComandocmbDire = new MySqlCommand(String.Format(
@@ -75,7 +75,6 @@ namespace Laboratorio
                     {
                         cmbDirecion.Items.Add(mReadercmbDire.GetString(0)); 
                     }
-                    mReadercmbDire.Close();
                     /*
                     //Llenar Combo Box Telefono
                     MessageBox.Show(sCodigo);

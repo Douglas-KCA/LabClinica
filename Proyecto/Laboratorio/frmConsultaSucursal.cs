@@ -46,7 +46,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodsucursal, cnombresucursal, cubicacion FROM SUCURSAL"), clasConexion.funConexion());
+                "SELECT ncodsucursal, cnombresucursal, cubicacion FROM MaSUCURSAL"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -90,7 +90,7 @@ namespace Laboratorio
                 else
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT ncodsucursal, cnombresucursal, cubicacion FROM SUCURSAL WHERE cnombresucursal = '{0}' ", txtNombre.Text), clasConexion.funConexion());
+                    "SELECT ncodsucursal, cnombresucursal, cubicacion FROM MaSUCURSAL WHERE cnombresucursal = '{0}' ", txtNombre.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -133,13 +133,16 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand(string.Format("UPDATE SUCURSAL SET cnombresucursal = '{0}', cubicacion = '{1}'  WHERE ncodsucursal = '{2}'",
-                txtActualizarNombre.Text,txtActualizarUbicacion.Text, grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtNombre.Text = "";
-                funActualizar();
+                if (MessageBox.Show("Seguro que quiere actualizar los datos", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand comando = new MySqlCommand(string.Format("UPDATE MaSUCURSAL SET cnombresucursal = '{0}', cubicacion = '{1}'  WHERE ncodsucursal = '{2}'",
+                    txtActualizarNombre.Text, txtActualizarUbicacion.Text, grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                    comando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtNombre.Text = "";
+                    funActualizar();
+                } 
             }
             catch
             {
@@ -154,18 +157,26 @@ namespace Laboratorio
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM SUCURSAL WHERE ncodsucursal = '{0}'",
-                grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
-                comando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                funActualizar();
-                txtActualizarNombre.Text = txtActualizarUbicacion.Text = "";
+                if (MessageBox.Show("Seguro que quiere eliminar los datos", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM MaSUCURSAL WHERE ncodsucursal = '{0}'",
+                    grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                    comando.ExecuteNonQuery();
+                    funActualizar();
+                    MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funActualizar();
+                    txtActualizarNombre.Text = txtActualizarUbicacion.Text = "";
+                }
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
