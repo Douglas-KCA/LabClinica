@@ -13,20 +13,28 @@ namespace Laboratorio
 {
     public partial class frmConsultaPacienteEtiqueta : Form
     {
+        string sInformacionPaciente;
         public frmConsultaPacienteEtiqueta()
         {
             InitializeComponent();
-            funBuscarPacientes();
+            funLlenarPacientes();
         }
 
-        void funBuscarPacientes() {
+        void funCancelar() {
+            txtBuscarPaciente.Clear();
+            funLlenarPacientes();
+        }
+
+        void funLlenarPacientes()
+        {
             string sCodigo;
             string sNombre;
             int iContador = 0;
+            grdConsultaPacientes.Rows.Clear();
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT paciente.ncodpaciente, persona.cnombrepersona FROM paciente, persona WHERE paciente.ncodpersona=persona.ncodpersona"), clasConexion.funConexion());
+                "SELECT trpaciente.ncodpaciente, mapersona.cnombrepersona FROM trpaciente, mapersona WHERE trpaciente.ncodpersona=mapersona.ncodpersona"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -44,23 +52,25 @@ namespace Laboratorio
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void txtBuscarPaciente_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBuscarPaciente.Text))
             {
-                funBuscarPacientes();
+                funLlenarPacientes();
             }
             else {
                 string sCodigo;
                 //string sBuscaNombre;
                 string sNombre;
                 int iContador = 0;
+                grdConsultaPacientes.Rows.Clear();
                 try
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT paciente.ncodpaciente, persona.cnombrepersona FROM paciente, persona WHERE paciente.ncodpersona=persona.ncodpersona AND persona.cnombrepersona = '{0}' ", txtBuscarPaciente.Text), clasConexion.funConexion());
+                    "SELECT trpaciente.ncodpaciente, mapersona.cnombrepersona FROM trpaciente, mapersona WHERE trpaciente.ncodpersona=mapersona.ncodpersona AND mapersona.cnombrepersona = '{0}' ", txtBuscarPaciente.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -84,12 +94,32 @@ namespace Laboratorio
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtBuscarPaciente.Clear();
-            funBuscarPacientes();
+            funLlenarPacientes();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void grdConsultaPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Prueba = "";
+            string sCodigoTabla;
+            string sNombreTabla;
+            DataGridViewRow fila = grdConsultaPacientes.CurrentRow;
+            sCodigoTabla = Convert.ToString(fila.Cells[0].Value);
+            sNombreTabla = Convert.ToString(fila.Cells[1].Value);
+            sInformacionPaciente = sCodigoTabla + ". "+sNombreTabla;
+            btnAceptar.Enabled = true;
+            //txtBuscarPaciente.Text = Prueba;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            frmEtiqueta ver = new frmEtiqueta();
+            ver.txtPaciente.Text = sInformacionPaciente;
+            ver.Show();
         }
     }
 }
