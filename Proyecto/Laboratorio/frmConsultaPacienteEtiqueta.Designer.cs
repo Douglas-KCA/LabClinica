@@ -55,7 +55,6 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Enabled = false;
             this.btnAtras.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnAtras.Image = ((System.Drawing.Image)(resources.GetObject("btnAtras.Image")));
             this.btnAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -81,6 +80,7 @@
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -126,6 +126,7 @@
             this.grdConsultaPacientes.Name = "grdConsultaPacientes";
             this.grdConsultaPacientes.Size = new System.Drawing.Size(482, 261);
             this.grdConsultaPacientes.TabIndex = 38;
+            this.grdConsultaPacientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdConsultaPacientes_CellContentClick);
             // 
             // Codigo
             // 

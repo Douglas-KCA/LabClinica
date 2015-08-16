@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMuestra));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblRequerimientos = new System.Windows.Forms.Label();
             this.txtRequerimientos = new System.Windows.Forms.TextBox();
             this.lblDescripcionMuestra = new System.Windows.Forms.Label();
             this.txtDescripcionMuestra = new System.Windows.Forms.TextBox();
-            this.btnHome = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(133, 311);
             this.panel1.TabIndex = 9;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(10, 182);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 7;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnGuardar
             // 
@@ -118,20 +132,6 @@
             this.txtDescripcionMuestra.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtDescripcionMuestra.Size = new System.Drawing.Size(460, 112);
             this.txtDescripcionMuestra.TabIndex = 34;
-            // 
-            // btnHome
-            // 
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(10, 182);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 7;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmMuestra
             // 
