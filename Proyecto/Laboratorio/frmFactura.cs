@@ -21,6 +21,135 @@ namespace Laboratorio
             InitializeComponent();
         }
 
+        void funLlenarCita(){
+            string sCodigocmb;
+            string sFechacmb;
+            string sHoracmb;
+            cmbCita.Items.Clear();
+            try
+            {                
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT ncodigocita, dfechacita, choracita FROM TrCITA WHERE ncodpaciente='{0}' AND dfechacita='{1}'", sCodigoPacienteFactura, txtFecha.Text), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+
+                while (mReader.Read())
+                {                    
+                    sCodigocmb = mReader.GetString(0);
+                    sFechacmb = mReader.GetString(1);
+                    sHoracmb = mReader.GetString(2);
+                    cmbCita.Items.Add(sCodigocmb + ". " + sFechacmb + " --- " + sHoracmb);
+                    sCodigocmb = "";
+                    sFechacmb = "";
+                    sHoracmb = "";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error cmbLlenarCita", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void funLlenarSucursal(){
+            string sCodigocmb;
+            string sNombreSucursalcmb;            
+            cmbSucursal.Items.Clear();
+            try
+            {
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT ncodsucursal, cnombresucursal FROM MaSUCURSAL"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+
+                while (mReader.Read())
+                {
+                    sCodigocmb = mReader.GetString(0);
+                    sNombreSucursalcmb = mReader.GetString(1);                    
+                    cmbSucursal.Items.Add(sCodigocmb + ". " + sNombreSucursalcmb);
+                    sCodigocmb = "";
+                    sNombreSucursalcmb = "";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error cmbLlenarSucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+        }
+        
+        void funLlenarExamen(){
+            string sCodigocmb;
+            string sNombrecmb;
+            string sPreciocmb;
+            cmbExamen.Items.Clear();
+            try
+            {
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT ncodtipo, cdesctipoexamen, cpreciotipoexamen FROM MaTIPOEXAMEN"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+
+                while (mReader.Read())
+                {
+                    sCodigocmb = mReader.GetString(0);
+                    sNombrecmb = mReader.GetString(1);
+                    sPreciocmb = mReader.GetString(2);
+                    cmbExamen.Items.Add(sCodigocmb + ". " + sNombrecmb + " (Q" + sPreciocmb + ")");
+                    sCodigocmb = "";
+                    sNombrecmb = "";
+                    sPreciocmb = "";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error cmbLlenarExamen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+        }
+
+        void funLlenarDoctor(){
+            string sCodigocmb;
+            string sNombrecmb;
+            string sApellidocmb;
+            cmbDoctor.Items.Clear();
+            try
+            {
+                MySqlCommand mComando = new MySqlCommand(String.Format(
+                "SELECT TrEMPLEADO.ncodempleado, MaPERSONA.cnombrepersona, MaPERSONA.capellidopersona FROM MaPERSONA, TrEMPLEADO WHERE TrEMPLEADO.ncodpersona=MaPERSONA.ncodpersona AND TrEMPLEADO.ncodpuesto=2"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+
+                while (mReader.Read())
+                {
+                    sCodigocmb = mReader.GetString(0);
+                    sNombrecmb = mReader.GetString(1);
+                    sApellidocmb = mReader.GetString(2);
+                    cmbDoctor.Items.Add(sCodigocmb + ". " + sNombrecmb + " " + sApellidocmb);
+                    sCodigocmb = "";
+                    sNombrecmb = "";
+                    sApellidocmb = "";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error cmbLlenarDoctor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void funCodigoFactura(){
+            try
+            {
+                string sCodFactura;
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT MAX(ncodfactura) FROM MaFACTURA"), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        sCodFactura = mReader.GetString(0);                        
+                        txtNo.Text = sCodFactura;
+                    }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void txtNit_TextChanged(object sender, EventArgs e)
         {
            
@@ -47,6 +176,7 @@ namespace Laboratorio
                             sApellido = mReader.GetString(2);
                             txtNombre.Text = sNombre + " " + sApellido;
                         }
+                        funLlenarCita();
 
                         DateTime fecha = DateTime.Today;
                         txtFecha.Text = fecha.ToString("d");
@@ -91,14 +221,19 @@ namespace Laboratorio
                     mComando.ExecuteNonQuery();
                     pPanelEncabezado.Enabled = false;
                     btnGenerar.Enabled = false;
-                }
-                
-                
+                    pServicios.Enabled = true;
+                    funCodigoFactura();
+                    btnAgregar.Enabled = true;
+                    funLlenarCita();
+                    funLlenarSucursal();
+                    funLlenarExamen();
+                    funLlenarDoctor();
+                }                                
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }            
         }
     }
 }
