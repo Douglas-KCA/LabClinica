@@ -32,6 +32,7 @@
             this.lblSucursal = new System.Windows.Forms.Label();
             this.lblPaciente = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,6 @@
             this.cmbMinutos = new System.Windows.Forms.ComboBox();
             this.cmbHora = new System.Windows.Forms.ComboBox();
             this.cmbPaciente = new System.Windows.Forms.ComboBox();
-            this.btnHome = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(133, 206);
             this.panel1.TabIndex = 13;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 135);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnGuardar
             // 
@@ -139,7 +153,7 @@
             // 
             // dtpCitas
             // 
-            this.dtpCitas.CustomFormat = "yyyy-MM-dd";
+            this.dtpCitas.CustomFormat = "dd/MM/yyyy";
             this.dtpCitas.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpCitas.Location = new System.Drawing.Point(238, 118);
             this.dtpCitas.Name = "dtpCitas";
@@ -208,20 +222,6 @@
             this.cmbPaciente.Name = "cmbPaciente";
             this.cmbPaciente.Size = new System.Drawing.Size(437, 21);
             this.cmbPaciente.TabIndex = 31;
-            // 
-            // btnHome
-            // 
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(12, 135);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 10;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmIngresoCita
             // 
