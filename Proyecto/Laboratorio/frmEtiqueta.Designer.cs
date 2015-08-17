@@ -30,18 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEtiqueta));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblCodigoMuestra = new System.Windows.Forms.Label();
             this.lblCodigoPaciente = new System.Windows.Forms.Label();
             this.cmbCodMuestra = new System.Windows.Forms.ComboBox();
-            this.cmbCodPaciente = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.lblTipoMuestra = new System.Windows.Forms.Label();
             this.lblInfoPaciente = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
+            this.txtPaciente = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,6 +58,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(133, 311);
             this.panel1.TabIndex = 10;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Enabled = false;
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(10, 196);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 7;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnGuardar
             // 
@@ -91,7 +107,7 @@
             this.lblCodigoMuestra.AutoSize = true;
             this.lblCodigoMuestra.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigoMuestra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoMuestra.Location = new System.Drawing.Point(151, 29);
+            this.lblCodigoMuestra.Location = new System.Drawing.Point(170, 28);
             this.lblCodigoMuestra.Name = "lblCodigoMuestra";
             this.lblCodigoMuestra.Size = new System.Drawing.Size(67, 19);
             this.lblCodigoMuestra.TabIndex = 32;
@@ -102,7 +118,7 @@
             this.lblCodigoPaciente.AutoSize = true;
             this.lblCodigoPaciente.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigoPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPaciente.Location = new System.Drawing.Point(151, 59);
+            this.lblCodigoPaciente.Location = new System.Drawing.Point(170, 58);
             this.lblCodigoPaciente.Name = "lblCodigoPaciente";
             this.lblCodigoPaciente.Size = new System.Drawing.Size(69, 19);
             this.lblCodigoPaciente.TabIndex = 35;
@@ -111,53 +127,56 @@
             // cmbCodMuestra
             // 
             this.cmbCodMuestra.FormattingEnabled = true;
-            this.cmbCodMuestra.Location = new System.Drawing.Point(224, 30);
+            this.cmbCodMuestra.Location = new System.Drawing.Point(257, 29);
             this.cmbCodMuestra.Name = "cmbCodMuestra";
-            this.cmbCodMuestra.Size = new System.Drawing.Size(448, 21);
+            this.cmbCodMuestra.Size = new System.Drawing.Size(392, 21);
             this.cmbCodMuestra.TabIndex = 37;
-            // 
-            // cmbCodPaciente
-            // 
-            this.cmbCodPaciente.FormattingEnabled = true;
-            this.cmbCodPaciente.Location = new System.Drawing.Point(226, 57);
-            this.cmbCodPaciente.Name = "cmbCodPaciente";
-            this.cmbCodPaciente.Size = new System.Drawing.Size(446, 21);
-            this.cmbCodPaciente.TabIndex = 38;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblFecha);
             this.panel2.Controls.Add(this.lblTipoMuestra);
             this.panel2.Controls.Add(this.lblInfoPaciente);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(174, 94);
+            this.panel2.Location = new System.Drawing.Point(174, 103);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(475, 193);
+            this.panel2.Size = new System.Drawing.Size(475, 202);
             this.panel2.TabIndex = 39;
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(123, 175);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(229, 23);
+            this.lblFecha.TabIndex = 41;
+            this.lblFecha.Text = "Fecha";
+            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblTipoMuestra
             // 
             this.lblTipoMuestra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoMuestra.Location = new System.Drawing.Point(120, 16);
+            this.lblTipoMuestra.Location = new System.Drawing.Point(120, 7);
             this.lblTipoMuestra.Name = "lblTipoMuestra";
             this.lblTipoMuestra.Size = new System.Drawing.Size(229, 23);
             this.lblTipoMuestra.TabIndex = 2;
-            this.lblTipoMuestra.Text = "label2";
+            this.lblTipoMuestra.Text = "Muestra";
             this.lblTipoMuestra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblInfoPaciente
             // 
             this.lblInfoPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoPaciente.Location = new System.Drawing.Point(123, 161);
+            this.lblInfoPaciente.Location = new System.Drawing.Point(123, 152);
             this.lblInfoPaciente.Name = "lblInfoPaciente";
             this.lblInfoPaciente.Size = new System.Drawing.Size(229, 23);
             this.lblInfoPaciente.TabIndex = 1;
-            this.lblInfoPaciente.Text = "label1";
+            this.lblInfoPaciente.Text = "Paciente";
             this.lblInfoPaciente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(123, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(123, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(229, 114);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -170,7 +189,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(362, 293);
+            this.btnImprimir.Location = new System.Drawing.Point(362, 310);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(110, 50);
             this.btnImprimir.TabIndex = 40;
@@ -179,20 +198,13 @@
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // btnHome
+            // txtPaciente
             // 
-            this.btnHome.Enabled = false;
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(10, 196);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 7;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            this.txtPaciente.Location = new System.Drawing.Point(257, 57);
+            this.txtPaciente.Name = "txtPaciente";
+            this.txtPaciente.Size = new System.Drawing.Size(392, 20);
+            this.txtPaciente.TabIndex = 41;
+            this.txtPaciente.Click += new System.EventHandler(this.txtPaciente_Click);
             // 
             // frmEtiqueta
             // 
@@ -201,9 +213,9 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(684, 366);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPaciente);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.cmbCodPaciente);
             this.Controls.Add(this.cmbCodMuestra);
             this.Controls.Add(this.lblCodigoPaciente);
             this.Controls.Add(this.lblCodigoMuestra);
@@ -228,12 +240,13 @@
         private System.Windows.Forms.Label lblCodigoMuestra;
         private System.Windows.Forms.Label lblCodigoPaciente;
         private System.Windows.Forms.ComboBox cmbCodMuestra;
-        private System.Windows.Forms.ComboBox cmbCodPaciente;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTipoMuestra;
         private System.Windows.Forms.Label lblInfoPaciente;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Label lblFecha;
+        public System.Windows.Forms.TextBox txtPaciente;
     }
 }
