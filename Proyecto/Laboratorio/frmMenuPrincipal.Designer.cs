@@ -74,6 +74,8 @@
             this.consultaYModificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mFactura = new System.Windows.Forms.ToolStripMenuItem();
+            this.smGenerarFactura = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +85,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mPaciente,
             this.mEmpleado,
+            this.mFactura,
             this.mCitas,
             this.mMuestra,
             this.mExamenes,
@@ -455,6 +458,22 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // mFactura
+            // 
+            this.mFactura.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.smGenerarFactura});
+            this.mFactura.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mFactura.Name = "mFactura";
+            this.mFactura.Size = new System.Drawing.Size(69, 23);
+            this.mFactura.Text = "Factura";
+            // 
+            // smGenerarFactura
+            // 
+            this.smGenerarFactura.Name = "smGenerarFactura";
+            this.smGenerarFactura.Size = new System.Drawing.Size(152, 24);
+            this.smGenerarFactura.Text = "Generar";
+            this.smGenerarFactura.Click += new System.EventHandler(this.smGenerarFactura_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,6 +481,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.menuStrip1);
@@ -526,5 +546,7 @@
         private System.Windows.Forms.ToolStripMenuItem ingresoToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem consultaYModificacionToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem mFactura;
+        private System.Windows.Forms.ToolStripMenuItem smGenerarFactura;
     }
 }
