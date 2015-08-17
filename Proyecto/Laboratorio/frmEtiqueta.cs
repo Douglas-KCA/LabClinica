@@ -19,12 +19,16 @@ namespace Laboratorio
          * Fecha de Entrega: 08 de Agosto
          *   
         */
+        DateTime fecha = DateTime.Today;
         string sCadena;
+        string sFecha;
         public frmEtiqueta()
         {
+            sFecha = fecha.ToString("d");
+            //lblFecha.Text = sFecha;
             InitializeComponent();
             funLlenarMuestra();
-            funLlenarPaciente();
+            //funLlenarPaciente();
         }
 
         string funCortador(string sDato)
@@ -58,7 +62,7 @@ namespace Laboratorio
             //string sCodigoPaciente = "";
             lblTipoMuestra.Text = cmbCodMuestra.SelectedItem.ToString();
             //sCodMuestra = funCortador(sCodigoMuestra);
-            lblInfoPaciente.Text = cmbCodPaciente.SelectedItem.ToString();
+            lblInfoPaciente.Text = txtPaciente.Text;
             //sCodigoPaciente = funCortador(sCodPaciente);
             btnImprimir.Enabled = true;
             btnGuardar.Enabled = false;
@@ -72,7 +76,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodmuestra, cdescmuestra FROM MUESTRA"), clasConexion.funConexion());
+                "SELECT ncodmuestra, cdescmuestra FROM MAMUESTRA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -93,51 +97,24 @@ namespace Laboratorio
         
         }
 
-        void funLlenarPaciente()
-        {
-            string sCodigo;
-            string sNombre;
-            int iContador = 0;
-            cmbCodPaciente.Items.Clear();
-            try
-            {
-                MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT paciente.ncodpaciente, persona.cnombrepersona FROM paciente, persona WHERE paciente.ncodpersona=persona.ncodpersona"), clasConexion.funConexion());
-                MySqlDataReader mReader = mComando.ExecuteReader();
-
-                while (mReader.Read())
-                {
-                    sCodigo = mReader.GetString(0);
-                    sNombre = mReader.GetString(1);
-                    cmbCodPaciente.Items.Add(sCodigo + ". " + sNombre);
-                    sCodigo = "";
-                    sNombre = "";
-                    iContador++;
-                }
-
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
+                //sFecha = fecha.ToString("d");
+                lblFecha.Text = sFecha;
                 string sCodMuestra = "";
                 string sCodigoMuestra = "";
                 string sCodPaciente = "";
                 string sCodigoPaciente = "";
                 sCodigoMuestra = cmbCodMuestra.SelectedItem.ToString();
                 sCodMuestra = funCortador(sCodigoMuestra);
-                sCodPaciente = cmbCodPaciente.SelectedItem.ToString();
-                sCodigoPaciente = funCortador(sCodPaciente);
+                sCodigoPaciente = txtPaciente.Text;
+                sCodPaciente = funCortador(sCodigoPaciente);
+                //sCodigoPaciente = txtPaciente.Text;
 
-                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into ETIQUETA (ncodmuestra, ncodpaciente) values ('{0}','{1}')",
-                    sCodigoMuestra, sCodigoPaciente), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaETIQUETA (cfecetiqueta, ncodmuestra, ncodpaciente) values ('{0}', '{1}', '{2}')",
+                    sFecha, sCodMuestra, sCodPaciente), clasConexion.funConexion());
                 mComando.ExecuteNonQuery();
                 MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 funDatosEtiqueta();
@@ -158,6 +135,13 @@ namespace Laboratorio
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPaciente_Click(object sender, EventArgs e)
+        {
+            frmConsultaPacienteEtiqueta ver = new frmConsultaPacienteEtiqueta();
+            this.Hide();
+            ver.Show();
         }
     }
 }

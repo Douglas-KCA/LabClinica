@@ -14,8 +14,6 @@ namespace Laboratorio
     public partial class frmConsultaEmpleados : Form
     {
         string sCodigoUp;
-        string sDireccionUp;
-        string sEmailUp;
         string sNombreUp;
         string sApellidoUp;
         string sDpiUp;
@@ -31,9 +29,6 @@ namespace Laboratorio
 
         void funActualizar()
         {
-            
-            string sDireccion;
-            string sEmail;
             string sNombre;
             string sApellido;
             string sDpi;
@@ -42,7 +37,6 @@ namespace Laboratorio
             string sNit;
             string sPuesto;
             string sCodigo;
-
             int iContador = 0;
             grdConsultarEmpleados.Rows.Clear();
 
@@ -64,46 +58,7 @@ namespace Laboratorio
                     sPuesto = mReader.GetString(7);
                     grdConsultarEmpleados.Rows.Insert(iContador,sCodigo, sDpi ,sNombre, sApellido,sSexo,sFecha,sNit,sPuesto);
 
-                    MessageBox.Show(sCodigo);
-                    //Llenar Combo Box Direccion
-
-                   MySqlCommand mComandocmbDire = new MySqlCommand(String.Format(
-                   "SELECT cdireccion FROM trdireccion WHERE trdireccion.ncodpersona = '{0}' ",sCodigo), clasConexion.funConexion());
-                    MySqlDataReader mReadercmbDire = mComandocmbDire.ExecuteReader();
-
-                    while(mReadercmbDire.Read())
-                    {
-                        cmbDirecion.Items.Add(mReadercmbDire.GetString(0)); 
-                    }
-                    mReadercmbDire.Close();
-                    /*
-                    //Llenar Combo Box Telefono
-                    MessageBox.Show(sCodigo);
-                    MySqlCommand mComandocmbTel = new MySqlCommand(String.Format(
-                   "SELECT ctelefono FROM trtelefono WHERE trtelefono.ncodpersona = '{0}' ", sCodigo), clasConexion.funConexion());
-                    MySqlDataReader mReadercmbTel = mComandocmbTel.ExecuteReader();
-
-                    while (mReadercmbTel.Read())
-                    {
-                        cmbTelefono.Items.Add(mReadercmbTel.GetString(0));
-                    }
-                    mReadercmbTel.Close();
-
-                    //Llenar Combo Box Email
-                    MessageBox.Show(sCodigo);
-                    MySqlCommand mComandocmbEmail = new MySqlCommand(String.Format(
-                   "SELECT cemail FROM tremail WHERE tremail.ncodpersona = '{0}' ", sCodigo), clasConexion.funConexion());
-                    MySqlDataReader mReadercmbEmail = mComandocmbEmail.ExecuteReader();
-
-                    while (mReadercmbEmail.Read())
-                    {
-                        cmbEmail.Items.Add(mReadercmbEmail.GetString(0));
-                    }
-                    mReadercmbEmail.Close();
-                    */
                     sCodigo = "";
-                    sDireccion = "";
-                    sEmail = "";
                     sNombre = "";
                     sApellido = "";
                     sDpi = "";
@@ -121,17 +76,21 @@ namespace Laboratorio
             }
         }
 
-        void funUpdate(string sCodigo, string sDpi, string sNombre, string sApellido, string sSexo, string sFecha, string sDireccion, string sEmail, string sNit, string sPuesto)
+        
+        void funUpdate()
         {
             try
             {
-                MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE PERSONA SET cdireccionpersona = '{0}', cemailpersona = '{1}',  cnombrepersona= '{2}',  capellidopersona= '{3}',  cdpipersona= '{4}',  dfechanacpersona= '{5}',  csexopersona= '{6}', cnitpersona = '{7}' WHERE persona.ncodpersona = '{8}'",
-                sDireccion,sEmail,sNombre,sApellido,sDpi,sFecha,sSexo,sNit,sCodigo), clasConexion.funConexion());
-                mComando.ExecuteNonQuery();
-                funActualizar();
-                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtNombre.Text = "";
-                funActualizar();
+                if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MaPERSONA SET cnombrepersona= '{0}',  capellidopersona= '{1}',  cdpipersona= '{2}',  dfechanacpersona= '{3}',  csexopersona= '{4}', cnitpersona = '{5}' WHERE MaPERSONA.ncodpersona = '{6}'",
+                    sNombreUp, sApellidoUp, sDpiUp, sFechaUp, sSexoUp, sNitUp, sCodigoUp), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtNombre.Text = "";
+                    funActualizar();
+                }
+                
             }
             catch
             {
@@ -141,6 +100,9 @@ namespace Laboratorio
 
         private void grdConsultarAseguradora_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
+            cmbDirecion.Items.Clear();
+            cmbEmail.Items.Clear();
+            cmbTelefono.Items.Clear(); 
             btnActualizar.Enabled = true;
             btnCancelar.Enabled = true;
             btnEliminar.Enabled = true;
@@ -158,10 +120,42 @@ namespace Laboratorio
             sApellidoUp = Convert.ToString(fila.Cells[3].Value);
             sSexoUp = Convert.ToString(fila.Cells[4].Value);
             sFechaUp = Convert.ToString(fila.Cells[5].Value);
-            sDireccionUp = Convert.ToString(fila.Cells[6].Value);
-            sEmailUp = Convert.ToString(fila.Cells[7].Value);
-            sNitUp = Convert.ToString(fila.Cells[8].Value);
-            sPuestoUp = Convert.ToString(fila.Cells[9].Value);
+            sNitUp = Convert.ToString(fila.Cells[6].Value);
+            sPuestoUp = Convert.ToString(fila.Cells[7].Value);
+
+
+            //MessageBox.Show(sCodigoUp+sDpiUp+sNombreUp+sApellidoUp+sSexoUp+sFechaUp+sNitUp+sPuestoUp);
+
+            //Llenar Combo Box Direccion
+
+            MySqlCommand mComandocmbDire = new MySqlCommand(String.Format(
+            "SELECT ncoddireccion, cdireccion FROM trdireccion WHERE trdireccion.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
+            MySqlDataReader mReadercmbDire = mComandocmbDire.ExecuteReader();
+
+            while (mReadercmbDire.Read())
+            {
+                cmbDirecion.Items.Add(mReadercmbDire.GetString(0) + ". " + mReadercmbDire.GetString(1));
+            }
+
+            //Llenar Combo Box Telefono
+            MySqlCommand mComandocmbTel = new MySqlCommand(String.Format(
+           "SELECT ncodtelefono, ctelefono FROM trtelefono WHERE trtelefono.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
+            MySqlDataReader mReadercmbTel = mComandocmbTel.ExecuteReader();
+
+            while (mReadercmbTel.Read())
+            {
+                cmbTelefono.Items.Add(mReadercmbTel.GetString(0) + ". " + mReadercmbTel.GetString(1));
+            }
+
+            //Llenar Combo Box Email
+            MySqlCommand mComandocmbEmail = new MySqlCommand(String.Format(
+           "SELECT ncodemail, cemail FROM tremail WHERE tremail.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
+            MySqlDataReader mReadercmbEmail = mComandocmbEmail.ExecuteReader();
+
+            while (mReadercmbEmail.Read())
+            {
+                cmbEmail.Items.Add(mReadercmbEmail.GetString(0) + ". " + mReadercmbEmail.GetString(1));
+            }
 
             
         }
@@ -169,8 +163,6 @@ namespace Laboratorio
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string sCodigo;
-            string sDireccion;
-            string sEmail;
             string sNombre;
             string sApellido;
             string sDpi;
@@ -194,25 +186,21 @@ namespace Laboratorio
                 {
                     //SELECT persona.ncodpersona, cdireccionpersona,cemailpersona,cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM PERSONA,PUESTO,EMPLEADO WHERE PUESTO.ncodpuesto=EMPLEADO.ncodpuesto and persona.ncodpersona = empleado.ncodpersona
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT persona.ncodpersona, cdireccionpersona,cemailpersona,cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM PERSONA,PUESTO,EMPLEADO WHERE PUESTO.ncodpuesto=EMPLEADO.ncodpuesto and persona.ncodpersona = empleado.ncodpersona AND PERSONA.cnombrepersona= '{0}' ", txtNombre.Text), clasConexion.funConexion());
+                    "SELECT MaPERSONA.ncodpersona, cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM MaPERSONA, MaPUESTO, TrEMPLEADO WHERE MaPUESTO.ncodpuesto=TrEMPLEADO.ncodpuesto and MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona AND MaPERSONA.cnombrepersona= '{0}' ", txtNombre.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
                     {
                         sCodigo = mReader.GetString(0);
-                        sDireccion = mReader.GetString(1);
-                        sEmail = mReader.GetString(2);
-                        sNombre = mReader.GetString(3);
-                        sApellido = mReader.GetString(4);
-                        sDpi = mReader.GetString(5);
-                        sFecha = mReader.GetString(6);
-                        sSexo = mReader.GetString(7);
-                        sNit = mReader.GetString(8);
-                        sPuesto = mReader.GetString(9);
-                        grdConsultarEmpleados.Rows.Insert(iContador, sCodigo, sDpi, sNombre, sApellido, sSexo, sFecha, sDireccion, sEmail, sNit, sPuesto);
+                        sNombre = mReader.GetString(1);
+                        sApellido = mReader.GetString(2);
+                        sDpi = mReader.GetString(3);
+                        sFecha = mReader.GetString(4);
+                        sSexo = mReader.GetString(5);
+                        sNit = mReader.GetString(6);
+                        sPuesto = mReader.GetString(7);
+                        grdConsultarEmpleados.Rows.Insert(iContador, sCodigo, sDpi, sNombre, sApellido, sSexo, sFecha, sNit, sPuesto);
                         sCodigo = "";
-                        sDireccion = "";
-                        sEmail = "";
                         sNombre = "";
                         sApellido = "";
                         sDpi = "";
@@ -245,7 +233,7 @@ namespace Laboratorio
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            funUpdate(sCodigoUp, sDpiUp, sNombreUp, sApellidoUp, sSexoUp, sFechaUp, sDireccionUp, sEmailUp, sNitUp, sPuestoUp);
+            funUpdate();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
