@@ -168,7 +168,8 @@ namespace Laboratorio
 
         private void consultaYModificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            frmConsultaSeguro ver = new frmConsultaSeguro();
+            ver.Show();
         }
 
         private void ingresoToolStripMenuItem2_Click(object sender, EventArgs e)
