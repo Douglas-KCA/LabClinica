@@ -119,6 +119,7 @@ namespace Laboratorio
         {
             frmEtiqueta ver = new frmEtiqueta();
             ver.txtPaciente.Text = sInformacionPaciente;
+            this.Hide();
             ver.Show();
         }
     }
