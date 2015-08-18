@@ -16,6 +16,9 @@ namespace Laboratorio
 
         string sCodigoPacienteFactura;
         string sTipoPago;
+        string sNombreExamen;
+        int iCadPrecioInicio;
+        int iContador = 0;
         public frmFactura()
         {
             InitializeComponent();
@@ -29,7 +32,7 @@ namespace Laboratorio
             try
             {                
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodigocita, dfechacita, choracita FROM TrCITA WHERE ncodpaciente='{0}' AND dfechacita='{1}'", sCodigoPacienteFactura, txtFecha.Text), clasConexion.funConexion());
+                "SELECT ncodigocita, dfechacita, choracita FROM TrCITA WHERE ncodpaciente='{0}'", sCodigoPacienteFactura), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -150,6 +153,34 @@ namespace Laboratorio
             }
         }
 
+        string funCortadorNombreExamen(string sDato)
+        {
+            sNombreExamen = "";
+            iCadPrecioInicio = 0;
+            try
+            {
+                for (int i = 0; i < sDato.Length; i++)
+                {
+                    if (sDato.Substring(i, 1) != "(")
+                    {
+                        sNombreExamen = sNombreExamen + sDato.Substring(i, 1);
+                        iCadPrecioInicio++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Error al obtener Codigo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return sNombreExamen;
+        }
+
         private void txtNit_TextChanged(object sender, EventArgs e)
         {
            
@@ -193,6 +224,12 @@ namespace Laboratorio
 <<<<<<< HEAD
             
             sTipoPago = "Efectivo";
+<<<<<<< HEAD
+            //lblTarjeta.Visible = false;
+            //txtNoTarjeta.Visible = false;
+            //lblVencimiento.Visible = false;
+            //txtVencimiento.Visible = false;
+=======
             /*
             lblTarjeta.Visible = false;
             txtNoTarjeta.Visible = false;
@@ -206,6 +243,7 @@ namespace Laboratorio
             lblVencimiento.Visible = false;
             txtVencimiento.Visible = false;*/
 >>>>>>> master
+>>>>>>> master
         }
 
         private void rbTarjeta_MouseClick(object sender, MouseEventArgs e)
@@ -213,6 +251,12 @@ namespace Laboratorio
 <<<<<<< HEAD
             
             sTipoPago = "Tarjeta de Credito";
+<<<<<<< HEAD
+            //lblTarjeta.Visible = true;
+            //txtNoTarjeta.Visible = true;
+            //lblVencimiento.Visible = true;
+            //txtVencimiento.Visible = true;
+=======
             /*
             lblTarjeta.Visible = true;
             txtNoTarjeta.Visible = true;
@@ -225,6 +269,7 @@ namespace Laboratorio
             txtNoTarjeta.Visible = true;
             lblVencimiento.Visible = true;
             txtVencimiento.Visible = true;*/
+>>>>>>> master
 >>>>>>> master
         }
 
@@ -246,8 +291,8 @@ namespace Laboratorio
                     pServicios.Enabled = true;
                     funCodigoFactura();
                     btnAgregar.Enabled = true;
-                    funLlenarCita();
-                    funLlenarSucursal();
+                    //funLlenarCita();
+                    //funLlenarSucursal();
                     funLlenarExamen();
                     funLlenarDoctor();
                 }                                
@@ -256,6 +301,34 @@ namespace Laboratorio
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtNombre.Text)){
+                cmbCita.Items.Clear();
+                cmbSucursal.Items.Clear();
+                cmbCita.Enabled = false;
+                cmbSucursal.Enabled = false;
+            }else{
+                cmbCita.Enabled = true;            
+                funLlenarCita();
+                funLlenarSucursal();
+            }
+            
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            /*iContador++;
+            string sCortar = cmbExamen.SelectedItem.ToString();
+            sNombreExamen = funCortadorNombreExamen(sCortar);
+            int isuma=1;
+            MessageBox.Show(sNombreExamen+ "----" +iCadPrecioInicio+1+"---"+(sCortar.Length-2).ToString());
+            string sPrecio = sCortar.Substring(sCortar.Length-2, iCadPrecioInicio+1);
+            MessageBox.Show(cmbDoctor.SelectedItem.ToString() +"--"+ sNombreExamen + "--" + sPrecio, "Informacion Llego");
+            //grdDetalleFactura.Rows.Insert(iContador, cmbDoctor.SelectedItem.ToString(), sNombreExamen, sPrecio);*/
         }
     }
 }
