@@ -30,6 +30,10 @@
         {
             this.txtNit = new System.Windows.Forms.TextBox();
             this.pPanelEncabezado = new System.Windows.Forms.Panel();
+            this.cmbSucursal = new System.Windows.Forms.ComboBox();
+            this.lblSucursal = new System.Windows.Forms.Label();
+            this.cmbCita = new System.Windows.Forms.ComboBox();
+            this.lblCita = new System.Windows.Forms.Label();
             this.gbTipoPago = new System.Windows.Forms.GroupBox();
             this.rbTarjeta = new System.Windows.Forms.RadioButton();
             this.rbEfectivo = new System.Windows.Forms.RadioButton();
@@ -42,21 +46,15 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.pServicios = new System.Windows.Forms.Panel();
-            this.lblTipoExamen = new System.Windows.Forms.Label();
-            this.cmbExamen = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbDoctor = new System.Windows.Forms.ComboBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.grdDetalleFactura = new System.Windows.Forms.DataGridView();
-            this.Cita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbDoctor = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbExamen = new System.Windows.Forms.ComboBox();
+            this.lblTipoExamen = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.Doctor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Examen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbSucursal = new System.Windows.Forms.ComboBox();
-            this.lblSucursal = new System.Windows.Forms.Label();
-            this.cmbCita = new System.Windows.Forms.ComboBox();
-            this.lblCita = new System.Windows.Forms.Label();
             this.pPanelEncabezado.SuspendLayout();
             this.gbTipoPago.SuspendLayout();
             this.pServicios.SuspendLayout();
@@ -91,6 +89,47 @@
             this.pPanelEncabezado.Name = "pPanelEncabezado";
             this.pPanelEncabezado.Size = new System.Drawing.Size(911, 151);
             this.pPanelEncabezado.TabIndex = 1;
+            // 
+            // cmbSucursal
+            // 
+            this.cmbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSucursal.FormattingEnabled = true;
+            this.cmbSucursal.Location = new System.Drawing.Point(526, 112);
+            this.cmbSucursal.Name = "cmbSucursal";
+            this.cmbSucursal.Size = new System.Drawing.Size(343, 21);
+            this.cmbSucursal.TabIndex = 48;
+            // 
+            // lblSucursal
+            // 
+            this.lblSucursal.AutoSize = true;
+            this.lblSucursal.BackColor = System.Drawing.Color.Transparent;
+            this.lblSucursal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSucursal.Location = new System.Drawing.Point(451, 111);
+            this.lblSucursal.Name = "lblSucursal";
+            this.lblSucursal.Size = new System.Drawing.Size(67, 19);
+            this.lblSucursal.TabIndex = 47;
+            this.lblSucursal.Text = "Sucursal:";
+            // 
+            // cmbCita
+            // 
+            this.cmbCita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCita.Enabled = false;
+            this.cmbCita.FormattingEnabled = true;
+            this.cmbCita.Location = new System.Drawing.Point(109, 110);
+            this.cmbCita.Name = "cmbCita";
+            this.cmbCita.Size = new System.Drawing.Size(319, 21);
+            this.cmbCita.TabIndex = 46;
+            // 
+            // lblCita
+            // 
+            this.lblCita.AutoSize = true;
+            this.lblCita.BackColor = System.Drawing.Color.Transparent;
+            this.lblCita.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCita.Location = new System.Drawing.Point(21, 110);
+            this.lblCita.Name = "lblCita";
+            this.lblCita.Size = new System.Drawing.Size(39, 19);
+            this.lblCita.TabIndex = 45;
+            this.lblCita.Text = "Cita:";
             // 
             // gbTipoPago
             // 
@@ -182,6 +221,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(319, 20);
             this.txtNombre.TabIndex = 38;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // lblNombre
             // 
@@ -219,45 +259,58 @@
             this.pServicios.Size = new System.Drawing.Size(1154, 334);
             this.pServicios.TabIndex = 50;
             // 
-            // lblTipoExamen
+            // grdDetalleFactura
             // 
-            this.lblTipoExamen.AutoSize = true;
-            this.lblTipoExamen.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoExamen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoExamen.Location = new System.Drawing.Point(550, 20);
-            this.lblTipoExamen.Name = "lblTipoExamen";
-            this.lblTipoExamen.Size = new System.Drawing.Size(64, 19);
-            this.lblTipoExamen.TabIndex = 42;
-            this.lblTipoExamen.Text = "Examen:";
+            this.grdDetalleFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDetalleFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Doctor,
+            this.Examen,
+            this.Precio});
+            this.grdDetalleFactura.Location = new System.Drawing.Point(25, 46);
+            this.grdDetalleFactura.Name = "grdDetalleFactura";
+            this.grdDetalleFactura.Size = new System.Drawing.Size(1100, 267);
+            this.grdDetalleFactura.TabIndex = 46;
             // 
-            // cmbExamen
+            // cmbDoctor
             // 
-            this.cmbExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbExamen.FormattingEnabled = true;
-            this.cmbExamen.Location = new System.Drawing.Point(614, 20);
-            this.cmbExamen.Name = "cmbExamen";
-            this.cmbExamen.Size = new System.Drawing.Size(182, 21);
-            this.cmbExamen.TabIndex = 43;
+            this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDoctor.FormattingEnabled = true;
+            this.cmbDoctor.Location = new System.Drawing.Point(335, 14);
+            this.cmbDoctor.Name = "cmbDoctor";
+            this.cmbDoctor.Size = new System.Drawing.Size(261, 21);
+            this.cmbDoctor.TabIndex = 45;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(802, 18);
+            this.label4.Location = new System.Drawing.Point(273, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 19);
             this.label4.TabIndex = 44;
             this.label4.Text = "Doctor:";
             // 
-            // cmbDoctor
+            // cmbExamen
             // 
-            this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDoctor.FormattingEnabled = true;
-            this.cmbDoctor.Location = new System.Drawing.Point(864, 19);
-            this.cmbDoctor.Name = "cmbDoctor";
-            this.cmbDoctor.Size = new System.Drawing.Size(261, 21);
-            this.cmbDoctor.TabIndex = 45;
+            this.cmbExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbExamen.FormattingEnabled = true;
+            this.cmbExamen.Location = new System.Drawing.Point(85, 15);
+            this.cmbExamen.Name = "cmbExamen";
+            this.cmbExamen.Size = new System.Drawing.Size(182, 21);
+            this.cmbExamen.TabIndex = 43;
+            // 
+            // lblTipoExamen
+            // 
+            this.lblTipoExamen.AutoSize = true;
+            this.lblTipoExamen.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoExamen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoExamen.Location = new System.Drawing.Point(21, 15);
+            this.lblTipoExamen.Name = "lblTipoExamen";
+            this.lblTipoExamen.Size = new System.Drawing.Size(64, 19);
+            this.lblTipoExamen.TabIndex = 42;
+            this.lblTipoExamen.Text = "Examen:";
             // 
             // btnAgregar
             // 
@@ -270,33 +323,7 @@
             this.btnAgregar.TabIndex = 51;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
-            // 
-            // grdDetalleFactura
-            // 
-            this.grdDetalleFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grdDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdDetalleFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Cita,
-            this.Sucursal,
-            this.Doctor,
-            this.Examen,
-            this.Precio});
-            this.grdDetalleFactura.Location = new System.Drawing.Point(25, 46);
-            this.grdDetalleFactura.Name = "grdDetalleFactura";
-            this.grdDetalleFactura.Size = new System.Drawing.Size(1100, 267);
-            this.grdDetalleFactura.TabIndex = 46;
-            // 
-            // Cita
-            // 
-            this.Cita.HeaderText = "Cita";
-            this.Cita.Name = "Cita";
-            this.Cita.ReadOnly = true;
-            // 
-            // Sucursal
-            // 
-            this.Sucursal.HeaderText = "Sucursal";
-            this.Sucursal.Name = "Sucursal";
-            this.Sucursal.ReadOnly = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // Doctor
             // 
@@ -315,46 +342,6 @@
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
-            // 
-            // cmbSucursal
-            // 
-            this.cmbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(526, 112);
-            this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(343, 21);
-            this.cmbSucursal.TabIndex = 48;
-            // 
-            // lblSucursal
-            // 
-            this.lblSucursal.AutoSize = true;
-            this.lblSucursal.BackColor = System.Drawing.Color.Transparent;
-            this.lblSucursal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSucursal.Location = new System.Drawing.Point(451, 111);
-            this.lblSucursal.Name = "lblSucursal";
-            this.lblSucursal.Size = new System.Drawing.Size(67, 19);
-            this.lblSucursal.TabIndex = 47;
-            this.lblSucursal.Text = "Sucursal:";
-            // 
-            // cmbCita
-            // 
-            this.cmbCita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCita.FormattingEnabled = true;
-            this.cmbCita.Location = new System.Drawing.Point(109, 110);
-            this.cmbCita.Name = "cmbCita";
-            this.cmbCita.Size = new System.Drawing.Size(319, 21);
-            this.cmbCita.TabIndex = 46;
-            // 
-            // lblCita
-            // 
-            this.lblCita.AutoSize = true;
-            this.lblCita.BackColor = System.Drawing.Color.Transparent;
-            this.lblCita.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCita.Location = new System.Drawing.Point(21, 110);
-            this.lblCita.Name = "lblCita";
-            this.lblCita.Size = new System.Drawing.Size(39, 19);
-            this.lblCita.TabIndex = 45;
-            this.lblCita.Text = "Cita:";
             // 
             // frmFactura
             // 
@@ -404,15 +391,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView grdDetalleFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cita;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Doctor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Examen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.Label lblSucursal;
         private System.Windows.Forms.ComboBox cmbCita;
         private System.Windows.Forms.Label lblCita;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Doctor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Examen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
 
     }
 }
