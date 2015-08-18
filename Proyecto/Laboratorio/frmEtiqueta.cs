@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO; 
 
 namespace Laboratorio
 {
@@ -113,7 +116,7 @@ namespace Laboratorio
                 sCodPaciente = funCortador(sCodigoPaciente);
                 //sCodigoPaciente = txtPaciente.Text;
 
-                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaETIQUETA (cfecetiqueta, ncodmuestra, ncodpaciente) values ('{0}', '{1}', '{2}')",
+                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MAETIQUETA (cfecetiqueta, ncodmuestra, ncodpaciente) values ('{0}', '{1}', '{2}')",
                     sFecha, sCodMuestra, sCodPaciente), clasConexion.funConexion());
                 mComando.ExecuteNonQuery();
                 MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -130,6 +133,24 @@ namespace Laboratorio
             MessageBox.Show("Se imprime la Etiqueta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnGuardar.Enabled = true;
             btnImprimir.Enabled = false;
+
+            //Generar PDF Etiqueta
+            
+            Document document = new Document();
+            PdfWriter.GetInstance(document, new FileStream("Etiqueta.pdf", FileMode.OpenOrCreate));
+            document.Open();
+
+            Chunk chunk = new Chunk("                                                       "+lblTipoMuestra.Text, FontFactory.GetFont("ARIAL", 11, iTextSharp.text.Font.NORMAL));
+            document.Add(new Paragraph(chunk));
+
+            iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(@"C:\codigo_barras.png");
+            jpg.Alignment = iTextSharp.text.Image.MIDDLE_ALIGN;
+            document.Add(jpg);
+            Chunk chunk1 = new Chunk("                                                       " + lblInfoPaciente.Text, FontFactory.GetFont("ARIAL", 11, iTextSharp.text.Font.NORMAL));
+            document.Add(new Paragraph(chunk1)); 
+            document.Close();
+
+
         }
 
         private void btnHome_Click(object sender, EventArgs e)
