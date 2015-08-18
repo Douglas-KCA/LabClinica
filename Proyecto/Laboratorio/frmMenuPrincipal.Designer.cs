@@ -36,6 +36,8 @@
             this.mEmpleado = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmIngresarEmpleado = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmModificarEmpleado = new System.Windows.Forms.ToolStripMenuItem();
+            this.mFactura = new System.Windows.Forms.ToolStripMenuItem();
+            this.smGenerarFactura = new System.Windows.Forms.ToolStripMenuItem();
             this.mCitas = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmIngresarCitas = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmModificarCitas = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +76,9 @@
             this.consultaYModificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.mFactura = new System.Windows.Forms.ToolStripMenuItem();
-            this.smGenerarFactura = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarYModificarToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -146,6 +149,22 @@
             this.sbmModificarEmpleado.Size = new System.Drawing.Size(216, 24);
             this.sbmModificarEmpleado.Text = "Modificar y Consultar";
             this.sbmModificarEmpleado.Click += new System.EventHandler(this.sbmModificarEmpleado_Click);
+            // 
+            // mFactura
+            // 
+            this.mFactura.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.smGenerarFactura});
+            this.mFactura.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mFactura.Name = "mFactura";
+            this.mFactura.Size = new System.Drawing.Size(69, 23);
+            this.mFactura.Text = "Factura";
+            // 
+            // smGenerarFactura
+            // 
+            this.smGenerarFactura.Name = "smGenerarFactura";
+            this.smGenerarFactura.Size = new System.Drawing.Size(130, 24);
+            this.smGenerarFactura.Text = "Generar";
+            this.smGenerarFactura.Click += new System.EventHandler(this.smGenerarFactura_Click);
             // 
             // mCitas
             // 
@@ -272,12 +291,14 @@
             this.ingresarToolStripMenuItem2.Name = "ingresarToolStripMenuItem2";
             this.ingresarToolStripMenuItem2.Size = new System.Drawing.Size(216, 24);
             this.ingresarToolStripMenuItem2.Text = "Ingresar";
+            this.ingresarToolStripMenuItem2.Click += new System.EventHandler(this.ingresarToolStripMenuItem2_Click);
             // 
             // consultarYModificarToolStripMenuItem4
             // 
             this.consultarYModificarToolStripMenuItem4.Name = "consultarYModificarToolStripMenuItem4";
             this.consultarYModificarToolStripMenuItem4.Size = new System.Drawing.Size(216, 24);
             this.consultarYModificarToolStripMenuItem4.Text = "Consultar y Modificar";
+            this.consultarYModificarToolStripMenuItem4.Click += new System.EventHandler(this.consultarYModificarToolStripMenuItem4_Click);
             // 
             // mOtros
             // 
@@ -287,7 +308,8 @@
             this.puestoToolStripMenuItem,
             this.tarifaToolStripMenuItem,
             this.sbmMembresia,
-            this.seguroToolStripMenuItem});
+            this.seguroToolStripMenuItem,
+            this.usuariosToolStripMenuItem});
             this.mOtros.Font = new System.Drawing.Font("Calibri", 12F);
             this.mOtros.Name = "mOtros";
             this.mOtros.Size = new System.Drawing.Size(57, 23);
@@ -458,21 +480,28 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // mFactura
+            // usuariosToolStripMenuItem
             // 
-            this.mFactura.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.smGenerarFactura});
-            this.mFactura.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mFactura.Name = "mFactura";
-            this.mFactura.Size = new System.Drawing.Size(69, 23);
-            this.mFactura.Text = "Factura";
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ingresarToolStripMenuItem3,
+            this.consultarYModificarToolStripMenuItem5});
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(160, 24);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
-            // smGenerarFactura
+            // ingresarToolStripMenuItem3
             // 
-            this.smGenerarFactura.Name = "smGenerarFactura";
-            this.smGenerarFactura.Size = new System.Drawing.Size(152, 24);
-            this.smGenerarFactura.Text = "Generar";
-            this.smGenerarFactura.Click += new System.EventHandler(this.smGenerarFactura_Click);
+            this.ingresarToolStripMenuItem3.Name = "ingresarToolStripMenuItem3";
+            this.ingresarToolStripMenuItem3.Size = new System.Drawing.Size(216, 24);
+            this.ingresarToolStripMenuItem3.Text = "Ingresar";
+            this.ingresarToolStripMenuItem3.Click += new System.EventHandler(this.ingresarToolStripMenuItem3_Click);
+            // 
+            // consultarYModificarToolStripMenuItem5
+            // 
+            this.consultarYModificarToolStripMenuItem5.Name = "consultarYModificarToolStripMenuItem5";
+            this.consultarYModificarToolStripMenuItem5.Size = new System.Drawing.Size(216, 24);
+            this.consultarYModificarToolStripMenuItem5.Text = "Consultar y Modificar";
+            this.consultarYModificarToolStripMenuItem5.Click += new System.EventHandler(this.consultarYModificarToolStripMenuItem5_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -548,5 +577,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem mFactura;
         private System.Windows.Forms.ToolStripMenuItem smGenerarFactura;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem consultarYModificarToolStripMenuItem5;
     }
 }

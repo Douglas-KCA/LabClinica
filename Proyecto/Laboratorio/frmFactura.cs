@@ -190,20 +190,20 @@ namespace Laboratorio
 
         private void rbEfectivo_MouseClick(object sender, MouseEventArgs e)
         {
-            sTipoPago = "Efectivo";
+            /*sTipoPago = "Efectivo";
             lblTarjeta.Visible = false;
             txtNoTarjeta.Visible = false;
             lblVencimiento.Visible = false;
-            txtVencimiento.Visible = false;
+            txtVencimiento.Visible = false;*/
         }
 
         private void rbTarjeta_MouseClick(object sender, MouseEventArgs e)
         {
-            sTipoPago = "Tarjeta de Credito";
+            /*sTipoPago = "Tarjeta de Credito";
             lblTarjeta.Visible = true;
             txtNoTarjeta.Visible = true;
             lblVencimiento.Visible = true;
-            txtVencimiento.Visible = true;
+            txtVencimiento.Visible = true;*/
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
