@@ -515,9 +515,6 @@ C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Labora
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmFactura.resources
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
@@ -553,7 +550,6 @@ C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Labora
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.Properties.Resources.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSucursal.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csproj.GenerateResource.Cache
-=======
->>>>>>> master
->>>>>>> master
->>>>>>> master
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSeguro.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.dll
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
