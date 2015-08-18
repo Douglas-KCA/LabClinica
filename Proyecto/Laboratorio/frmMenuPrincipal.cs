@@ -212,5 +212,28 @@ namespace Laboratorio
             frmFactura ver = new frmFactura();
             ver.Show();
         }
+
+        private void ingresarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmAnalisis ver = new frmAnalisis();
+            ver.Show();
+        }
+
+        private void consultarYModificarToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            frmConsultaAnalisis ver = new frmConsultaAnalisis();
+            ver.Show();
+        }
+
+        private void ingresarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmUsuario ver = new frmUsuario();
+            ver.Show();
+        }
+
+        private void consultarYModificarToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
