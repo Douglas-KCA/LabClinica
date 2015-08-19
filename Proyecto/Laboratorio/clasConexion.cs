@@ -12,7 +12,7 @@ namespace Laboratorio
         public static MySqlConnection funConexion()
         {
             
-            MySqlConnection Conexion = new MySqlConnection("server =192.168.15.1; userid =Laboratorio; password =laboratorio2015; database =LABORATORIO");
+            MySqlConnection Conexion = new MySqlConnection("server =localhost; userid =root; password =; database =LABORATORIO");
             Conexion.Open();
             return Conexion;
         }
