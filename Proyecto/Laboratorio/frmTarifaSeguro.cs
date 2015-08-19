@@ -40,7 +40,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT nporcentajetarifa FROM MATARIFASEGURO"), clasConexion.funConexion());
+                "SELECT nporcentajetarifa FROM MaTARIFASEGURO"), clasConexion.funConexion());
                 MySqlDataReader _reader = _comando.ExecuteReader();
 
                 while (_reader.Read())
@@ -71,7 +71,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MATARIFASEGURO (nporcentajetarifa) values ('{0}')",
+                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MaTARIFASEGURO (nporcentajetarifa) values ('{0}')",
                     txtTarifa.Text), clasConexion.funConexion());
                     comando.ExecuteNonQuery();
                     funActualizar();

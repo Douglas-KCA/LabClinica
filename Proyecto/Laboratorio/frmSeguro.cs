@@ -42,7 +42,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT trseguro.ncodseguro as codigo, maaseguradora.cempresaseguro as aseguradora, matarifaseguro.nporcentajetarifa as tarifa, trseguro.ndeducible as deducible from trseguro, maaseguradora, matarifaseguro where trseguro.ncodtarifa = matarifaseguro.ncodtarifa and trseguro.ncodaseguradora = maaseguradora.ncodaseguradora"), clasConexion.funConexion());
+                "SELECT TrSEGURO.ncodseguro as codigo, MaASEGURADORA.cempresaseguro as aseguradora, MaTARIFASEGURO.nporcentajetarifa as tarifa, TrSEGURO.ndeducible as deducible from TrSEGURO, MaASEGURADORA, MaTARIFASEGURO where TrSEGURO.ncodtarifa = MaTARIFASEGURO.ncodtarifa and TrSEGURO.ncodaseguradora = MaASEGURADORA.ncodaseguradora"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -76,7 +76,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodtarifa, nporcentajetarifa FROM MATARIFASEGURO"), clasConexion.funConexion());
+                "SELECT ncodtarifa, nporcentajetarifa FROM MaTARIFASEGURO"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -107,7 +107,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodaseguradora, cempresaseguro FROM MAASEGURADORA"), clasConexion.funConexion());
+                "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -175,7 +175,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TRSEGURO (ndeducible, ncodtarifa, ncodaseguradora) values ('{0}', '{1}','{2}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrSEGURO (ndeducible, ncodtarifa, ncodaseguradora) values ('{0}', '{1}','{2}')",
                         txtDeducible.Text, sTarifa, sAseguradora), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     funActualizar();

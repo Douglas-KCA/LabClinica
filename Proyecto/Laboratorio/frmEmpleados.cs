@@ -33,7 +33,7 @@ namespace Laboratorio
             string sNombre;
             cmbPuesto.Items.Clear();
             MySqlCommand mComando = new MySqlCommand(String.Format(
-                   "SELECT ncodpuesto, ndescpuesto FROM MAPUESTO", txtNombre.Text), clasConexion.funConexion());
+                   "SELECT ncodpuesto, ndescpuesto FROM MaPUESTO", txtNombre.Text), clasConexion.funConexion());
             MySqlDataReader mReader = mComando.ExecuteReader();
 
             while (mReader.Read())
@@ -50,7 +50,7 @@ namespace Laboratorio
         void funObtenerCodPersona()
         {
             MySqlCommand mComando = new MySqlCommand(String.Format(
-                   "SELECT ncodpersona FROM MAPERSONA WHERE cdpipersona= '{0}'", txtDpi.Text), clasConexion.funConexion());
+                   "SELECT ncodpersona FROM MaPERSONA WHERE cdpipersona= '{0}'", txtDpi.Text), clasConexion.funConexion());
             MySqlDataReader mReader = mComando.ExecuteReader();
 
             while (mReader.Read())
@@ -69,7 +69,7 @@ namespace Laboratorio
 
             try
             {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TREMPLEADO (ncodpersona,ncodpuesto) values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrEMPLEADO (ncodpersona,ncodpuesto) values ('{0}','{1}')",
                     sCodigoPersona, sCodPuesto), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
 
@@ -125,7 +125,7 @@ namespace Laboratorio
                         sSexo = "Femenino";
                     }
                     //MessageBox.Show(txtDireccion.Text + txtEmail.Text + txtNombre.Text + txtApellido.Text + txtDpi.Text + dtpNacimiento.Text + sSexo + txtNit.Text);
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MAPERSONA (cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona) values ('{0}','{1}','{2}','{3}','{4}','{5}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaPERSONA (cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona) values ('{0}','{1}','{2}','{3}','{4}','{5}')",
                     txtNombre.Text,txtApellido.Text,txtDpi.Text,dtpNacimiento.Text,sSexo,txtNit.Text), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -166,7 +166,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TRDIRECCION (cdireccion,ncodpersona) values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrDIRECCION (cdireccion,ncodpersona) values ('{0}','{1}')",
                     txtDireccion.Text, sCodigoPersona), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -189,7 +189,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TRTELEFONO (ctelefono,ncodpersona) values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrTELEFONO (ctelefono,ncodpersona) values ('{0}','{1}')",
                     txtTelefono.Text, sCodigoPersona), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -212,7 +212,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TREMAIL (cemail,ncodpersona) values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrEMAIL (cemail,ncodpersona) values ('{0}','{1}')",
                     txtEmail.Text, sCodigoPersona), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);

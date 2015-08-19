@@ -74,11 +74,13 @@
             this.seguroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultaYModificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarYModificarToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -456,6 +458,29 @@
             this.consultaYModificacionToolStripMenuItem.Text = "Consultar y Modificar";
             this.consultaYModificacionToolStripMenuItem.Click += new System.EventHandler(this.consultaYModificacionToolStripMenuItem_Click);
             // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ingresarToolStripMenuItem3,
+            this.consultarYModificarToolStripMenuItem5});
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(160, 24);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            // 
+            // ingresarToolStripMenuItem3
+            // 
+            this.ingresarToolStripMenuItem3.Name = "ingresarToolStripMenuItem3";
+            this.ingresarToolStripMenuItem3.Size = new System.Drawing.Size(216, 24);
+            this.ingresarToolStripMenuItem3.Text = "Ingresar";
+            this.ingresarToolStripMenuItem3.Click += new System.EventHandler(this.ingresarToolStripMenuItem3_Click);
+            // 
+            // consultarYModificarToolStripMenuItem5
+            // 
+            this.consultarYModificarToolStripMenuItem5.Name = "consultarYModificarToolStripMenuItem5";
+            this.consultarYModificarToolStripMenuItem5.Size = new System.Drawing.Size(216, 24);
+            this.consultarYModificarToolStripMenuItem5.Text = "Consultar y Modificar";
+            this.consultarYModificarToolStripMenuItem5.Click += new System.EventHandler(this.consultarYModificarToolStripMenuItem5_Click);
+            // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -480,28 +505,23 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // usuariosToolStripMenuItem
+            // button1
             // 
-            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ingresarToolStripMenuItem3,
-            this.consultarYModificarToolStripMenuItem5});
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(160, 24);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.button1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(27, 658);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 50);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Ayuda";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ingresarToolStripMenuItem3
+            // helpProvider1
             // 
-            this.ingresarToolStripMenuItem3.Name = "ingresarToolStripMenuItem3";
-            this.ingresarToolStripMenuItem3.Size = new System.Drawing.Size(216, 24);
-            this.ingresarToolStripMenuItem3.Text = "Ingresar";
-            this.ingresarToolStripMenuItem3.Click += new System.EventHandler(this.ingresarToolStripMenuItem3_Click);
-            // 
-            // consultarYModificarToolStripMenuItem5
-            // 
-            this.consultarYModificarToolStripMenuItem5.Name = "consultarYModificarToolStripMenuItem5";
-            this.consultarYModificarToolStripMenuItem5.Size = new System.Drawing.Size(216, 24);
-            this.consultarYModificarToolStripMenuItem5.Text = "Consultar y Modificar";
-            this.consultarYModificarToolStripMenuItem5.Click += new System.EventHandler(this.consultarYModificarToolStripMenuItem5_Click);
+            this.helpProvider1.HelpNamespace = "C:\\Users\\Diego\\Desktop\\3ra Entrega\\ayuda\\Manual de Usuaro.chm";
             // 
             // frmMenuPrincipal
             // 
@@ -511,6 +531,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.menuStrip1);
@@ -580,5 +601,7 @@
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresarToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem consultarYModificarToolStripMenuItem5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

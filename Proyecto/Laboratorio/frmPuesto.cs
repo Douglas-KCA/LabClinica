@@ -37,7 +37,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT ncodpuesto, ndescpuesto FROM MAPUESTO"), clasConexion.funConexion());
+                "SELECT ncodpuesto, ndescpuesto FROM MaPUESTO"), clasConexion.funConexion());
                 MySqlDataReader _reader = _comando.ExecuteReader();
 
                 while (_reader.Read())
@@ -70,7 +70,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MAPUESTO (ndescpuesto) values ('{0}')",
+                    MySqlCommand comando = new MySqlCommand(string.Format("Insert into MaPUESTO (ndescpuesto) values ('{0}')",
                         txtPuesto.Text), clasConexion.funConexion());
                     comando.ExecuteNonQuery();
                     funActualizar();

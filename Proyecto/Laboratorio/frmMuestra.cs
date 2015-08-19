@@ -38,7 +38,7 @@ namespace Laboratorio
                 {
                     MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }else{
-                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MAMUESTRA(crequerimientos, cdescmuestra)  values ('{0}','{1}')",
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaMUESTRA(crequerimientos, cdescmuestra)  values ('{0}','{1}')",
                     txtRequerimientos.Text, txtDescripcionMuestra.Text), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
                     MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);

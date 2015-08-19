@@ -550,14 +550,10 @@ C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Labora
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.Properties.Resources.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSucursal.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csproj.GenerateResource.Cache
-<<<<<<< HEAD
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSeguro.resources
-=======
-<<<<<<< HEAD
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSeguro.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.dll
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
-=======
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csprojResolveAssemblyReference.cache
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaPacienteEtiqueta.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAseguradora.resources
@@ -594,5 +590,87 @@ C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Labora
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
->>>>>>> master
->>>>>>> master
+C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.pdb
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csprojResolveAssemblyReference.cache
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaPacienteEtiqueta.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAseguradora.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAseguradora.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaCita.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaEmpleados.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaMembresia.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaMuestra.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaPacientes.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultarPuesto.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultarTarifa.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSeguro.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSucursal.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaTipoExamen.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEmpleados.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEtiqueta.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmFactura.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmMembresia.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmMenuPrincipal.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmMuestra.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmIngresoCita.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmPaciente.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmPuesto.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSeguro.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmServicio.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmTarifaSeguro.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmLogIn.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmTipoExamen.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.Properties.Resources.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSucursal.resources
+C:\Users\Douglas\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csproj.GenerateResource.Cache
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.pdb
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaPacienteEtiqueta.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAseguradora.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAseguradora.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaCita.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaEmpleados.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaMembresia.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaMuestra.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaPacientes.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultarPuesto.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultarTarifa.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSeguro.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaSucursal.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaTipoExamen.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEmpleados.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEtiqueta.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmFactura.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmMembresia.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmMenuPrincipal.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmMuestra.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmIngresoCita.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmPaciente.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmPuesto.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSeguro.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmServicio.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmTarifaSeguro.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmLogIn.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmTipoExamen.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.Properties.Resources.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmSucursal.resources
+C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.csproj.GenerateResource.Cache
+C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
+C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
+C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
