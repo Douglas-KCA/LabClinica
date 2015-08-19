@@ -39,7 +39,7 @@ namespace Laboratorio
             {
                 try
                 {
-                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ctipousuario FROM TRUSUARIO WHERE cnombreusuario = '{0}' AND cpasswordusuario = '{1}' ", txtUsuario.Text, txtPass.Text), clasConexion.funConexion());
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ctipousuario FROM TrUSUARIO WHERE cnombreusuario = '{0}' AND cpasswordusuario = '{1}' ", txtUsuario.Text, txtPass.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
                     if (mReader.Read())
                     {
@@ -67,8 +67,8 @@ namespace Laboratorio
                         MessageBox.Show("Passwor o Usuario incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch {
-                    MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch(MySqlException ex) {
+                    MessageBox.Show("Se produjo un error "+ ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

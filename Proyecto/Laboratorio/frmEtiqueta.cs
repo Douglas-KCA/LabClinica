@@ -79,7 +79,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodmuestra, cdescmuestra FROM MAMUESTRA"), clasConexion.funConexion());
+                "SELECT ncodmuestra, cdescmuestra FROM MaMUESTRA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -116,7 +116,7 @@ namespace Laboratorio
                 sCodPaciente = funCortador(sCodigoPaciente);
                 //sCodigoPaciente = txtPaciente.Text;
 
-                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MAETIQUETA (cfecetiqueta, ncodmuestra, ncodpaciente) values ('{0}', '{1}', '{2}')",
+                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaETIQUETA (cfecetiqueta, ncodmuestra, ncodpaciente) values ('{0}', '{1}', '{2}')",
                     sFecha, sCodMuestra, sCodPaciente), clasConexion.funConexion());
                 mComando.ExecuteNonQuery();
                 MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);

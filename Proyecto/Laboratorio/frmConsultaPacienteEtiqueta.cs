@@ -34,7 +34,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT trpaciente.ncodpaciente, mapersona.cnombrepersona FROM trpaciente, mapersona WHERE trpaciente.ncodpersona=mapersona.ncodpersona"), clasConexion.funConexion());
+                "SELECT TrPACIENTE.ncodpaciente, MaPERSONA.cnombrepersona FROM TrPACIENTE, MaPERSONA WHERE TrPACIENTE.ncodpersona=MaPERSONA.ncodpersona"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -70,7 +70,7 @@ namespace Laboratorio
                 try
                 {
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT trpaciente.ncodpaciente, mapersona.cnombrepersona FROM trpaciente, mapersona WHERE trpaciente.ncodpersona=mapersona.ncodpersona AND mapersona.cnombrepersona = '{0}' ", txtBuscarPaciente.Text), clasConexion.funConexion());
+                    "SELECT TrPACIENTE.ncodpaciente, MaPERSONA.cnombrepersona FROM TrPACIENTE, MaPERSONA WHERE TrPACIENTE.ncodpersona=MaPERSONA.ncodpersona AND MaPERSONA.cnombrepersona = '{0}' ", txtBuscarPaciente.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())

@@ -59,7 +59,7 @@ namespace Laboratorio
                 try
                 {
                     MySqlCommand mComandocmb = new MySqlCommand(String.Format(
-                    "SELECT ncodmuestra, cdescmuestra FROM MAMUESTRA"), clasConexion.funConexion());
+                    "SELECT ncodmuestra, cdescmuestra FROM MaMUESTRA"), clasConexion.funConexion());
                     MySqlDataReader mReadercmb = mComandocmb.ExecuteReader();
 
                     while (mReadercmb.Read())

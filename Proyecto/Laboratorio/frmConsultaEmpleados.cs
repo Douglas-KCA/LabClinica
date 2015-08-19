@@ -43,7 +43,7 @@ namespace Laboratorio
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT mapersona.ncodpersona, cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM MAPERSONA,MAPUESTO,TREMPLEADO WHERE MAPUESTO.ncodpuesto=TREMPLEADO.ncodpuesto and mapersona.ncodpersona = trempleado.ncodpersona"), clasConexion.funConexion());
+                "SELECT MaPERSONA.ncodpersona, cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM MaPERSONA,MaPUESTO,TrEMPLEADO WHERE MaPUESTO.ncodpuesto=TrEMPLEADO.ncodpuesto and MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
@@ -129,7 +129,7 @@ namespace Laboratorio
             //Llenar Combo Box Direccion
 
             MySqlCommand mComandocmbDire = new MySqlCommand(String.Format(
-            "SELECT ncoddireccion, cdireccion FROM trdireccion WHERE trdireccion.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
+            "SELECT ncoddireccion, cdireccion FROM TrDIRECCION WHERE TrDIRECCION.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
             MySqlDataReader mReadercmbDire = mComandocmbDire.ExecuteReader();
 
             while (mReadercmbDire.Read())
@@ -139,7 +139,7 @@ namespace Laboratorio
 
             //Llenar Combo Box Telefono
             MySqlCommand mComandocmbTel = new MySqlCommand(String.Format(
-           "SELECT ncodtelefono, ctelefono FROM trtelefono WHERE trtelefono.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
+           "SELECT ncodtelefono, ctelefono FROM TrTELEFONO WHERE TrTELEFONO.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
             MySqlDataReader mReadercmbTel = mComandocmbTel.ExecuteReader();
 
             while (mReadercmbTel.Read())
@@ -149,7 +149,7 @@ namespace Laboratorio
 
             //Llenar Combo Box Email
             MySqlCommand mComandocmbEmail = new MySqlCommand(String.Format(
-           "SELECT ncodemail, cemail FROM tremail WHERE tremail.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
+           "SELECT ncodemail, cemail FROM TrEMAIL WHERE TrEMAIL.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
             MySqlDataReader mReadercmbEmail = mComandocmbEmail.ExecuteReader();
 
             while (mReadercmbEmail.Read())
