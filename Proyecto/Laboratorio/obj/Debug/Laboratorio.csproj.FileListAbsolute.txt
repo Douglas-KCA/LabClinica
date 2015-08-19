@@ -674,3 +674,6 @@ C:\Users\Diego\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Lab
 C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
 C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources

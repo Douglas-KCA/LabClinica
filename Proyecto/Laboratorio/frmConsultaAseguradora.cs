@@ -75,57 +75,7 @@ namespace Laboratorio
       
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string sCodigo;
-            string sNombre;
-            int iContador = 0;
-            bool existe = false;
-            grdConsultarAseguradora.Rows.Clear();
-
-            try
-            {
-
-                if (String.IsNullOrEmpty(txtNombre.Text))
-                {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    funActualizar();
-                }
-                else
-                {
-                    MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA WHERE cempresaseguro = '{0}' ", txtNombre.Text), clasConexion.funConexion());
-                    MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        existe = true;
-                        sCodigo = mReader.GetString(0);
-                        sNombre = mReader.GetString(1);
-                        grdConsultarAseguradora.Rows.Insert(iContador, sCodigo, sNombre);
-                        sCodigo = "";
-                        sNombre = "";
-                        iContador++;
-                    }
-
-
-                    btnCancelar.Enabled = true;
-                    if (existe == false)
-                    {
-                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        funActualizar();
-                        btnCancelar.Enabled = false;
-                        txtNombre.Clear();
-                    }
-
-                }
-
-
-
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -202,6 +152,60 @@ namespace Laboratorio
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtNombre_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo;
+            string sNombre;
+            int iContador = 0;
+            bool existe = false;
+            grdConsultarAseguradora.Rows.Clear();
+
+            try
+            {
+
+                if (String.IsNullOrEmpty(txtNombre.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT ncodaseguradora, cempresaseguro FROM MaASEGURADORA WHERE cempresaseguro LIKE '{0}%'", txtNombre.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        existe = true;
+                        sCodigo = mReader.GetString(0);
+                        sNombre = mReader.GetString(1);
+                        grdConsultarAseguradora.Rows.Insert(iContador, sCodigo, sNombre);
+                        sCodigo = "";
+                        sNombre = "";
+                        iContador++;
+                    }
+
+
+                    btnCancelar.Enabled = true;
+                    if (existe == false)
+                    {
+                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        funActualizar();
+                        btnCancelar.Enabled = false;
+                        txtNombre.Clear();
+                    }
+
+                }
+
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
