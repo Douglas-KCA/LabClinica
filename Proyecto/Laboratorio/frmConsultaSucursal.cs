@@ -32,7 +32,9 @@ namespace Laboratorio
             txtActualizarUbicacion.Text = grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[2].Value + "";
 
         }
+
         
+
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que pobla el grid con los datos de la BD
         ---------------------------------------------------------------------------------------------------------------------------------*/
@@ -177,6 +179,43 @@ namespace Laboratorio
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtNombre_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo;
+            string sNombre;
+            string sUbicacion;
+            int iContador = 0;
+            grdSucursal.Rows.Clear();
+
+            try
+            {
+                if (String.IsNullOrEmpty(txtNombre.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT ncodsucursal, cnombresucursal, cubicacion FROM MaSUCURSAL WHERE cnombresucursal LIKE '{0}%'", txtNombre.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        sCodigo = mReader.GetString(0);
+                        sNombre = mReader.GetString(1);
+                        sUbicacion = mReader.GetString(2);
+                        grdSucursal.Rows.Insert(iContador, sCodigo, sNombre, sUbicacion);
+                        sCodigo = sNombre = sUbicacion = "";
+                        iContador++;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

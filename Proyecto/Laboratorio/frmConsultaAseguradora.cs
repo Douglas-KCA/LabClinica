@@ -29,7 +29,7 @@ namespace Laboratorio
         {
             txtActualizarNombre.Clear();
             txtNombre.Clear();
-            btnBuscar.Enabled = true;
+            //btnBuscar.Enabled = true;
             txtNombre.Enabled = true;
             grpActualizar.Enabled = false;
             btnActualizar.Enabled = false;
@@ -138,7 +138,7 @@ namespace Laboratorio
             btnCancelar.Enabled = true;
             grpActualizar.Enabled = true;
             btnEliminar.Enabled = true;
-            btnBuscar.Enabled = false;
+            //btnBuscar.Enabled = false;
             txtNombre.Clear();
             txtNombre.Enabled = false;
 
