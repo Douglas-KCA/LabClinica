@@ -114,7 +114,6 @@ namespace Laboratorio
             txtTipo.Clear();
             txtPrecio.Clear();
             txtTipoExamenBusqueda.Clear();
-            btnBuscar.Enabled = true;
             txtTipoExamenBusqueda.Enabled = true;
             grpActualizar.Enabled = false;
             btnActualizar.Enabled = false;
@@ -126,66 +125,11 @@ namespace Laboratorio
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
-            string sCodigo;
-            string sTipo;
-            string sPrecio;
-            string sMuestra;
-            int iContador = 0;
-            bool existe = false;
-            grdConsultarTipoExamen.Rows.Clear();
-  
-          try
-          { 
-            
-            if (String.IsNullOrEmpty(txtTipoExamenBusqueda.Text))
-                {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    funActualizar();
-                }
-                else
-                {
-                    MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT ncodtipo, cdesctipoexamen, cpreciotipoexamen, MaMUESTRA.cdescmuestra FROM MaTIPOEXAMEN, MaMUESTRA WHERE MaTIPOEXAMEN.ncodmuestra = MaMUESTRA.ncodmuestra AND MaTIPOEXAMEN.cdesctipoexamen='{0}'",txtTipoExamenBusqueda.Text), clasConexion.funConexion());
-                    MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        existe = true;
-                        sCodigo = mReader.GetString(0);
-                        sTipo = mReader.GetString(1);
-                        sPrecio = mReader.GetString(2);
-                        sMuestra = mReader.GetString(3);
-                        grdConsultarTipoExamen.Rows.Insert(iContador, sCodigo, sTipo, sPrecio, sMuestra);
-                        sCodigo = "";
-                        sTipo = "";
-                        sPrecio = "";
-                        sMuestra = "";
-                        iContador++;
-                    }
-
-
-                    btnCancelar.Enabled = true;
-                    if (existe == false)
-                    {
-                        btnCancelar.Enabled = false;
-                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        funActualizar();
-                        txtTipoExamenBusqueda.Clear();
-                    }
-
-                }
-
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            btnBuscar.Enabled = true;
+            
             txtTipoExamenBusqueda.Enabled = true;
             grpActualizar.Enabled = false;
             btnActualizar.Enabled = false;
@@ -203,7 +147,6 @@ namespace Laboratorio
             btnCancelar.Enabled = true;
             grpActualizar.Enabled = true;
             btnEliminar.Enabled = true;
-            btnBuscar.Enabled = false;
             txtTipoExamenBusqueda.Clear();
             txtTipoExamenBusqueda.Enabled = false;
 
@@ -278,6 +221,63 @@ namespace Laboratorio
                 MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
                 return;
+            }
+        }
+
+        private void txtTipoExamenBusqueda_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo;
+            string sTipo;
+            string sPrecio;
+            string sMuestra;
+            int iContador = 0;
+            bool existe = false;
+            grdConsultarTipoExamen.Rows.Clear();
+
+            try
+            {
+
+                if (String.IsNullOrEmpty(txtTipoExamenBusqueda.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT ncodtipo, cdesctipoexamen, cpreciotipoexamen, MaMUESTRA.cdescmuestra FROM MaTIPOEXAMEN, MaMUESTRA WHERE MaTIPOEXAMEN.ncodmuestra = MaMUESTRA.ncodmuestra AND MaTIPOEXAMEN.cdesctipoexamen LIKE '{0}%'", txtTipoExamenBusqueda.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        existe = true;
+                        sCodigo = mReader.GetString(0);
+                        sTipo = mReader.GetString(1);
+                        sPrecio = mReader.GetString(2);
+                        sMuestra = mReader.GetString(3);
+                        grdConsultarTipoExamen.Rows.Insert(iContador, sCodigo, sTipo, sPrecio, sMuestra);
+                        sCodigo = "";
+                        sTipo = "";
+                        sPrecio = "";
+                        sMuestra = "";
+                        iContador++;
+                    }
+
+
+                    btnCancelar.Enabled = true;
+                    if (existe == false)
+                    {
+                        btnCancelar.Enabled = false;
+                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        funActualizar();
+                        txtTipoExamenBusqueda.Clear();
+                    }
+
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

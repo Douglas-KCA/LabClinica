@@ -93,7 +93,6 @@ namespace Laboratorio
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string sCodMuestra = funCortador(cmbMuestra.SelectedItem.ToString());
             
             try
             {
@@ -103,6 +102,8 @@ namespace Laboratorio
                 }
                 else
                 {
+
+                    string sCodMuestra = funCortador(cmbMuestra.SelectedItem.ToString());
                     MySqlCommand mComando = new MySqlCommand(string.Format("Insert into MaTIPOEXAMEN (cdesctipoexamen, cpreciotipoexamen, ncodmuestra) values ('{0}', '{1}', '{2}')",
                     txtTipoExamen.Text, txtPrecio.Text,sCodMuestra), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
@@ -120,7 +121,7 @@ namespace Laboratorio
 
         private void txtTipoExamen_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
             {
                 MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;

@@ -81,7 +81,7 @@
             this.btnHome.Location = new System.Drawing.Point(11, 204);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 7;
+            this.btnHome.TabIndex = 14;
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHome.UseVisualStyleBackColor = true;
@@ -95,7 +95,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(11, 48);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(110, 50);
-            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.TabIndex = 12;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(11, 124);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -128,6 +128,7 @@
             // txtDpi
             // 
             this.txtDpi.Location = new System.Drawing.Point(347, 12);
+            this.txtDpi.MaxLength = 15;
             this.txtDpi.Name = "txtDpi";
             this.txtDpi.Size = new System.Drawing.Size(258, 20);
             this.txtDpi.TabIndex = 1;
@@ -275,6 +276,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(344, 229);
+            this.txtTelefono.MaxLength = 8;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(258, 20);
             this.txtTelefono.TabIndex = 8;
