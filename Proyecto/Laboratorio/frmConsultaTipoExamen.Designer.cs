@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.grdConsultarTipoExamen = new System.Windows.Forms.DataGridView();
@@ -43,12 +42,12 @@
             this.txtTipoExamenBusqueda = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.grpActualizar = new System.Windows.Forms.GroupBox();
-            this.lblTipo = new System.Windows.Forms.Label();
-            this.txtTipo = new System.Windows.Forms.TextBox();
+            this.cmbMuestra = new System.Windows.Forms.ComboBox();
+            this.lblMuestra = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.lblMuestra = new System.Windows.Forms.Label();
-            this.cmbMuestra = new System.Windows.Forms.ComboBox();
+            this.lblTipo = new System.Windows.Forms.Label();
+            this.txtTipo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdConsultarTipoExamen)).BeginInit();
             this.grpActualizar.SuspendLayout();
@@ -59,12 +58,11 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnHome);
             this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.btnActualizar);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(133, 342);
+            this.panel1.Size = new System.Drawing.Size(133, 318);
             this.panel1.TabIndex = 23;
             // 
             // btnHome
@@ -72,7 +70,7 @@
             this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(12, 265);
+            this.btnHome.Location = new System.Drawing.Point(12, 242);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(110, 50);
             this.btnHome.TabIndex = 9;
@@ -87,7 +85,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 135);
+            this.btnEliminar.Location = new System.Drawing.Point(12, 96);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(110, 50);
             this.btnEliminar.TabIndex = 8;
@@ -96,27 +94,13 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(12, 10);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(110, 50);
-            this.btnBuscar.TabIndex = 7;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // btnActualizar
             // 
             this.btnActualizar.Enabled = false;
             this.btnActualizar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizar.Location = new System.Drawing.Point(12, 72);
+            this.btnActualizar.Location = new System.Drawing.Point(12, 26);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(110, 50);
             this.btnActualizar.TabIndex = 5;
@@ -131,7 +115,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F);
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 200);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 168);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 50);
             this.btnCancelar.TabIndex = 6;
@@ -185,6 +169,7 @@
             this.txtTipoExamenBusqueda.Size = new System.Drawing.Size(400, 20);
             this.txtTipoExamenBusqueda.TabIndex = 37;
             this.txtTipoExamenBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipoExamenBusqueda_KeyPress);
+            this.txtTipoExamenBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTipoExamenBusqueda_KeyUp);
             // 
             // lblNombre
             // 
@@ -213,22 +198,24 @@
             this.grpActualizar.TabStop = false;
             this.grpActualizar.Text = "Actualizar";
             // 
-            // lblTipo
+            // cmbMuestra
             // 
-            this.lblTipo.AutoSize = true;
-            this.lblTipo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipo.Location = new System.Drawing.Point(4, 17);
-            this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(41, 19);
-            this.lblTipo.TabIndex = 1;
-            this.lblTipo.Text = "Tipo:";
+            this.cmbMuestra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMuestra.FormattingEnabled = true;
+            this.cmbMuestra.Location = new System.Drawing.Point(81, 44);
+            this.cmbMuestra.Name = "cmbMuestra";
+            this.cmbMuestra.Size = new System.Drawing.Size(152, 21);
+            this.cmbMuestra.TabIndex = 6;
             // 
-            // txtTipo
+            // lblMuestra
             // 
-            this.txtTipo.Location = new System.Drawing.Point(81, 17);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(152, 20);
-            this.txtTipo.TabIndex = 0;
+            this.lblMuestra.AutoSize = true;
+            this.lblMuestra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMuestra.Location = new System.Drawing.Point(4, 43);
+            this.lblMuestra.Name = "lblMuestra";
+            this.lblMuestra.Size = new System.Drawing.Size(67, 19);
+            this.lblMuestra.TabIndex = 5;
+            this.lblMuestra.Text = "Muestra:";
             // 
             // lblPrecio
             // 
@@ -247,24 +234,22 @@
             this.txtPrecio.Size = new System.Drawing.Size(176, 20);
             this.txtPrecio.TabIndex = 2;
             // 
-            // lblMuestra
+            // lblTipo
             // 
-            this.lblMuestra.AutoSize = true;
-            this.lblMuestra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMuestra.Location = new System.Drawing.Point(4, 43);
-            this.lblMuestra.Name = "lblMuestra";
-            this.lblMuestra.Size = new System.Drawing.Size(67, 19);
-            this.lblMuestra.TabIndex = 5;
-            this.lblMuestra.Text = "Muestra:";
+            this.lblTipo.AutoSize = true;
+            this.lblTipo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipo.Location = new System.Drawing.Point(4, 17);
+            this.lblTipo.Name = "lblTipo";
+            this.lblTipo.Size = new System.Drawing.Size(41, 19);
+            this.lblTipo.TabIndex = 1;
+            this.lblTipo.Text = "Tipo:";
             // 
-            // cmbMuestra
+            // txtTipo
             // 
-            this.cmbMuestra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMuestra.FormattingEnabled = true;
-            this.cmbMuestra.Location = new System.Drawing.Point(81, 44);
-            this.cmbMuestra.Name = "cmbMuestra";
-            this.cmbMuestra.Size = new System.Drawing.Size(152, 21);
-            this.cmbMuestra.TabIndex = 6;
+            this.txtTipo.Location = new System.Drawing.Point(81, 17);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(152, 20);
+            this.txtTipo.TabIndex = 0;
             // 
             // frmConsultaTipoExamen
             // 
@@ -295,7 +280,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView grdConsultarTipoExamen;

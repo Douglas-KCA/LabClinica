@@ -238,6 +238,8 @@ namespace Laboratorio
             txtEmail.Clear();
             txtNit.Enabled = true;
             txtNit.Clear();
+            dtpNacimiento.Enabled = true;
+            grpSexo.Enabled = true;
             btnGuardar.Enabled = true;
 
 

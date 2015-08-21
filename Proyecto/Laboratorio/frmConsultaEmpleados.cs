@@ -21,10 +21,13 @@ namespace Laboratorio
         string sSexoUp;
         string sNitUp;
         string sPuestoUp;
+        string sCadena;
         public frmConsultaEmpleados()
         {
             InitializeComponent();
+            grPuesto.Visible = false;
             funActualizar();
+            funPuesto();
         }
 
         void funActualizar()
@@ -76,6 +79,51 @@ namespace Laboratorio
             }
         }
 
+        void funPuesto()
+        {
+            string sCodigo;
+            string sNombre;
+            cmbPuesto.Items.Clear();
+            MySqlCommand mComando = new MySqlCommand(String.Format(
+                   "SELECT ncodpuesto, ndescpuesto FROM MaPUESTO"), clasConexion.funConexion());
+            MySqlDataReader mReader = mComando.ExecuteReader();
+
+            while (mReader.Read())
+            {
+                sCodigo = mReader.GetString(0);
+                sNombre = mReader.GetString(1);
+                cmbPuesto.Items.Add(sCodigo + ". " + sNombre);
+                sCodigo = "";
+                sNombre = "";
+            }
+
+        }
+
+        string funCortador(string sDato)
+        {
+            sCadena = "";
+            try
+            {
+                for (int i = 0; i < sDato.Length; i++)
+                {
+                    if (sDato.Substring(i, 1) != ".")
+                    {
+                        sCadena = sCadena + sDato.Substring(i, 1);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Error al obtener Codigo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return sCadena;
+        }
         
         void funUpdate()
         {
@@ -83,11 +131,19 @@ namespace Laboratorio
             {
                 if (MessageBox.Show("¿Desea modificar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    String sPuesto = funCortador(cmbPuesto.SelectedItem.ToString());
+                    
                     MySqlCommand mComando = new MySqlCommand(string.Format("UPDATE MaPERSONA SET cnombrepersona= '{0}',  capellidopersona= '{1}',  cdpipersona= '{2}',  dfechanacpersona= '{3}',  csexopersona= '{4}', cnitpersona = '{5}' WHERE MaPERSONA.ncodpersona = '{6}'",
                     sNombreUp, sApellidoUp, sDpiUp, sFechaUp, sSexoUp, sNitUp, sCodigoUp), clasConexion.funConexion());
                     mComando.ExecuteNonQuery();
+
+                    MySqlCommand mComandoPuesto = new MySqlCommand(string.Format("UPDATE TrEMPLEADO SET ncodpuesto= '{0}' WHERE ncodpersona = '{1}'",
+                    sPuesto, sCodigoUp), clasConexion.funConexion());
+                    mComandoPuesto.ExecuteNonQuery();
+
                     MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtNombre.Text = "";
+                    grPuesto.Visible = false;
                     funActualizar();
                 }
                 
@@ -98,19 +154,38 @@ namespace Laboratorio
             } 
         }
 
+        void funDelete()
+        {
+            try
+            {
+                if (MessageBox.Show("¿Desea Eliminar?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MySqlCommand mComando = new MySqlCommand(string.Format("DELETE FROM MaPERSONA WHERE ncodpersona = '{0}'",
+                    sCodigoUp), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+
+                    MySqlCommand mComandoPuesto = new MySqlCommand(string.Format("DELETE FROM TrEMPLEADO WHERE ncodpersona = '{0}'",
+                    sCodigoUp), clasConexion.funConexion());
+                    mComandoPuesto.ExecuteNonQuery();
+
+                    MessageBox.Show("Se elimino con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtNombre.Text = "";
+                    grPuesto.Visible = false;
+                    funActualizar();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void grdConsultarAseguradora_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            cmbDirecion.Items.Clear();
-            cmbEmail.Items.Clear();
-            cmbTelefono.Items.Clear(); 
             btnActualizar.Enabled = true;
             btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            //btnBuscar.Enabled = false;
-            txtNombre.Clear();
-           // txtDpi.Clear();
-            //txtDpi.Enabled = false;
-            //txtNombre.Enabled = false;
+            btnEliminar.Enabled = true; 
 
             
             DataGridViewRow fila = grdConsultarEmpleados.CurrentRow;
@@ -124,44 +199,37 @@ namespace Laboratorio
             sPuestoUp = Convert.ToString(fila.Cells[7].Value);
 
 
-            //MessageBox.Show(sCodigoUp+sDpiUp+sNombreUp+sApellidoUp+sSexoUp+sFechaUp+sNitUp+sPuestoUp);
-
-            //Llenar Combo Box Direccion
-
-            MySqlCommand mComandocmbDire = new MySqlCommand(String.Format(
-            "SELECT ncoddireccion, cdireccion FROM TrDIRECCION WHERE TrDIRECCION.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
-            MySqlDataReader mReadercmbDire = mComandocmbDire.ExecuteReader();
-
-            while (mReadercmbDire.Read())
-            {
-                cmbDirecion.Items.Add(mReadercmbDire.GetString(0) + ". " + mReadercmbDire.GetString(1));
-            }
-
-            //Llenar Combo Box Telefono
-            MySqlCommand mComandocmbTel = new MySqlCommand(String.Format(
-           "SELECT ncodtelefono, ctelefono FROM TrTELEFONO WHERE TrTELEFONO.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
-            MySqlDataReader mReadercmbTel = mComandocmbTel.ExecuteReader();
-
-            while (mReadercmbTel.Read())
-            {
-                cmbTelefono.Items.Add(mReadercmbTel.GetString(0) + ". " + mReadercmbTel.GetString(1));
-            }
-
-            //Llenar Combo Box Email
-            MySqlCommand mComandocmbEmail = new MySqlCommand(String.Format(
-           "SELECT ncodemail, cemail FROM TrEMAIL WHERE TrEMAIL.ncodpersona = '{0}' ", sCodigoUp), clasConexion.funConexion());
-            MySqlDataReader mReadercmbEmail = mComandocmbEmail.ExecuteReader();
-
-            while (mReadercmbEmail.Read())
-            {
-                cmbEmail.Items.Add(mReadercmbEmail.GetString(0) + ". " + mReadercmbEmail.GetString(1));
-            }
-
-            
+           
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            btnCancelar.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
+            //txtDpi.Text = "";
+            txtNombre.Clear(); 
+            grPuesto.Visible = false;
+            funActualizar();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            funUpdate();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtNombre_KeyUp(object sender, KeyEventArgs e)
+        {
+
             string sCodigo;
             string sNombre;
             string sApellido;
@@ -179,14 +247,13 @@ namespace Laboratorio
 
                 if (String.IsNullOrEmpty(txtNombre.Text))
                 {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     funActualizar();
                 }
                 else
                 {
                     //SELECT persona.ncodpersona, cdireccionpersona,cemailpersona,cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM PERSONA,PUESTO,EMPLEADO WHERE PUESTO.ncodpuesto=EMPLEADO.ncodpuesto and persona.ncodpersona = empleado.ncodpersona
                     MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT MaPERSONA.ncodpersona, cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM MaPERSONA, MaPUESTO, TrEMPLEADO WHERE MaPUESTO.ncodpuesto=TrEMPLEADO.ncodpuesto and MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona AND MaPERSONA.cnombrepersona= '{0}' ", txtNombre.Text), clasConexion.funConexion());
+                    "SELECT MaPERSONA.ncodpersona, cnombrepersona,capellidopersona,cdpipersona,dfechanacpersona,csexopersona,cnitpersona, ndescpuesto FROM MaPERSONA, MaPUESTO, TrEMPLEADO WHERE MaPUESTO.ncodpuesto=TrEMPLEADO.ncodpuesto and MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona AND MaPERSONA.cnombrepersona LIKE '{0}%' ", txtNombre.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -212,7 +279,7 @@ namespace Laboratorio
                     }
                     btnCancelar.Enabled = true;
                 }
-                
+
             }
             catch
             {
@@ -220,25 +287,14 @@ namespace Laboratorio
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void grdConsultarEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnCancelar.Enabled = false;
-            btnBuscar.Enabled = true;
-            btnActualizar.Enabled = false;
-            btnEliminar.Enabled = false;
-            //txtDpi.Text = "";
-            txtNombre.Text = "";
-            funActualizar();
+            grPuesto.Visible = true;
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-            funUpdate();
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            funDelete();
         }
     }
 }
