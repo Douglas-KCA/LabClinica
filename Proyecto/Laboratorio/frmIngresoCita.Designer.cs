@@ -32,6 +32,7 @@
             this.lblSucursal = new System.Windows.Forms.Label();
             this.lblPaciente = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,8 @@
             this.cmbMinutos = new System.Windows.Forms.ComboBox();
             this.cmbHora = new System.Windows.Forms.ComboBox();
             this.cmbPaciente = new System.Windows.Forms.ComboBox();
-            this.btnHome = new System.Windows.Forms.Button();
+            this.cmbEmpleado = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +81,20 @@
             this.panel1.Size = new System.Drawing.Size(133, 206);
             this.panel1.TabIndex = 13;
             // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 135);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,9 +126,9 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(236, 46);
+            this.cmbSucursal.Location = new System.Drawing.Point(246, 46);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(437, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(427, 21);
             this.cmbSucursal.TabIndex = 19;
             // 
             // lblFecha
@@ -120,7 +136,7 @@
             this.lblFecha.AutoSize = true;
             this.lblFecha.BackColor = System.Drawing.Color.Transparent;
             this.lblFecha.Font = new System.Drawing.Font("Calibri", 12F);
-            this.lblFecha.Location = new System.Drawing.Point(163, 120);
+            this.lblFecha.Location = new System.Drawing.Point(163, 154);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(51, 19);
             this.lblFecha.TabIndex = 20;
@@ -131,7 +147,7 @@
             this.lblHora.AutoSize = true;
             this.lblHora.BackColor = System.Drawing.Color.Transparent;
             this.lblHora.Font = new System.Drawing.Font("Calibri", 12F);
-            this.lblHora.Location = new System.Drawing.Point(163, 156);
+            this.lblHora.Location = new System.Drawing.Point(163, 190);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(44, 19);
             this.lblHora.TabIndex = 21;
@@ -141,9 +157,9 @@
             // 
             this.dtpCitas.CustomFormat = "yyyy-MM-dd";
             this.dtpCitas.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpCitas.Location = new System.Drawing.Point(238, 118);
+            this.dtpCitas.Location = new System.Drawing.Point(243, 152);
             this.dtpCitas.Name = "dtpCitas";
-            this.dtpCitas.Size = new System.Drawing.Size(119, 20);
+            this.dtpCitas.Size = new System.Drawing.Size(114, 20);
             this.dtpCitas.TabIndex = 28;
             // 
             // lblDosPuntos
@@ -151,7 +167,7 @@
             this.lblDosPuntos.AutoSize = true;
             this.lblDosPuntos.BackColor = System.Drawing.Color.Transparent;
             this.lblDosPuntos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDosPuntos.Location = new System.Drawing.Point(290, 154);
+            this.lblDosPuntos.Location = new System.Drawing.Point(300, 188);
             this.lblDosPuntos.Name = "lblDosPuntos";
             this.lblDosPuntos.Size = new System.Drawing.Size(15, 23);
             this.lblDosPuntos.TabIndex = 27;
@@ -163,7 +179,7 @@
             this.cmbMinutos.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.cmbMinutos.Location = new System.Drawing.Point(311, 158);
+            this.cmbMinutos.Location = new System.Drawing.Point(321, 192);
             this.cmbMinutos.Name = "cmbMinutos";
             this.cmbMinutos.Size = new System.Drawing.Size(46, 21);
             this.cmbMinutos.TabIndex = 29;
@@ -196,7 +212,7 @@
             "22",
             "23",
             "24"});
-            this.cmbHora.Location = new System.Drawing.Point(236, 157);
+            this.cmbHora.Location = new System.Drawing.Point(246, 191);
             this.cmbHora.Name = "cmbHora";
             this.cmbHora.Size = new System.Drawing.Size(46, 21);
             this.cmbHora.TabIndex = 30;
@@ -204,24 +220,29 @@
             // cmbPaciente
             // 
             this.cmbPaciente.FormattingEnabled = true;
-            this.cmbPaciente.Location = new System.Drawing.Point(236, 83);
+            this.cmbPaciente.Location = new System.Drawing.Point(246, 83);
             this.cmbPaciente.Name = "cmbPaciente";
-            this.cmbPaciente.Size = new System.Drawing.Size(437, 21);
+            this.cmbPaciente.Size = new System.Drawing.Size(427, 21);
             this.cmbPaciente.TabIndex = 31;
             // 
-            // btnHome
+            // cmbEmpleado
             // 
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(12, 135);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 10;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            this.cmbEmpleado.FormattingEnabled = true;
+            this.cmbEmpleado.Location = new System.Drawing.Point(245, 116);
+            this.cmbEmpleado.Name = "cmbEmpleado";
+            this.cmbEmpleado.Size = new System.Drawing.Size(427, 21);
+            this.cmbEmpleado.TabIndex = 33;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F);
+            this.label1.Location = new System.Drawing.Point(162, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 19);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Empleado:";
             // 
             // frmIngresoCita
             // 
@@ -229,6 +250,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 241);
             this.ControlBox = false;
+            this.Controls.Add(this.cmbEmpleado);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbPaciente);
             this.Controls.Add(this.cmbHora);
             this.Controls.Add(this.cmbMinutos);
@@ -266,5 +289,7 @@
         private System.Windows.Forms.ComboBox cmbHora;
         private System.Windows.Forms.ComboBox cmbPaciente;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.ComboBox cmbEmpleado;
+        private System.Windows.Forms.Label label1;
     }
 }
