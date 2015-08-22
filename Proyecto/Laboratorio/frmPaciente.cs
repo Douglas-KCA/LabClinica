@@ -21,9 +21,10 @@ namespace Laboratorio
     public partial class frmPaciente : Form
     {
         string sSexo;
-        string sCodigoPersona;
+        string sCodigoPersona, sCodigoPaciente;
         string sCadena;
-        string sCodSeguro, sCodMembresia;
+        string sCodAseguradora, sCodMembresia;
+
 
         public frmPaciente()
         {
@@ -37,28 +38,27 @@ namespace Laboratorio
             txtTelefono.Enabled = false;
         }
 
-        
+        //funcion para llenar el combo box de aseguradora
         void funBuscarAseguro()
         {
             string sCodigo;
             string sAseguradora;
-            string sTarifa;
+            
             cmbSeguro.Items.Clear();
             try
             {
                 MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT TrSEGURO.ncodseguro, MaTARIFASEGURO.nporcentajetarifa, MaASEGURADORA.cempresaseguro from TrSEGURO,MaTARIFASEGURO,MaASEGURADORA WHERE TrSEGURO.ncodtarifa = MaTARIFASEGURO.ncodtarifa and TrSEGURO.ncodaseguradora = MaASEGURADORA.ncodaseguradora"), clasConexion.funConexion());
+                "SELECT ncodaseguradora, cempresaseguro from MaASEGURADORA"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 while (mReader.Read())
                 {
                     sCodigo = mReader.GetString(0);
                     sAseguradora = mReader.GetString(1);
-                    sTarifa = mReader.GetString(2);
-                    cmbSeguro.Items.Add(sCodigo + ". " + sAseguradora +" Tarifa: "+sTarifa);
+                    
+                    cmbSeguro.Items.Add(sCodigo + ". " + sAseguradora);
                     sCodigo = "";
                     sAseguradora = "";
-                    sTarifa = "";
                 }
             }
             catch
@@ -67,7 +67,7 @@ namespace Laboratorio
             }
 
         }
-
+        //funcion que llena el combo box de membresia
         void funBuscarMembresia()
         {
             string sCodigo;
@@ -97,6 +97,7 @@ namespace Laboratorio
 
         }
 
+        //obtenemos el codigo de la persona
         void funObtenerCodPersona()
         {
             MySqlCommand mComando = new MySqlCommand(String.Format(
@@ -110,21 +111,51 @@ namespace Laboratorio
             }
 
         }
+        //obtenemos el codigo del paciente
+        void funObtenerPaciente()
+        {
+            MySqlCommand mComando = new MySqlCommand(String.Format(
+                  "SELECT TrPACIENTE.ncodpaciente FROM TrPACIENTE, MaPERSONA where TrPACIENTE.ncodpersona = MaPERSONA.ncodpersona and MaPERSONA.cdpipersona = '{0}'", txtDpi.Text), clasConexion.funConexion());
+            MySqlDataReader mReader = mComando.ExecuteReader();
 
+            while (mReader.Read())
+            {
+                sCodigoPaciente = mReader.GetString(0);
+                funInsertarSeguro(sCodigoPaciente);
+            }
+
+        }
+        //insertamos en la tabla de seguro
+        void funInsertarSeguro(string sCodigoPaciente)
+        {
+            string sCmbCodAseguradora;
+
+            try
+            {
+                sCmbCodAseguradora = cmbSeguro.SelectedItem.ToString();
+                sCodAseguradora = funCortador(sCmbCodAseguradora);
+                    MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrSEGURO (npoliza,ncodaseguradora,ncodpaciente) values ('{0}','{1}','{2}')",
+                    txtPoliza.Text, sCodAseguradora, sCodigoPaciente), clasConexion.funConexion());
+                    mComando.ExecuteNonQuery();
+                    //MessageBox.Show("Se inserto con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPoliza.Clear();
+                    txtPoliza.Enabled = false;
+                    cmbSeguro.Enabled = false;
+                    cmbMembresia.Enabled = false;
+                
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        //insertamos en la tabla de pacientes
         void funInsertarTablaPaciente(string sCodigoPersona)
         {
-            string sCmbCodSeguro, sCmbCodMembresia;
+            string  sCmbCodMembresia;
            
-            if (cbSeguro.Checked)
-            {
-                sCmbCodSeguro = cmbSeguro.SelectedItem.ToString();
-                sCodSeguro = funCortador(sCmbCodSeguro);
-            }
-            else
-            {
-                sCodSeguro = null;
-
-            }
+            
 
             if (cbMembresia.Checked)
             {
@@ -137,24 +168,30 @@ namespace Laboratorio
 
             }
             
-            //string sCmbCodPuesto = cmbPuesto.SelectedItem.ToString();
-            //string sCodPuesto = funCortador(sCmbCodPuesto);
-
             try
             {
-                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrPACIENTE (crefpaciente,ncodpersona,ncodseguro,ncodmembresia) values ('{0}','{1}','{2}','{3}')",
-                txtReferencia.Text,sCodigoPersona,sCodSeguro,sCodMembresia), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(string.Format("Insert into TrPACIENTE (crefpaciente,ncodpersona,ncodmembresia) values ('{0}','{1}','{2}')",
+                txtReferencia.Text,sCodigoPersona,sCodMembresia), clasConexion.funConexion());
                 mComando.ExecuteNonQuery();
-
+                
             }
             catch
             {
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (cbSeguro.Checked)
+            {
+                funObtenerPaciente();
+            }
+            else
+            {
+                sCodAseguradora = null;
+
+            }
 
         }
 
-
+        //cortador para obtener el codigo de los combo box
         string funCortador(string sDato)
         {
             sCadena = "";
@@ -180,6 +217,7 @@ namespace Laboratorio
 
             return sCadena;
         }
+        //boton guardar que nos inserta en la tabla persona
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -217,6 +255,9 @@ namespace Laboratorio
                     txtDireccion.Enabled = true;
                     txtTelefono.Enabled = true;
                     txtEmail.Enabled = true;
+                    lblAgregarDireccion.Enabled = true;
+                    lblAgregarEmail.Enabled = true;
+                    lblAgregarTelefono.Enabled = true;
                     txtDireccion.Clear();
                     txtTelefono.Clear();
                     txtEmail.Clear();
@@ -229,7 +270,7 @@ namespace Laboratorio
                 MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //boton cancelar que nos regresa todo a su estado original
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtDpi.Enabled = true;
@@ -254,22 +295,28 @@ namespace Laboratorio
             txtTelefono.Clear();
             txtEmail.Enabled = false;
             txtEmail.Clear();
+            lblAgregarDireccion.Enabled = false;
+            lblAgregarEmail.Enabled = false;
+            lblAgregarTelefono.Enabled = false;
 
         }
 
+        //funcion del checkbox
         private void cbSeguro_CheckedChanged(object sender, EventArgs e)
         {
             if (cbSeguro.Checked)
             {
                 cmbSeguro.Enabled = true;
+                txtPoliza.Enabled = true;
             }
             else
             {
                 cmbSeguro.Enabled = false;
+                txtPoliza.Enabled = false;
 
             }
         }
-
+        //boton para agregar multiples direcciones
         private void lblAgregarDireccion_Click(object sender, EventArgs e)
         {
             try
@@ -293,6 +340,7 @@ namespace Laboratorio
             }
         }
 
+        //boton para agregar multiples telefonos
         private void lblAgregarTelefono_Click(object sender, EventArgs e)
         {
             try
@@ -316,6 +364,7 @@ namespace Laboratorio
             }
         }
 
+        //Boton para agregar multiples correos
         private void lblAgregarEmail_Click(object sender, EventArgs e)
         {
             try
@@ -339,6 +388,7 @@ namespace Laboratorio
             }
         }
 
+        //check box de membresia
         private void cbMembresia_CheckedChanged(object sender, EventArgs e)
         {
             if (cbMembresia.Checked)
@@ -351,9 +401,60 @@ namespace Laboratorio
             }
         }
 
+        //boton de home
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtDpi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtPoliza_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

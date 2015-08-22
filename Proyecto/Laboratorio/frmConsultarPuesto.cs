@@ -78,57 +78,7 @@ namespace Laboratorio
          * */
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string sCodigo;
-            string sPuesto;
-            int iContador = 0;
-            bool existe = false;
-            grdPuesto.Rows.Clear();
-
-            try
-            {
-
-                if (String.IsNullOrEmpty(txtPuesto.Text))
-                {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    funActualizar();
-                }
-                else
-                {
-                    MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT ncodpuesto, ndescpuesto FROM MaPUESTO WHERE ndescpuesto = '{0}' ", txtPuesto.Text), clasConexion.funConexion());
-                    MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        existe = true;
-                        sCodigo = mReader.GetString(0);
-                        sPuesto = mReader.GetString(1);
-                        grdPuesto.Rows.Insert(iContador, sCodigo, sPuesto);
-                        sCodigo = "";
-                        sPuesto = "";
-                        iContador++;
-                    }
-
-
-                    btnCancelar.Enabled = true;
-                    if (existe == false)
-                    {
-                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        funActualizar();
-                        btnCancelar.Enabled = false;
-                        txtPuesto.Clear();
-                    }
-
-                }
-
-
-
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -224,6 +174,53 @@ namespace Laboratorio
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void txtPuesto_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo;
+            string sPuesto;
+            int iContador = 0;
+            
+            grdPuesto.Rows.Clear();
+
+            try
+            {
+
+                if (String.IsNullOrEmpty(txtPuesto.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT ncodpuesto, ndescpuesto FROM MaPUESTO WHERE ndescpuesto Like '{0}%' ", txtPuesto.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        
+                        sCodigo = mReader.GetString(0);
+                        sPuesto = mReader.GetString(1);
+                        grdPuesto.Rows.Insert(iContador, sCodigo, sPuesto);
+                        sCodigo = "";
+                        sPuesto = "";
+                        iContador++;
+                    }
+
+
+                    btnCancelar.Enabled = true;
+                  
+                }
+
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
