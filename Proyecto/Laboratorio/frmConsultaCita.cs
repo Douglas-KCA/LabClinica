@@ -23,6 +23,9 @@ namespace Laboratorio
             InitializeComponent();
             funActualizar();
             funCargarCombos();
+            btnActualizar.Enabled = false;
+            grpBuscar.Enabled = false;
+            grpActualizar.Enabled = false;
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -77,12 +80,13 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void grdCita_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            cmbActualizarSucursal.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[1].Value + "";
+            /*cmbActualizarSucursal.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[1].Value + "";
             cmbActualizarPaciente.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[2].Value + "";
             dtpActualizarCitas.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[3].Value + "";
             String[] sTiempo = (grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[4].Value + "").Split(':');
             cmbActualizarHora.Text = sTiempo[0];
-            cmbActualizarMinutos.Text = sTiempo[1];
+            cmbActualizarMinutos.Text = sTiempo[1];*/
+            btnActualizar.Enabled = true;
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -141,65 +145,7 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Boolean existe=false;
-            string sSucursal, sPaciente, sCodigo, sFecha, sTiempo;
-            int iContador = 0;
-            grdCita.Rows.Clear();
-            try
-            {
-
-                if (String.IsNullOrEmpty(txtCita.Text))
-                {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-                else
-                {
-                    MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT * FROM TrCITA WHERE ncodigocita = '{0}' ", txtCita.Text), clasConexion.funConexion());
-                    MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        existe = true;
-                        sCodigo = mReader.GetString(0);
-                        sSucursal = mReader.GetString(1);
-                        sPaciente = mReader.GetString(2);
-                        sFecha = mReader.GetString(3);
-                        sTiempo = mReader.GetString(4);
-
-                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
-                        MySqlDataReader mReader2 = mComando2.ExecuteReader();
-                        if (mReader2.Read())
-                            sPaciente = mReader2.GetString(0);
-
-                        MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
-                        MySqlDataReader mReader3 = mComando3.ExecuteReader();
-                        if (mReader3.Read())
-                            sPaciente = mReader3.GetString(0) + " " + mReader3.GetString(1);
-
-                        MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
-                        MySqlDataReader mReader4 = mComando4.ExecuteReader();
-                        if (mReader4.Read())
-                            sSucursal = mReader4.GetString(0);
-
-                        String[] sFechaSola = sFecha.Split(' ');
-
-                        grdCita.Rows.Insert(iContador, sCodigo, sSucursal, sPaciente, sFechaSola[0], sTiempo);
-                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = "";
-                        iContador++;
-
-                    }
-
-                    if (existe == false)
-                    {
-                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            grpBuscar.Enabled = true;
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -257,8 +203,8 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtCita.Text = "";
             funActualizar();
+            grpActualizar.Enabled = grpBuscar.Enabled = false;
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -288,6 +234,16 @@ namespace Laboratorio
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbActualizarHora_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
