@@ -35,6 +35,7 @@
             this.txtPuesto = new System.Windows.Forms.TextBox();
             this.lblPuesto = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -42,7 +43,6 @@
             this.grpActualizar = new System.Windows.Forms.GroupBox();
             this.lblActualizarPuesto = new System.Windows.Forms.Label();
             this.txtActualizarPuesto = new System.Windows.Forms.TextBox();
-            this.btnHome = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdPuesto)).BeginInit();
             this.panel1.SuspendLayout();
             this.grpActualizar.SuspendLayout();
@@ -81,6 +81,7 @@
             this.txtPuesto.Size = new System.Drawing.Size(453, 20);
             this.txtPuesto.TabIndex = 39;
             this.txtPuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPuesto_KeyPress);
+            this.txtPuesto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPuesto_KeyUp);
             // 
             // lblPuesto
             // 
@@ -105,6 +106,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(133, 342);
             this.panel1.TabIndex = 37;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(12, 266);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(110, 50);
+            this.btnHome.TabIndex = 9;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnEliminar
             // 
@@ -194,20 +209,6 @@
             this.txtActualizarPuesto.Size = new System.Drawing.Size(203, 20);
             this.txtActualizarPuesto.TabIndex = 0;
             this.txtActualizarPuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtActualizarPuesto_KeyPress);
-            // 
-            // btnHome
-            // 
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(12, 266);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 9;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmConsultarPuesto
             // 
