@@ -683,3 +683,4 @@ C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Labora
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaTipoExamen.resources
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmFactura.resources
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
+C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConultaUsuario.resources
