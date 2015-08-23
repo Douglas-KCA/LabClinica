@@ -263,8 +263,6 @@ namespace Laboratorio
             {
                 MessageBox.Show("Se produjo un error al ingresar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-                /**/
-            
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
