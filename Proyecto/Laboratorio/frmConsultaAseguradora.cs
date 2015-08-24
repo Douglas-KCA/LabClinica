@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+
 namespace Laboratorio
 {
     public partial class frmConsultaAseguradora : Form
@@ -205,5 +209,7 @@ namespace Laboratorio
             }
 
         }
+
+        
     }
 }
