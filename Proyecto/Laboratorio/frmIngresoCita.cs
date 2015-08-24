@@ -87,6 +87,9 @@ namespace Laboratorio
             String sCodigoEmpleado = "";
             String sPoliza = "";
             String sTipoFact = "";
+            String sNombre = "";
+            String sApellido = "";
+            String sNombreCompleto = "";
             DateTime dateTime = DateTime.Today;
 
             if (String.IsNullOrEmpty(cmbSucursal.Text) || String.IsNullOrEmpty(cmbPaciente.Text) || String.IsNullOrEmpty(cmbHora.Text) || String.IsNullOrEmpty(cmbMinutos.Text)){
@@ -164,6 +167,11 @@ namespace Laboratorio
 
                             MessageBox.Show("La cita se Genero con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             cmbHora.Text = cmbMinutos.Text = cmbPaciente.Text = cmbEmpleado.Text = cmbSucursal.Text = "";
+                                                        
+                            frmServiciosCita ver = new frmServiciosCita();
+                            ver.txtNombrePaciente.Text = cmbPaciente.SelectedItem.ToString();
+                            this.Close();
+                            ver.Show();
                         }
                     }
                 }

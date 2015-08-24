@@ -78,51 +78,7 @@ namespace Laboratorio
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string sCodigo;
-            string sNombre;
-            string sPorcentaje;
-            int iContador = 0;
-            bool existe = false;
-            grdConsultaMembresia.Rows.Clear();
-
-            try
-            {
-
-                if (String.IsNullOrEmpty(txtTipo.Text))
-                {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    funActualizar();
-                }
-                else
-                {
-                    MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT * FROM MaMEMBRESIA WHERE ctipomembresia = '{0}' ", txtTipo.Text), clasConexion.funConexion());
-                    MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        existe = true;
-                        sCodigo = mReader.GetString(0);
-                        sNombre = mReader.GetString(1);
-                        sPorcentaje = mReader.GetString(2);
-                        grdConsultaMembresia.Rows.Insert(iContador, sCodigo, sNombre, sPorcentaje);
-                        sCodigo = "";
-                        sNombre = "";
-                        sPorcentaje = "";
-                        iContador++;
-                    }
-
-                    if (existe == false)
-                    {
-                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    btnCancelar.Enabled = true;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -199,6 +155,55 @@ namespace Laboratorio
                 MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
                 return;
+            }
+        }
+
+        private void txtTipo_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo;
+            string sNombre;
+            string sPorcentaje;
+            int iContador = 0;
+            bool existe = false;
+            grdConsultaMembresia.Rows.Clear();
+
+            try
+            {
+
+                if (String.IsNullOrEmpty(txtTipo.Text))
+                {
+                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT * FROM MaMEMBRESIA WHERE ctipomembresia LIKE '{0}%' ", txtTipo.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        existe = true;
+                        sCodigo = mReader.GetString(0);
+                        sNombre = mReader.GetString(1);
+                        sPorcentaje = mReader.GetString(2);
+                        grdConsultaMembresia.Rows.Insert(iContador, sCodigo, sNombre, sPorcentaje);
+                        sCodigo = "";
+                        sNombre = "";
+                        sPorcentaje = "";
+                        iContador++;
+                    }
+
+                    if (existe == false)
+                    {
+                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    btnCancelar.Enabled = true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

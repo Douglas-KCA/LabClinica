@@ -23,52 +23,52 @@ namespace Laboratorio
             InitializeComponent();
             funActualizar();
             funCargarCombos();
+            btnActualizar.Enabled = false;
+            grpBuscar.Enabled = false;
+            grpActualizar.Enabled = false;
         }
-
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que carga los datos a los combos del programa al iniciar el form
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void funCargarCombos()
         {
             String sNombre;
-            String sPersona;
             String sPaciente;
-            try
-            {
+            String sEmpleado;
+            try{
                 MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
-
-                while (mReader.Read())
-                {
+                while (mReader.Read())                {
                     sNombre = mReader.GetString(0);
                     cmbActualizarSucursal.Items.Add(sNombre);
                 }
             }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch{
+                MessageBox.Show("Se produjo un error en combo sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            try
-            {
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE"), clasConexion.funConexion());
+            try{
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona IN (SELECT ncodpersona FROM TrPACIENTE)"), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
-                while (mReader.Read())
-                {
-                    sPersona = mReader.GetString(0);
-                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPersona), clasConexion.funConexion());
-                    MySqlDataReader mReader2 = mComando2.ExecuteReader();
-                    while (mReader2.Read())
-                    {
-                        sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
-                        cmbActualizarPaciente.Items.Add(sPaciente);
-                    }
-                    sPersona = "";
+                while (mReader.Read()){
+                    sPaciente = mReader.GetString(0) + " " + mReader.GetString(1);
+                    cmbActualizarPaciente.Items.Add(sPaciente);
                 }
             }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch{
+                MessageBox.Show("Se produjo un error en combo paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try{
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona IN (SELECT ncodpersona FROM TrEMPLEADO)"), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+                while (mReader.Read()){
+                    sEmpleado = mReader.GetString(0) + " " + mReader.GetString(1);
+                    cmbAcutalizarEmpleado.Items.Add(sEmpleado);
+                }
+            }
+            catch{
+                MessageBox.Show("Se produjo un error en combo empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,12 +77,26 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void grdCita_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            cmbActualizarSucursal.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[1].Value + "";
-            cmbActualizarPaciente.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[2].Value + "";
-            dtpActualizarCitas.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[3].Value + "";
-            String[] sTiempo = (grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[4].Value + "").Split(':');
+            grpActualizar.Enabled = true;
+            grpBuscar.Enabled = false;
+            btnActualizar.Enabled = true;
+
+            dtpActualizarCitas.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[1].Value + "";
+            
+            String[] sTiempo = (grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[2].Value + "").Split(':');
             cmbActualizarHora.Text = sTiempo[0];
             cmbActualizarMinutos.Text = sTiempo[1];
+            
+            cmbEstado.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[3].Value + "";
+
+            cmbActualizarPaciente.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[4].Value + "";
+
+            cmbActualizarSucursal.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[5].Value + "";
+
+            cmbAcutalizarEmpleado.Text = grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[6].Value + "";
+
+
+            btnActualizar.Enabled = true;
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +104,7 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         void funActualizar()
         {
-            string sSucursal, sPaciente, sCodigo, sFecha, sTiempo;
+            string sSucursal, sPaciente, sCodigo, sFecha, sTiempo, sEstado, sEmpleado;
             int iContador = 0;
             grdCita.Rows.Clear();
             try
@@ -101,37 +115,58 @@ namespace Laboratorio
                 while (mReader.Read())
                 {
                     sCodigo = mReader.GetString(0);
-                    sSucursal = mReader.GetString(1);
-                    sPaciente = mReader.GetString(2);
-                    sFecha = mReader.GetString(3);
-                    sTiempo = mReader.GetString(4);
+                    sFecha = mReader.GetString(1);
+                    sTiempo = mReader.GetString(2);
+                    sEstado = mReader.GetString(3);
+                    sPaciente = mReader.GetString(4);
+                    sSucursal = mReader.GetString(5);
+                    sEmpleado = mReader.GetString(6);
 
-                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
-                    MySqlDataReader mReader2 = mComando2.ExecuteReader();
-                    if (mReader2.Read())
-                        sPaciente = mReader2.GetString(0);
+                    try {
+                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}')", sPaciente), clasConexion.funConexion());
+                        MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                        if (mReader2.Read())
+                            sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
+                    }
+                    catch{
+                        MessageBox.Show("Se produjo un error al actualizar tabla paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                    MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
-                    MySqlDataReader mReader3 = mComando3.ExecuteReader();
-                    if (mReader3.Read())
-                        sPaciente = mReader3.GetString(0) + " "+ mReader3.GetString(1);
-                     
-                    MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
-                    MySqlDataReader mReader4 = mComando4.ExecuteReader();
-                    if (mReader4.Read())
-                        sSucursal = mReader4.GetString(0);
+                    try
+                    {
+                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrEMPLEADO WHERE ncodempleado = '{0}')", sEmpleado), clasConexion.funConexion());
+                        MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                        if (mReader2.Read())
+                            sEmpleado = mReader2.GetString(0) + " " + mReader2.GetString(1); ;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Se produjo un error al actualizar tabla empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}'", sSucursal), clasConexion.funConexion());
+                        MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                        if (mReader2.Read())
+                            sSucursal = mReader2.GetString(0);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Se produjo un error al actualizar tabla sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     String[] sFechaSola = sFecha.Split(' ');
 
-                    grdCita.Rows.Insert(iContador, sCodigo, sSucursal, sPaciente, sFechaSola[0], sTiempo);
-                    sCodigo = sSucursal = sPaciente = sFecha = sTiempo ="";
+                    grdCita.Rows.Insert(iContador, sCodigo, sFechaSola[0], sTiempo, sEstado, sPaciente, sSucursal, sEmpleado);
+                    sCodigo = sSucursal = sPaciente = sFecha = sTiempo = sEmpleado = sEstado ="";
                     iContador++;
                 }
 
             }
             catch
             {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se produjo un error al actualizar la tabla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -141,65 +176,12 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Boolean existe=false;
-            string sSucursal, sPaciente, sCodigo, sFecha, sTiempo;
-            int iContador = 0;
-            grdCita.Rows.Clear();
-            try
-            {
-
-                if (String.IsNullOrEmpty(txtCita.Text))
-                {
-                    MessageBox.Show("Por favor llene todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-                else
-                {
-                    MySqlCommand mComando = new MySqlCommand(String.Format(
-                    "SELECT * FROM TrCITA WHERE ncodigocita = '{0}' ", txtCita.Text), clasConexion.funConexion());
-                    MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        existe = true;
-                        sCodigo = mReader.GetString(0);
-                        sSucursal = mReader.GetString(1);
-                        sPaciente = mReader.GetString(2);
-                        sFecha = mReader.GetString(3);
-                        sTiempo = mReader.GetString(4);
-
-                        MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}' ", sPaciente), clasConexion.funConexion());
-                        MySqlDataReader mReader2 = mComando2.ExecuteReader();
-                        if (mReader2.Read())
-                            sPaciente = mReader2.GetString(0);
-
-                        MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT cnombrepersona ,capellidopersona FROM MaPERSONA WHERE ncodpersona = '{0}' ", sPaciente), clasConexion.funConexion());
-                        MySqlDataReader mReader3 = mComando3.ExecuteReader();
-                        if (mReader3.Read())
-                            sPaciente = mReader3.GetString(0) + " " + mReader3.GetString(1);
-
-                        MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}' ", sSucursal), clasConexion.funConexion());
-                        MySqlDataReader mReader4 = mComando4.ExecuteReader();
-                        if (mReader4.Read())
-                            sSucursal = mReader4.GetString(0);
-
-                        String[] sFechaSola = sFecha.Split(' ');
-
-                        grdCita.Rows.Insert(iContador, sCodigo, sSucursal, sPaciente, sFechaSola[0], sTiempo);
-                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = "";
-                        iContador++;
-
-                    }
-
-                    if (existe == false)
-                    {
-                        MessageBox.Show("No se encontraron resultados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            grpBuscar.Enabled = true;
+            grpActualizar.Enabled = false;
+            btnActualizar.Enabled = false;
+            btnBuscar.Enabled = false;
+            txtNomPaciente.Enabled = txtApePaciente.Enabled = txtApeEmpleado.Enabled = txtNomEmpleado.Enabled = txtSucursal.Enabled = false;
+            cmbActualizarHora.Text = cmbActualizarMinutos.Text = cmbActualizarPaciente.Text = cmbAcutalizarEmpleado.Text = cmbActualizarSucursal.Text = cmbEstado.Text = "";
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -207,48 +189,79 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            string sCodigoPersona = "", sCodigoPaciente = "", sCodigoSucursal = "";
-            try
-            {
-                String[] nombres = cmbActualizarPaciente.Text.Split(' ');
-
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}' ", nombres[0], nombres[1]), clasConexion.funConexion());
+            String sPaciente = "", sEmpleado = "", sSucursal = "";
+            String[] nombresPaciente = cmbActualizarPaciente.Text.Split(' ');
+            String[] nombresEmpleado = cmbAcutalizarEmpleado.Text.Split(' ');
+            
+            try{
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodpaciente FROM TrPACIENTE WHERE ncodpersona = (SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}')", nombresPaciente[0], nombresPaciente[1]), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
                 if (mReader.Read())
-                    sCodigoPersona = mReader.GetString(0);
+                    sPaciente = mReader.GetString(0);
+            }
+            catch{
+                MessageBox.Show("error al obtener datos para actualizar paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-                MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodpaciente FROM TrPACIENTE WHERE ncodpersona = '{0}' ", sCodigoPersona), clasConexion.funConexion());
-                MySqlDataReader mReader2 = mComando2.ExecuteReader();
-                if (mReader2.Read())
-                    sCodigoPaciente = mReader2.GetString(0);
+            try{
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodempleado FROM TrEMPLEADO WHERE ncodpersona = (SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona = '{0}' AND capellidopersona = '{1}')", nombresEmpleado[0], nombresEmpleado[1]), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+                if (mReader.Read())
+                    sEmpleado = mReader.GetString(0);
+            }
+            catch{
+                MessageBox.Show("error al obtener datos para actualizar empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
                 
-                MySqlCommand mComando3 = new MySqlCommand(String.Format("SELECT ncodsucursal FROM MaSUCURSAL WHERE cnombresucursal = '{0}' ", cmbActualizarSucursal.Text), clasConexion.funConexion());
-                MySqlDataReader mReader3 = mComando3.ExecuteReader();
-                if (mReader3.Read())
-                    sCodigoSucursal = mReader3.GetString(0);
+            try{
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodsucursal FROM MaSUCURSAL WHERE cnombresucursal = '{0}' ", cmbActualizarSucursal.Text), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+                if (mReader.Read())
+                    sSucursal = mReader.GetString(0);
+            }
+            catch{
+                MessageBox.Show("error al obtener datos para actualizar sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-                
-                MySqlCommand mComando4 = new MySqlCommand(String.Format("SELECT ncodigocita FROM TrCITA WHERE dfechacita = '{0}' AND choracita = '{1}' AND ncodsucursal = '{2}'", dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, sCodigoSucursal), clasConexion.funConexion());
-                MySqlDataReader mReader4 = mComando4.ExecuteReader();
-                if (mReader4.Read())
+            try
+            {
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ncodigocita FROM TrCITA WHERE ncodempleado = '{0}' AND dfechacita = '{1}' AND choracita = '{2}' AND cestado = 'Activa' AND ncodigocita != '{3}'", sEmpleado, dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                MySqlDataReader mReader = mComando.ExecuteReader();
+                if (mReader.Read())
                 {
                     MessageBox.Show("Ya se tiene una cita para ese momento o lugar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (MessageBox.Show("Seguro que quiere actualizar los datos", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT ncodigocita FROM TrCITA WHERE ncodsucursal = '{0}' AND dfechacita = '{1}' AND choracita = '{2}' AND cestado = 'Activa' AND ncodigocita != '{3}'", sSucursal, dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                    MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                    if (mReader2.Read())
                     {
-                        MySqlCommand comando = new MySqlCommand(string.Format("UPDATE TrCITA SET ncodsucursal = '{0}', ncodpaciente = '{1}',  dfechacita = '{2}', choracita = '{3}' WHERE ncodigocita = '{4}'",
-                        sCodigoSucursal, sCodigoPaciente, dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
-                        comando.ExecuteNonQuery();
-                        MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        funActualizar();
+                        MessageBox.Show("Ya se tiene una cita en esa sucursal en ese momento o lugar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (mReader2.Read())
+                        {
+                            MessageBox.Show("Ya se tiene una cita para ese momento o lugar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("Seguro que quiere actualizar los datos", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                MySqlCommand comando = new MySqlCommand(string.Format("UPDATE TrCITA SET ncodsucursal = '{0}', ncodpaciente = '{1}',  dfechacita = '{2}', choracita = '{3}', ncodempleado = '{4}', cestado = '{5}' WHERE ncodigocita = '{6}'",
+                                sSucursal, sPaciente, dtpActualizarCitas.Text, cmbActualizarHora.Text + ":" + cmbActualizarMinutos.Text, sEmpleado, cmbEstado.Text, grdCita.Rows[grdCita.CurrentCell.RowIndex].Cells[0].Value + ""), clasConexion.funConexion());
+                                comando.ExecuteNonQuery();
+                                MessageBox.Show("Se actualizo con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                funActualizar();
+                            }
+                        }
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se produjo un error al ingresar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -257,8 +270,11 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtCita.Text = "";
             funActualizar();
+            grpActualizar.Enabled = grpBuscar.Enabled = false;
+            cmbActualizarHora.Text = cmbActualizarMinutos.Text = cmbActualizarPaciente.Text = cmbAcutalizarEmpleado.Text = cmbActualizarSucursal.Text = cmbEstado.Text ="";
+            btnBuscar.Enabled = true;
+            btnActualizar.Enabled = false;
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -276,7 +292,7 @@ namespace Laboratorio
                     funActualizar();
                     MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     funActualizar();
-                    cmbActualizarPaciente.Text = cmbActualizarSucursal.Text = cmbActualizarHora.Text = cmbActualizarMinutos.Text = "";
+                    cmbActualizarHora.Text = cmbActualizarMinutos.Text = cmbActualizarPaciente.Text = cmbAcutalizarEmpleado.Text = cmbActualizarSucursal.Text = cmbEstado.Text = "";
                 }
             }
             catch
@@ -285,9 +301,430 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que Regresa al menu principal
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que havilita la seccion de busqueda por sucursal y deshabilita el resto
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void rbtnSucursal_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSucursal.Enabled = true;
+            txtNomEmpleado.Enabled = txtApePaciente.Enabled = txtApeEmpleado.Enabled = txtNomPaciente.Enabled = false;
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que havilita la seccion de busqueda por paciente y deshabilita el resto
+        ---------------------------------------------------------------------------------------------------------------------------------*/        
+        private void rbtnPaciente_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNomPaciente.Enabled = txtApePaciente.Enabled = true;
+            txtNomEmpleado.Enabled = txtApeEmpleado.Enabled = txtSucursal.Enabled = false;
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que havilita la seccion de busqueda por empleado y deshabilita el resto
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void rbtnEmpleado_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNomEmpleado.Enabled = txtApeEmpleado.Enabled = true;
+            txtNomPaciente.Enabled = txtApePaciente.Enabled = txtSucursal.Enabled = false;
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de sucursal, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtSucursal_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo, sFecha, sTiempo, sEstado, sPaciente, sSucursal, sEmpleado;
+            int iContador = 0;
+            grdCita.Rows.Clear();
+            try{
+                if (String.IsNullOrEmpty(txtSucursal.Text)){
+                    funActualizar();
+                }
+                else{
+                    MySqlCommand mComando = new MySqlCommand(String.Format(
+                    "SELECT * FROM TrCITA WHERE ncodsucursal = (SELECT ncodsucursal FROM MaSUCURSAL WHERE cnombresucursal LIKE '{0}%') AND dfechacita >= CURRENT_DATE()", txtSucursal.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read()){
+                        sCodigo = mReader.GetString(0);
+                        sFecha = mReader.GetString(1);
+                        sTiempo = mReader.GetString(2);
+                        sEstado = mReader.GetString(3);
+                        sPaciente = mReader.GetString(4);
+                        sSucursal = mReader.GetString(5);
+                        sEmpleado = mReader.GetString(6);
+                        String[] sFechaSola = sFecha.Split(' ');
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}')", sPaciente), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrEMPLEADO WHERE ncodempleado = '{0}')", sEmpleado), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sEmpleado = mReader2.GetString(0) + " " + mReader2.GetString(1); ;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}'", sSucursal), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sSucursal = mReader2.GetString(0);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        grdCita.Rows.Insert(iContador, sCodigo, sFechaSola[0], sTiempo, sEstado, sPaciente, sSucursal, sEmpleado);
+                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = sEmpleado = sEstado = "";
+                        iContador++;
+                    }
+                }
+            }
+            catch{
+                MessageBox.Show("Se produjo un error buscando sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de nombre paciente, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtNomPaciente_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo, sFecha, sTiempo, sEstado, sPaciente, sSucursal, sEmpleado;
+            int iContador = 0;
+            grdCita.Rows.Clear();
+            try
+            {
+                if (String.IsNullOrEmpty(txtNomPaciente.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT * FROM TrCITA WHERE ncodpaciente IN (SELECT ncodpaciente FROM TrPACIENTE WHERE ncodpersona IN (SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona LIKE '{0}%')) AND dfechacita >= CURRENT_DATE()", txtNomPaciente.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        sCodigo = mReader.GetString(0);
+                        sFecha = mReader.GetString(1);
+                        sTiempo = mReader.GetString(2);
+                        sEstado = mReader.GetString(3);
+                        sPaciente = mReader.GetString(4);
+                        sSucursal = mReader.GetString(5);
+                        sEmpleado = mReader.GetString(6);
+                        String[] sFechaSola = sFecha.Split(' ');
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}')", sPaciente), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrEMPLEADO WHERE ncodempleado = '{0}')", sEmpleado), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sEmpleado = mReader2.GetString(0) + " " + mReader2.GetString(1); ;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}'", sSucursal), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sSucursal = mReader2.GetString(0);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        grdCita.Rows.Insert(iContador, sCodigo, sFechaSola[0], sTiempo, sEstado, sPaciente, sSucursal, sEmpleado);
+                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = sEmpleado = sEstado = "";
+                        iContador++;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error buscando paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de apellido paciente, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtApePaciente_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo, sFecha, sTiempo, sEstado, sPaciente, sSucursal, sEmpleado;
+            int iContador = 0;
+            grdCita.Rows.Clear();
+            try
+            {
+                if (String.IsNullOrEmpty(txtApePaciente.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT * FROM TrCITA WHERE ncodpaciente IN (SELECT ncodpaciente FROM TrPACIENTE WHERE ncodpersona IN (SELECT ncodpersona FROM MaPERSONA WHERE capellidopersona LIKE '{0}%')) AND dfechacita >= CURRENT_DATE()", txtApePaciente.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        sCodigo = mReader.GetString(0);
+                        sFecha = mReader.GetString(1);
+                        sTiempo = mReader.GetString(2);
+                        sEstado = mReader.GetString(3);
+                        sPaciente = mReader.GetString(4);
+                        sSucursal = mReader.GetString(5);
+                        sEmpleado = mReader.GetString(6);
+                        String[] sFechaSola = sFecha.Split(' ');
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}')", sPaciente), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrEMPLEADO WHERE ncodempleado = '{0}')", sEmpleado), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sEmpleado = mReader2.GetString(0) + " " + mReader2.GetString(1); ;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}'", sSucursal), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sSucursal = mReader2.GetString(0);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        grdCita.Rows.Insert(iContador, sCodigo, sFechaSola[0], sTiempo, sEstado, sPaciente, sSucursal, sEmpleado);
+                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = sEmpleado = sEstado = "";
+                        iContador++;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error buscando paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de nombre empleado, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtNomEmpleado_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo, sFecha, sTiempo, sEstado, sPaciente, sSucursal, sEmpleado;
+            int iContador = 0;
+            grdCita.Rows.Clear();
+            try
+            {
+                if (String.IsNullOrEmpty(txtNomEmpleado.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT * FROM TrCITA WHERE ncodempleado IN (SELECT ncodempleado FROM TrEMPLEADO WHERE ncodpersona IN (SELECT ncodpersona FROM MaPERSONA WHERE cnombrepersona LIKE '{0}%')) AND dfechacita >= CURRENT_DATE() ", txtNomEmpleado.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        sCodigo = mReader.GetString(0);
+                        sFecha = mReader.GetString(1);
+                        sTiempo = mReader.GetString(2);
+                        sEstado = mReader.GetString(3);
+                        sPaciente = mReader.GetString(4);
+                        sSucursal = mReader.GetString(5);
+                        sEmpleado = mReader.GetString(6);
+                        String[] sFechaSola = sFecha.Split(' ');
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}')", sPaciente), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrEMPLEADO WHERE ncodempleado = '{0}')", sEmpleado), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sEmpleado = mReader2.GetString(0) + " " + mReader2.GetString(1); ;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}'", sSucursal), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sSucursal = mReader2.GetString(0);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        grdCita.Rows.Insert(iContador, sCodigo, sFechaSola[0], sTiempo, sEstado, sPaciente, sSucursal, sEmpleado);
+                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = sEmpleado = sEstado = "";
+                        iContador++;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error buscando empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de apellido empleado, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtApeEmpleado_KeyUp(object sender, KeyEventArgs e)
+        {
+            string sCodigo, sFecha, sTiempo, sEstado, sPaciente, sSucursal, sEmpleado;
+            int iContador = 0;
+            grdCita.Rows.Clear();
+            try
+            {
+                if (String.IsNullOrEmpty(txtApeEmpleado.Text))
+                {
+                    funActualizar();
+                }
+                else
+                {
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT * FROM TrCITA WHERE ncodempleado IN (SELECT ncodempleado FROM TrEMPLEADO WHERE ncodpersona IN (SELECT ncodpersona FROM MaPERSONA WHERE capellidopersona LIKE '{0}%')) AND dfechacita >= CURRENT_DATE() ", txtApeEmpleado.Text), clasConexion.funConexion());
+                    MySqlDataReader mReader = mComando.ExecuteReader();
+
+                    while (mReader.Read())
+                    {
+                        sCodigo = mReader.GetString(0);
+                        sFecha = mReader.GetString(1);
+                        sTiempo = mReader.GetString(2);
+                        sEstado = mReader.GetString(3);
+                        sPaciente = mReader.GetString(4);
+                        sSucursal = mReader.GetString(5);
+                        sEmpleado = mReader.GetString(6);
+                        String[] sFechaSola = sFecha.Split(' ');
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrPACIENTE WHERE ncodpaciente = '{0}')", sPaciente), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sPaciente = mReader2.GetString(0) + " " + mReader2.GetString(1);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombrepersona, capellidopersona FROM MaPERSONA WHERE ncodpersona = (SELECT ncodpersona FROM TrEMPLEADO WHERE ncodempleado = '{0}')", sEmpleado), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sEmpleado = mReader2.GetString(0) + " " + mReader2.GetString(1); ;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            MySqlCommand mComando2 = new MySqlCommand(String.Format("SELECT cnombresucursal FROM MaSUCURSAL WHERE ncodsucursal = '{0}'", sSucursal), clasConexion.funConexion());
+                            MySqlDataReader mReader2 = mComando2.ExecuteReader();
+                            if (mReader2.Read())
+                                sSucursal = mReader2.GetString(0);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se produjo un error al actualizar tabla sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        grdCita.Rows.Insert(iContador, sCodigo, sFechaSola[0], sTiempo, sEstado, sPaciente, sSucursal, sEmpleado);
+                        sCodigo = sSucursal = sPaciente = sFecha = sTiempo = sEmpleado = sEstado = "";
+                        iContador++;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Se produjo un error buscando empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }
