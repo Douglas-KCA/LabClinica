@@ -230,6 +230,12 @@
     <Compile Include="frmServicio.Designer.cs">
       <DependentUpon>frmServicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmServiciosCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmServiciosCita.Designer.cs">
+      <DependentUpon>frmServiciosCita.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTarifaSeguro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmServicio.resx">
       <DependentUpon>frmServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmServiciosCita.resx">
+      <DependentUpon>frmServiciosCita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTarifaSeguro.resx">
       <DependentUpon>frmTarifaSeguro.cs</DependentUpon>
