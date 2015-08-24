@@ -677,3 +677,8 @@ C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Lab
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
+C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
+C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
+C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
+C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
+C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmServiciosCita.resources

@@ -57,6 +57,7 @@
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(459, 20);
             this.txtTipo.TabIndex = 32;
+            this.txtTipo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTipo_KeyUp);
             // 
             // lblTipo
             // 
