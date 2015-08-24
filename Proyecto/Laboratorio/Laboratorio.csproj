@@ -158,6 +158,12 @@
     <Compile Include="frmConsultaTipoExamen.Designer.cs">
       <DependentUpon>frmConsultaTipoExamen.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConultaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConultaUsuario.Designer.cs">
+      <DependentUpon>frmConultaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaTipoExamen.resx">
       <DependentUpon>frmConsultaTipoExamen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConultaUsuario.resx">
+      <DependentUpon>frmConultaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>

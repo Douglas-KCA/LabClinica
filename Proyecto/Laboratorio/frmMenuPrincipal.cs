@@ -233,7 +233,8 @@ namespace Laboratorio
 
         private void consultarYModificarToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-
+            frmConultaUsuario ver = new frmConultaUsuario();
+            ver.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
