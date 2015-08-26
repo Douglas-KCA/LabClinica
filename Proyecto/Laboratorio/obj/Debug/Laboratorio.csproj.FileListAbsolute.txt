@@ -677,13 +677,11 @@ C:\Users\Josue\Desktop\3ra Entrega\LabClinica\Proyecto\Laboratorio\obj\Debug\Lab
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
-<<<<<<< HEAD
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
 C:\Users\kevin\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmServiciosCita.resources
-=======
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\itextsharp.xml
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmAnalisis.resources
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaAnalisis.resources
@@ -691,4 +689,5 @@ C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Labora
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmFactura.resources
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmUsuario.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConultaUsuario.resources
->>>>>>> master
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConultaUsuario.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmServiciosCita.resources
