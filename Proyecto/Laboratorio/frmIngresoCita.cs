@@ -170,6 +170,8 @@ namespace Laboratorio
                                                         
                             frmServiciosCita ver = new frmServiciosCita();
                             ver.txtNombrePaciente.Text = cmbPaciente.SelectedItem.ToString();
+                            ver.sFecha = dtpCitas.Text;
+                            ver.sCodigoPacienteFactura = sCodigoPaciente;
                             this.Close();
                             ver.Show();
                         }
