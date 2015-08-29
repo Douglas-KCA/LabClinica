@@ -102,5 +102,13 @@ namespace Laboratorio
         {
             this.Close();
         }
+
+        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmBuscarEmpleado ver = new frmBuscarEmpleado();
+            ver.sFramePadre = "frmUsuario";
+            ver.Show();
+        }
     }
 }

@@ -161,8 +161,8 @@ namespace Laboratorio
                             dtpCitas.Text, cmbHora.Text + ":" + cmbMinutos.Text, "Activa", sCodigoPaciente, sCodigoSucursal, sCodigoEmpleado), clasConexion.funConexion());
                             comando.ExecuteNonQuery();
                             
-                            MySqlCommand comando2 = new MySqlCommand(string.Format("INSERT into MaFACTURA (ctipofactura, dfechafactura, ncodpaciente) values ('{0}','{1}','{2}')",
-                            sTipoFact, dateTime.ToString("d"), sCodigoPaciente), clasConexion.funConexion());
+                            MySqlCommand comando2 = new MySqlCommand(string.Format("INSERT into MaFACTURA (ctipofactura, dfechafactura, ncodpaciente, cestado) values ('{0}','{1}','{2}','{3}')",
+                            sTipoFact, dateTime.ToString("d"), sCodigoPaciente, "ACTIVA"), clasConexion.funConexion());
                             comando2.ExecuteNonQuery();
 
                             MessageBox.Show("La cita se Genero con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);

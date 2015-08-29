@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaCita));
             this.grdCita = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ubicacionSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -37,6 +44,10 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.grpActualizar = new System.Windows.Forms.GroupBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.cmbAcutalizarEmpleado = new System.Windows.Forms.ComboBox();
             this.lblEmpleado = new System.Windows.Forms.Label();
@@ -64,17 +75,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ubicacionSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdCita)).BeginInit();
             this.panel1.SuspendLayout();
             this.grpActualizar.SuspendLayout();
@@ -97,6 +97,43 @@
             this.grdCita.Size = new System.Drawing.Size(906, 221);
             this.grdCita.TabIndex = 1;
             this.grdCita.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCita_CellEnter);
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // Hora
+            // 
+            this.Hora.HeaderText = "Hora";
+            this.Hora.Name = "Hora";
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            // 
+            // ubicacionSucursal
+            // 
+            this.ubicacionSucursal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ubicacionSucursal.HeaderText = "Paciente";
+            this.ubicacionSucursal.Name = "ubicacionSucursal";
+            // 
+            // nombreSucursal
+            // 
+            this.nombreSucursal.HeaderText = "Sucursal";
+            this.nombreSucursal.Name = "nombreSucursal";
+            // 
+            // Empleado
+            // 
+            this.Empleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Empleado.HeaderText = "Empleado";
+            this.Empleado.Name = "Empleado";
             // 
             // panel1
             // 
@@ -206,6 +243,46 @@
             this.grpActualizar.TabIndex = 38;
             this.grpActualizar.TabStop = false;
             this.grpActualizar.Text = "Actualizar";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activa",
+            "Cancelada"});
+            this.cmbEstado.Location = new System.Drawing.Point(678, 64);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(192, 21);
+            this.cmbEstado.TabIndex = 47;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(596, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 19);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Estado:";
+            // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(877, 26);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(21, 21);
+            this.button3.TabIndex = 45;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(548, 27);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(21, 21);
+            this.button2.TabIndex = 44;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -502,82 +579,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Sucursal:";
             // 
-            // button2
-            // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(548, 27);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(21, 21);
-            this.button2.TabIndex = 44;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(877, 26);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(21, 21);
-            this.button3.TabIndex = 45;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(596, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 19);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "Estado:";
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Activa",
-            "Cancelada"});
-            this.cmbEstado.Location = new System.Drawing.Point(678, 64);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(192, 21);
-            this.cmbEstado.TabIndex = 47;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            // 
-            // Hora
-            // 
-            this.Hora.HeaderText = "Hora";
-            this.Hora.Name = "Hora";
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            // 
-            // ubicacionSucursal
-            // 
-            this.ubicacionSucursal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ubicacionSucursal.HeaderText = "Paciente";
-            this.ubicacionSucursal.Name = "ubicacionSucursal";
-            // 
-            // nombreSucursal
-            // 
-            this.nombreSucursal.HeaderText = "Sucursal";
-            this.nombreSucursal.Name = "nombreSucursal";
-            // 
-            // Empleado
-            // 
-            this.Empleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Empleado.HeaderText = "Empleado";
-            this.Empleado.Name = "Empleado";
-            // 
             // frmConsultaCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,8 +612,8 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.GroupBox grpActualizar;
-        private System.Windows.Forms.ComboBox cmbActualizarPaciente;
-        private System.Windows.Forms.ComboBox cmbActualizarSucursal;
+        public System.Windows.Forms.ComboBox cmbActualizarPaciente;
+        public System.Windows.Forms.ComboBox cmbActualizarSucursal;
         private System.Windows.Forms.Label lblActualizarHora;
         private System.Windows.Forms.Label lblActualizarFecha;
         private System.Windows.Forms.Label lblActualizarPaciente;
@@ -622,7 +623,7 @@
         private System.Windows.Forms.ComboBox cmbActualizarMinutos;
         private System.Windows.Forms.Label lblDosPuntos;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.ComboBox cmbAcutalizarEmpleado;
+        public System.Windows.Forms.ComboBox cmbAcutalizarEmpleado;
         private System.Windows.Forms.Label lblEmpleado;
         private System.Windows.Forms.GroupBox grpBuscar;
         private System.Windows.Forms.Label label1;

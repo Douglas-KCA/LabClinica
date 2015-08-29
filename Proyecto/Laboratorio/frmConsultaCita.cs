@@ -727,5 +727,13 @@ namespace Laboratorio
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmBuscarEmpleado buscar = new frmBuscarEmpleado();
+            buscar.sFramePadre = "frmConsultaCita";
+            buscar.Show();
+            //this.Hide();
+        }
+
     }
 }
