@@ -63,6 +63,7 @@
             this.btnBuscarEmpleado.Size = new System.Drawing.Size(21, 21);
             this.btnBuscarEmpleado.TabIndex = 62;
             this.btnBuscarEmpleado.UseVisualStyleBackColor = true;
+            this.btnBuscarEmpleado.Click += new System.EventHandler(this.btnBuscarEmpleado_Click);
             // 
             // btnGenerar
             // 
@@ -115,7 +116,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblDpi;
-        private System.Windows.Forms.ComboBox cmbPaciente;
+        public  System.Windows.Forms.ComboBox cmbPaciente;
         private System.Windows.Forms.Button btnBuscarEmpleado;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnHome;

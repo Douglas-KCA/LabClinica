@@ -246,6 +246,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(192, 20);
             this.txtApellido.TabIndex = 56;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             this.txtApellido.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApellido_KeyUp);
             // 
             // lblApellido
@@ -265,6 +266,7 @@
             this.txtMuestra.Name = "txtMuestra";
             this.txtMuestra.Size = new System.Drawing.Size(167, 20);
             this.txtMuestra.TabIndex = 54;
+            this.txtMuestra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMuestra_KeyPress);
             this.txtMuestra.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMuestra_KeyUp);
             // 
             // txtNombre
@@ -273,6 +275,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(192, 20);
             this.txtNombre.TabIndex = 53;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyUp);
             // 
             // rbtnMuestra
