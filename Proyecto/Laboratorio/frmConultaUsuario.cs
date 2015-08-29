@@ -13,8 +13,8 @@ namespace Laboratorio
 {
 /*---------------------------------------------------------------------------------------------------------------------------------
   Programador y Analista: Josue Revolorio
-* Fecha de asignacion: 03/08/2015
-* Fecha de entrega: 06/08/2015
+  Fecha de asignacion: 03/08/2015
+  Fecha de entrega: 06/08/2015
 ---------------------------------------------------------------------------------------------------------------------------------*/
     public partial class frmConultaUsuario : Form
     {
