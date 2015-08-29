@@ -57,8 +57,9 @@
             // 
             this.txtEmisor.Location = new System.Drawing.Point(213, 15);
             this.txtEmisor.Name = "txtEmisor";
+            this.txtEmisor.ReadOnly = true;
             this.txtEmisor.Size = new System.Drawing.Size(177, 20);
-            this.txtEmisor.TabIndex = 61;
+            this.txtEmisor.TabIndex = 10;
             // 
             // lblPassword
             // 
@@ -76,8 +77,9 @@
             this.txtPass.Location = new System.Drawing.Point(490, 17);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
+            this.txtPass.ReadOnly = true;
             this.txtPass.Size = new System.Drawing.Size(177, 20);
-            this.txtPass.TabIndex = 63;
+            this.txtPass.TabIndex = 11;
             // 
             // label1
             // 
@@ -95,7 +97,7 @@
             this.txtReceptor.Location = new System.Drawing.Point(213, 45);
             this.txtReceptor.Name = "txtReceptor";
             this.txtReceptor.Size = new System.Drawing.Size(177, 20);
-            this.txtReceptor.TabIndex = 65;
+            this.txtReceptor.TabIndex = 1;
             // 
             // label2
             // 
@@ -113,7 +115,7 @@
             this.txtAsunto.Location = new System.Drawing.Point(213, 71);
             this.txtAsunto.Name = "txtAsunto";
             this.txtAsunto.Size = new System.Drawing.Size(177, 20);
-            this.txtAsunto.TabIndex = 67;
+            this.txtAsunto.TabIndex = 2;
             // 
             // label3
             // 
@@ -193,7 +195,7 @@
             this.btnAdjuntar.Location = new System.Drawing.Point(592, 97);
             this.btnAdjuntar.Name = "btnAdjuntar";
             this.btnAdjuntar.Size = new System.Drawing.Size(75, 20);
-            this.btnAdjuntar.TabIndex = 70;
+            this.btnAdjuntar.TabIndex = 3;
             this.btnAdjuntar.Text = "...";
             this.btnAdjuntar.UseVisualStyleBackColor = true;
             this.btnAdjuntar.Click += new System.EventHandler(this.button1_Click);
@@ -205,7 +207,7 @@
             this.txtCuerpo.Name = "txtCuerpo";
             this.txtCuerpo.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtCuerpo.Size = new System.Drawing.Size(516, 122);
-            this.txtCuerpo.TabIndex = 71;
+            this.txtCuerpo.TabIndex = 4;
             // 
             // panel1
             // 
@@ -226,7 +228,7 @@
             this.btnHome.Location = new System.Drawing.Point(12, 143);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(110, 50);
-            this.btnHome.TabIndex = 10;
+            this.btnHome.TabIndex = 7;
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHome.UseVisualStyleBackColor = true;

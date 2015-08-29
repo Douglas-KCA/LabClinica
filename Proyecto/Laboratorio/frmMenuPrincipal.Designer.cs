@@ -57,6 +57,7 @@
             this.mReporte = new System.Windows.Forms.ToolStripMenuItem();
             this.pacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimaVisitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.correoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mAnalisis = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarYModificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +88,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.label1 = new System.Windows.Forms.Label();
-            this.correoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -306,6 +307,7 @@
             // 
             this.mReporte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pacienteToolStripMenuItem,
+            this.examenToolStripMenuItem,
             this.correoToolStripMenuItem});
             this.mReporte.Font = new System.Drawing.Font("Calibri", 12F);
             this.mReporte.Name = "mReporte";
@@ -326,6 +328,13 @@
             this.ultimaVisitaToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.ultimaVisitaToolStripMenuItem.Text = "Ultima Visita";
             this.ultimaVisitaToolStripMenuItem.Click += new System.EventHandler(this.ultimaVisitaToolStripMenuItem_Click);
+            // 
+            // correoToolStripMenuItem
+            // 
+            this.correoToolStripMenuItem.Name = "correoToolStripMenuItem";
+            this.correoToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.correoToolStripMenuItem.Text = "Correo";
+            this.correoToolStripMenuItem.Click += new System.EventHandler(this.correoToolStripMenuItem_Click);
             // 
             // mAnalisis
             // 
@@ -581,12 +590,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
-            // correoToolStripMenuItem
+            // examenToolStripMenuItem
             // 
-            this.correoToolStripMenuItem.Name = "correoToolStripMenuItem";
-            this.correoToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.correoToolStripMenuItem.Text = "Correo";
-            this.correoToolStripMenuItem.Click += new System.EventHandler(this.correoToolStripMenuItem_Click);
+            this.examenToolStripMenuItem.Name = "examenToolStripMenuItem";
+            this.examenToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.examenToolStripMenuItem.Text = "Examen";
+            this.examenToolStripMenuItem.Click += new System.EventHandler(this.examenToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -676,5 +685,6 @@
         private System.Windows.Forms.ToolStripMenuItem ultimaVisitaToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem correoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem examenToolStripMenuItem;
     }
 }
