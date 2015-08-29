@@ -57,7 +57,7 @@ namespace Laboratorio
             iTextSharp.text.Font fFontSubTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             iTextSharp.text.Font fFontCuerpo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\Img\laboratoriologo.png");
+            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\laboratoriologo.png");
             imagenEncabezado.Alignment = Element.ALIGN_LEFT;
             imagenEncabezado.ScaleToFit(50f, 50f);
 

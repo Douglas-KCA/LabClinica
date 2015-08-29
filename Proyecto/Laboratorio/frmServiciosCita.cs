@@ -209,7 +209,7 @@ namespace Laboratorio
             // Creamos el documento con el tamaño de página tradicional
             Document doc = new Document(PageSize.LETTER);
             // Indicamos donde vamos a guardar el documento
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\DylanIsaac\Desktop\Factura-" + txtNombrePaciente.Text + ".pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Factura-" + txtNombrePaciente.Text + ".pdf", FileMode.Create));
 
             // Le colocamos el título y el autor
             // **Nota: Esto no será visible en el documento
