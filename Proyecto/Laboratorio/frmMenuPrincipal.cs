@@ -12,6 +12,7 @@ namespace Laboratorio
 {
     public partial class frmMenuPrincipal : Form
     {
+        clasUsuario u = new clasUsuario();
         public frmMenuPrincipal(String tipo)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Laboratorio
                 mAnalisis.Enabled = false;
                 mOtros.Enabled = false;
             }
+            label1.Text = u.SCodigo;
         }
 
         public frmMenuPrincipal()

@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="clasConexion.cs" />
     <Compile Include="clasTipoUsuario.cs" />
+    <Compile Include="clasUsuario.cs" />
     <Compile Include="frmAnalisis.cs">
       <SubType>Form</SubType>
     </Compile>
