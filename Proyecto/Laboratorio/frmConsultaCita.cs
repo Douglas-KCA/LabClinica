@@ -735,5 +735,13 @@ namespace Laboratorio
             //this.Hide();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmBuscarPaciente ver = new frmBuscarPaciente("frmConsultaCita", cmbActualizarSucursal.Text, cmbAcutalizarEmpleado.Text, 
+                dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.Show();
+            this.Close();
+        }
+
     }
 }

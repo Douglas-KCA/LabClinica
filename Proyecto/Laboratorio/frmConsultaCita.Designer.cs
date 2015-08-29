@@ -283,6 +283,7 @@
             this.button2.Size = new System.Drawing.Size(21, 21);
             this.button2.TabIndex = 44;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -611,16 +612,16 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.GroupBox grpActualizar;
+        public System.Windows.Forms.GroupBox grpActualizar;
         public System.Windows.Forms.ComboBox cmbActualizarPaciente;
         public System.Windows.Forms.ComboBox cmbActualizarSucursal;
         private System.Windows.Forms.Label lblActualizarHora;
         private System.Windows.Forms.Label lblActualizarFecha;
         private System.Windows.Forms.Label lblActualizarPaciente;
         private System.Windows.Forms.Label lblActualizarSucursal;
-        private System.Windows.Forms.DateTimePicker dtpActualizarCitas;
-        private System.Windows.Forms.ComboBox cmbActualizarHora;
-        private System.Windows.Forms.ComboBox cmbActualizarMinutos;
+        public System.Windows.Forms.DateTimePicker dtpActualizarCitas;
+        public System.Windows.Forms.ComboBox cmbActualizarHora;
+        public System.Windows.Forms.ComboBox cmbActualizarMinutos;
         private System.Windows.Forms.Label lblDosPuntos;
         private System.Windows.Forms.Button btnHome;
         public System.Windows.Forms.ComboBox cmbAcutalizarEmpleado;
@@ -642,7 +643,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cmbEstado;
+        public System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
