@@ -273,5 +273,11 @@ namespace Laboratorio
             frmEnviarReporte ver = new frmEnviarReporte();
             ver.Show();
         }
+
+        private void examenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteTipoExamen ver = new frmReporteTipoExamen();
+            ver.Show();
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace Laboratorio
         public frmEnviarReporte()
         {
             InitializeComponent();
+            txtEmisor.Text = "health.test.laboratory@gmail.com";
+            txtPass.Text = "Cocodrilo";
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -34,7 +36,8 @@ namespace Laboratorio
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtAsunto.Text = txtCuerpo.Text = txtEmisor.Text = txtPass.Text = txtReceptor.Text = "";
+            txtAsunto.Text = txtCuerpo.Text = txtReceptor.Text = "";
+            txtAdjunto.Clear();
         }
 
         private void btnHome_Click(object sender, EventArgs e)

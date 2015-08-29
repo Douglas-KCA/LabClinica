@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteTipoExamen));
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnBuscarEmpleado = new System.Windows.Forms.Button();
-            this.cmbPaciente = new System.Windows.Forms.ComboBox();
+            this.cmbTipoExamen = new System.Windows.Forms.ComboBox();
             this.lblTipoExamen = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -48,6 +48,7 @@
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // btnBuscarEmpleado
             // 
@@ -58,13 +59,14 @@
             this.btnBuscarEmpleado.TabIndex = 66;
             this.btnBuscarEmpleado.UseVisualStyleBackColor = true;
             // 
-            // cmbPaciente
+            // cmbTipoExamen
             // 
-            this.cmbPaciente.FormattingEnabled = true;
-            this.cmbPaciente.Location = new System.Drawing.Point(100, 10);
-            this.cmbPaciente.Name = "cmbPaciente";
-            this.cmbPaciente.Size = new System.Drawing.Size(189, 21);
-            this.cmbPaciente.TabIndex = 65;
+            this.cmbTipoExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoExamen.FormattingEnabled = true;
+            this.cmbTipoExamen.Location = new System.Drawing.Point(100, 10);
+            this.cmbTipoExamen.Name = "cmbTipoExamen";
+            this.cmbTipoExamen.Size = new System.Drawing.Size(189, 21);
+            this.cmbTipoExamen.TabIndex = 65;
             // 
             // lblTipoExamen
             // 
@@ -89,6 +91,7 @@
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmReporteTipoExamen
             // 
@@ -100,7 +103,7 @@
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.btnBuscarEmpleado);
-            this.Controls.Add(this.cmbPaciente);
+            this.Controls.Add(this.cmbTipoExamen);
             this.Controls.Add(this.lblTipoExamen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmReporteTipoExamen";
@@ -115,7 +118,7 @@
 
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnBuscarEmpleado;
-        private System.Windows.Forms.ComboBox cmbPaciente;
+        private System.Windows.Forms.ComboBox cmbTipoExamen;
         private System.Windows.Forms.Label lblTipoExamen;
         private System.Windows.Forms.Button btnHome;
     }
