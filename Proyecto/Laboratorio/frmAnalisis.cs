@@ -66,8 +66,11 @@ namespace Laboratorio
         private void funReporteAnalisis()
         {
             Document doc = new Document(PageSize.LETTER);
-            //PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
             PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
+            //String path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //String ruta = path + @"\Analisis-"+cmbEtiqueta+".pdf";
+            //PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@ruta, FileMode.Create));
+
             doc.AddTitle("Analisis "+cmbEtiqueta.Text);
             doc.AddCreator("Josue Revolorio");
             doc.Open();
@@ -75,8 +78,11 @@ namespace Laboratorio
             iTextSharp.text.Font fFontTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             iTextSharp.text.Font fFontSubTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             iTextSharp.text.Font fFontCuerpo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-            
-            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\Img\laboratoriologo.png");
+
+            //string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //C:\Users\Usuario\Documents
+            //string ruta2 = mdoc + @"\GitHub\LabClinica\Proyecto\Laboratorio\Img\laboratoriologo.png";
+            //iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(ruta2);
+            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\laboratoriologo.png");
             imagenEncabezado.Alignment = Element.ALIGN_LEFT;
             imagenEncabezado.ScaleToFit(50f, 50f);
 
