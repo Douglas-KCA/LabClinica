@@ -356,9 +356,9 @@ namespace Laboratorio
             writer.Close();
 
             //INSERCION EN LA TABLA DE DEUDA
-            string cero = "0";
+            int iCero = 0;
             MySqlCommand comando2 = new MySqlCommand(string.Format("INSERT into MaDEUDA (ntotaldeuda, nsaldodeuda, ncodfactura, ncodtipopago, ccantpago) values ('{0}','{1}','{2}','{3}','{4}')",
-            iTotal, iTotal, sCodigoFactura, null, cero), clasConexion.funConexion());
+            iTotal, iTotal, sCodigoFactura, null, iCero), clasConexion.funConexion());
             comando2.ExecuteNonQuery();
 
         }
