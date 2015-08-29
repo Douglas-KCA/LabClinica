@@ -22,6 +22,8 @@ namespace Laboratorio
         {
             InitializeComponent();
             funActualizar();
+            btnActualizar.Enabled = false;
+            grpActualizar.Enabled = false;
         }
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que toma los valores de la fila seleccionada en el grid para mostrarlos en los campos de texto de edicion
@@ -30,10 +32,9 @@ namespace Laboratorio
         {
             txtActualizarNombre.Text = grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[1].Value + "";
             txtActualizarUbicacion.Text = grdSucursal.Rows[grdSucursal.CurrentCell.RowIndex].Cells[2].Value + "";
-
+            btnActualizar.Enabled = true;
+            grpActualizar.Enabled = true;
         }
-
-        
 
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que pobla el grid con los datos de la BD
@@ -125,6 +126,8 @@ namespace Laboratorio
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
+            btnActualizar.Enabled = false;
+            grpActualizar.Enabled = false;
             funActualizar();
         }
         

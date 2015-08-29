@@ -74,11 +74,29 @@
     <Compile Include="frmAnalisis.Designer.cs">
       <DependentUpon>frmAnalisis.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarEmpleado.Designer.cs">
+      <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConsultaAnalisis.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmConsultaAnalisis.Designer.cs">
       <DependentUpon>frmConsultaAnalisis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaContactoEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaContactoEmpleado.Designer.cs">
+      <DependentUpon>frmConsultaContactoEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaContactoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaContactoPaciente.Designer.cs">
+      <DependentUpon>frmConsultaContactoPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConsultaPacienteEtiqueta.cs">
       <SubType>Form</SubType>
@@ -158,6 +176,12 @@
     <Compile Include="frmConsultaTipoExamen.Designer.cs">
       <DependentUpon>frmConsultaTipoExamen.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConultaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConultaUsuario.Designer.cs">
+      <DependentUpon>frmConultaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +236,18 @@
     <Compile Include="frmPuesto.Designer.cs">
       <DependentUpon>frmPuesto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRealizarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRealizarPago.Designer.cs">
+      <DependentUpon>frmRealizarPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteUltimaVisita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteUltimaVisita.Designer.cs">
+      <DependentUpon>frmReporteUltimaVisita.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSeguro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +259,12 @@
     </Compile>
     <Compile Include="frmServicio.Designer.cs">
       <DependentUpon>frmServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmServiciosCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmServiciosCita.Designer.cs">
+      <DependentUpon>frmServiciosCita.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTarifaSeguro.cs">
       <SubType>Form</SubType>
@@ -259,8 +301,17 @@
     <EmbeddedResource Include="frmAnalisis.resx">
       <DependentUpon>frmAnalisis.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarEmpleado.resx">
+      <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaAnalisis.resx">
       <DependentUpon>frmConsultaAnalisis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaContactoEmpleado.resx">
+      <DependentUpon>frmConsultaContactoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaContactoPaciente.resx">
+      <DependentUpon>frmConsultaContactoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaPacienteEtiqueta.resx">
       <DependentUpon>frmConsultaPacienteEtiqueta.cs</DependentUpon>
@@ -301,6 +352,9 @@
     <EmbeddedResource Include="frmConsultaTipoExamen.resx">
       <DependentUpon>frmConsultaTipoExamen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConultaUsuario.resx">
+      <DependentUpon>frmConultaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,11 +382,20 @@
     <EmbeddedResource Include="frmPuesto.resx">
       <DependentUpon>frmPuesto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRealizarPago.resx">
+      <DependentUpon>frmRealizarPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteUltimaVisita.resx">
+      <DependentUpon>frmReporteUltimaVisita.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSeguro.resx">
       <DependentUpon>frmSeguro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmServicio.resx">
       <DependentUpon>frmServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmServiciosCita.resx">
+      <DependentUpon>frmServiciosCita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTarifaSeguro.resx">
       <DependentUpon>frmTarifaSeguro.cs</DependentUpon>

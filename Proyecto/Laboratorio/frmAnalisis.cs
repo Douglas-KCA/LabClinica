@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace Laboratorio
 {
@@ -60,6 +63,46 @@ namespace Laboratorio
             }
         }
 
+        private void funReporteAnalisis()
+        {
+            Document doc = new Document(PageSize.LETTER);
+            //PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
+            doc.AddTitle("Analisis "+cmbEtiqueta.Text);
+            doc.AddCreator("Josue Revolorio");
+            doc.Open();
+            
+            iTextSharp.text.Font fFontTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font fFontSubTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font fFontCuerpo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            
+            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\Img\laboratoriologo.png");
+            imagenEncabezado.Alignment = Element.ALIGN_LEFT;
+            imagenEncabezado.ScaleToFit(50f, 50f);
+
+            doc.Add(imagenEncabezado);
+            
+            Paragraph parrafoTitulo = new Paragraph("RESULTADOS DE ANALISIS",fFontTitulo);
+            parrafoTitulo.Alignment = Element.ALIGN_CENTER;
+            doc.Add(parrafoTitulo);
+            
+            Paragraph parrafoSubTitulo = new Paragraph("\n" + (cmbEtiqueta.Text).ToUpper()+
+                "\n________________________________________________________________________________", fFontSubTitulo);
+            parrafoSubTitulo.Alignment = Element.ALIGN_CENTER;
+            doc.Add(parrafoSubTitulo);
+            
+            Paragraph parrafoCuerpo = new Paragraph(txtAnalisis.Text, fFontCuerpo);
+            doc.Add(parrafoCuerpo);
+
+            
+            
+
+            doc.Close();
+            writer.Close();
+            
+
+        }
+
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -107,12 +150,13 @@ namespace Laboratorio
                             txtAnalisis.Text, sEtiqueta), clasConexion.funConexion());
                         comando.ExecuteNonQuery();
                         MessageBox.Show("El analisis se guardo exitosamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtAnalisis.Text = "";
+                        funReporteAnalisis();
+                        txtAnalisis.Text = cmbEtiqueta.Text = "";
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Se produjo un error " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

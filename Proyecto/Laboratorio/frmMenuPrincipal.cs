@@ -233,12 +233,37 @@ namespace Laboratorio
 
         private void consultarYModificarToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-
+            frmConultaUsuario ver = new frmConultaUsuario();
+            ver.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, helpProvider1.HelpNamespace, HelpNavigator.Topic, "Manual de usuario");
+        }
+
+        private void realizarPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRealizarPago ver = new frmRealizarPago();
+            ver.Show();
+        }
+
+        private void modificarContactoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaContactoPaciente ver = new frmConsultaContactoPaciente();
+            ver.Show();
+        }
+
+        private void modificarContactoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaContactoEmpleado ver = new frmConsultaContactoEmpleado();
+            ver.Show();
+        }
+
+        private void ultimaVisitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteUltimaVisita ver = new frmReporteUltimaVisita();
+            ver.Show();
         }
     }
 }

@@ -87,6 +87,9 @@ namespace Laboratorio
             String sCodigoEmpleado = "";
             String sPoliza = "";
             String sTipoFact = "";
+            String sNombre = "";
+            String sApellido = "";
+            String sNombreCompleto = "";
             DateTime dateTime = DateTime.Today;
 
             if (String.IsNullOrEmpty(cmbSucursal.Text) || String.IsNullOrEmpty(cmbPaciente.Text) || String.IsNullOrEmpty(cmbHora.Text) || String.IsNullOrEmpty(cmbMinutos.Text)){
@@ -158,12 +161,19 @@ namespace Laboratorio
                             dtpCitas.Text, cmbHora.Text + ":" + cmbMinutos.Text, "Activa", sCodigoPaciente, sCodigoSucursal, sCodigoEmpleado), clasConexion.funConexion());
                             comando.ExecuteNonQuery();
                             
-                            MySqlCommand comando2 = new MySqlCommand(string.Format("INSERT into MaFACTURA (ctipofactura, dfechafactura, ncodpaciente) values ('{0}','{1}','{2}')",
-                            sTipoFact, dateTime.ToString("d"), sCodigoPaciente), clasConexion.funConexion());
+                            MySqlCommand comando2 = new MySqlCommand(string.Format("INSERT into MaFACTURA (ctipofactura, dfechafactura, ncodpaciente, cestado) values ('{0}','{1}','{2}','{3}')",
+                            sTipoFact, dateTime.ToString("d"), sCodigoPaciente, "ACTIVA"), clasConexion.funConexion());
                             comando2.ExecuteNonQuery();
 
                             MessageBox.Show("La cita se Genero con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             cmbHora.Text = cmbMinutos.Text = cmbPaciente.Text = cmbEmpleado.Text = cmbSucursal.Text = "";
+                                                        
+                            frmServiciosCita ver = new frmServiciosCita();
+                            ver.txtNombrePaciente.Text = cmbPaciente.SelectedItem.ToString();
+                            ver.sFecha = dtpCitas.Text;
+                            ver.sCodigoPacienteFactura = sCodigoPaciente;
+                            this.Close();
+                            ver.Show();
                         }
                     }
                 }

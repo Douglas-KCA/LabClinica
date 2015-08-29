@@ -16,7 +16,6 @@ namespace Laboratorio
      * Fecha de asignacion: 03/08/2015
      * Fecha de entrega: 07/08/2015
     ---------------------------------------------------------------------------------------------------------------------------------*/
-
     public partial class frmUsuario : Form
     {
         public frmUsuario()
@@ -24,7 +23,9 @@ namespace Laboratorio
             InitializeComponent();
             funCargarCombos();
         }
-
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los datos a los combos del programa al iniciar el form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void funCargarCombos()
         {
             String sNombre;
@@ -44,11 +45,9 @@ namespace Laboratorio
             }
         }
 
-        private void frmUsuario_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que guarda los datos de la sucursal en la BD y las añade a la tabla en el form 
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             String sEmpleado = "";
@@ -88,14 +87,28 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que limpia los textbox o combobox
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = txtPass.Text = cmbEmpleado.Text = cmbTipo.Text = "";
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que Regresa al menu principal
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmBuscarEmpleado ver = new frmBuscarEmpleado();
+            ver.sFramePadre = "frmUsuario";
+            ver.Show();
         }
     }
 }

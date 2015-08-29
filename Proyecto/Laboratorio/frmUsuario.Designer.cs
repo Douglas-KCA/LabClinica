@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.btnAgragarEtiqueta = new System.Windows.Forms.Label();
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
             this.lblEmpleado = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -42,6 +41,7 @@
             this.lblTipo = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.btnBuscarEmpleado = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,20 +63,12 @@
             this.lblNombre.TabIndex = 54;
             this.lblNombre.Text = "Nombre Usuario:";
             // 
-            // btnAgragarEtiqueta
-            // 
-            this.btnAgragarEtiqueta.Image = ((System.Drawing.Image)(resources.GetObject("btnAgragarEtiqueta.Image")));
-            this.btnAgragarEtiqueta.Location = new System.Drawing.Point(650, 76);
-            this.btnAgragarEtiqueta.Name = "btnAgragarEtiqueta";
-            this.btnAgragarEtiqueta.Size = new System.Drawing.Size(25, 26);
-            this.btnAgragarEtiqueta.TabIndex = 53;
-            // 
             // cmbEmpleado
             // 
             this.cmbEmpleado.FormattingEnabled = true;
             this.cmbEmpleado.Location = new System.Drawing.Point(285, 77);
             this.cmbEmpleado.Name = "cmbEmpleado";
-            this.cmbEmpleado.Size = new System.Drawing.Size(360, 21);
+            this.cmbEmpleado.Size = new System.Drawing.Size(330, 21);
             this.cmbEmpleado.TabIndex = 52;
             // 
             // lblEmpleado
@@ -185,18 +177,28 @@
             this.cmbTipo.Size = new System.Drawing.Size(360, 21);
             this.cmbTipo.TabIndex = 60;
             // 
+            // btnBuscarEmpleado
+            // 
+            this.btnBuscarEmpleado.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarEmpleado.Image")));
+            this.btnBuscarEmpleado.Location = new System.Drawing.Point(621, 77);
+            this.btnBuscarEmpleado.Name = "btnBuscarEmpleado";
+            this.btnBuscarEmpleado.Size = new System.Drawing.Size(21, 21);
+            this.btnBuscarEmpleado.TabIndex = 61;
+            this.btnBuscarEmpleado.UseVisualStyleBackColor = true;
+            this.btnBuscarEmpleado.Click += new System.EventHandler(this.btnBuscarEmpleado_Click);
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 261);
             this.ControlBox = false;
+            this.Controls.Add(this.btnBuscarEmpleado);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.btnAgragarEtiqueta);
             this.Controls.Add(this.cmbEmpleado);
             this.Controls.Add(this.lblEmpleado);
             this.Controls.Add(this.panel1);
@@ -205,7 +207,6 @@
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuarios";
-            this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -216,8 +217,7 @@
 
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label btnAgragarEtiqueta;
-        private System.Windows.Forms.ComboBox cmbEmpleado;
+        public System.Windows.Forms.ComboBox cmbEmpleado;
         private System.Windows.Forms.Label lblEmpleado;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnHome;
@@ -227,5 +227,6 @@
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.ComboBox cmbTipo;
+        private System.Windows.Forms.Button btnBuscarEmpleado;
     }
 }
