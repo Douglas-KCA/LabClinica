@@ -81,6 +81,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.pacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ultimaVisitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarContactoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarContactoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.realizarPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -108,7 +113,8 @@
             // 
             this.mPaciente.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbmIngresarPaciente,
-            this.sbmModificarPaciente});
+            this.sbmModificarPaciente,
+            this.modificarContactoToolStripMenuItem});
             this.mPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mPaciente.Name = "mPaciente";
             this.mPaciente.Size = new System.Drawing.Size(77, 23);
@@ -132,7 +138,8 @@
             // 
             this.mEmpleado.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbmIngresarEmpleado,
-            this.sbmModificarEmpleado});
+            this.sbmModificarEmpleado,
+            this.modificarContactoToolStripMenuItem1});
             this.mEmpleado.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mEmpleado.Name = "mEmpleado";
             this.mEmpleado.Size = new System.Drawing.Size(85, 23);
@@ -155,7 +162,8 @@
             // mFactura
             // 
             this.mFactura.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.smGenerarFactura});
+            this.smGenerarFactura,
+            this.realizarPagoToolStripMenuItem});
             this.mFactura.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mFactura.Name = "mFactura";
             this.mFactura.Size = new System.Drawing.Size(69, 23);
@@ -164,7 +172,7 @@
             // smGenerarFactura
             // 
             this.smGenerarFactura.Name = "smGenerarFactura";
-            this.smGenerarFactura.Size = new System.Drawing.Size(130, 24);
+            this.smGenerarFactura.Size = new System.Drawing.Size(166, 24);
             this.smGenerarFactura.Text = "Generar";
             this.smGenerarFactura.Click += new System.EventHandler(this.smGenerarFactura_Click);
             // 
@@ -273,6 +281,8 @@
             // 
             // mReporte
             // 
+            this.mReporte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pacienteToolStripMenuItem});
             this.mReporte.Font = new System.Drawing.Font("Calibri", 12F);
             this.mReporte.Name = "mReporte";
             this.mReporte.Size = new System.Drawing.Size(72, 23);
@@ -523,6 +533,42 @@
             // 
             this.helpProvider1.HelpNamespace = "C:\\Users\\Diego\\Desktop\\3ra Entrega\\ayuda\\Manual de Usuaro.chm";
             // 
+            // pacienteToolStripMenuItem
+            // 
+            this.pacienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ultimaVisitaToolStripMenuItem});
+            this.pacienteToolStripMenuItem.Name = "pacienteToolStripMenuItem";
+            this.pacienteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.pacienteToolStripMenuItem.Text = "Paciente";
+            // 
+            // ultimaVisitaToolStripMenuItem
+            // 
+            this.ultimaVisitaToolStripMenuItem.Name = "ultimaVisitaToolStripMenuItem";
+            this.ultimaVisitaToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.ultimaVisitaToolStripMenuItem.Text = "Ultima Visita";
+            this.ultimaVisitaToolStripMenuItem.Click += new System.EventHandler(this.ultimaVisitaToolStripMenuItem_Click);
+            // 
+            // modificarContactoToolStripMenuItem
+            // 
+            this.modificarContactoToolStripMenuItem.Name = "modificarContactoToolStripMenuItem";
+            this.modificarContactoToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
+            this.modificarContactoToolStripMenuItem.Text = "Modificar Contacto";
+            this.modificarContactoToolStripMenuItem.Click += new System.EventHandler(this.modificarContactoToolStripMenuItem_Click);
+            // 
+            // modificarContactoToolStripMenuItem1
+            // 
+            this.modificarContactoToolStripMenuItem1.Name = "modificarContactoToolStripMenuItem1";
+            this.modificarContactoToolStripMenuItem1.Size = new System.Drawing.Size(216, 24);
+            this.modificarContactoToolStripMenuItem1.Text = "Modificar Contacto";
+            this.modificarContactoToolStripMenuItem1.Click += new System.EventHandler(this.modificarContactoToolStripMenuItem1_Click);
+            // 
+            // realizarPagoToolStripMenuItem
+            // 
+            this.realizarPagoToolStripMenuItem.Name = "realizarPagoToolStripMenuItem";
+            this.realizarPagoToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.realizarPagoToolStripMenuItem.Text = "Realizar Pago";
+            this.realizarPagoToolStripMenuItem.Click += new System.EventHandler(this.realizarPagoToolStripMenuItem_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,5 +649,10 @@
         private System.Windows.Forms.ToolStripMenuItem consultarYModificarToolStripMenuItem5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ToolStripMenuItem modificarContactoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarContactoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem realizarPagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pacienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ultimaVisitaToolStripMenuItem;
     }
 }

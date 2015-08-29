@@ -48,7 +48,7 @@ namespace Laboratorio
             String[] Nombres = cmbPaciente.Text.Split(' ');
 
             Document doc = new Document(PageSize.LETTER);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\Josue\Desktop\UltimaVisita-" + cmbPaciente.Text + ".pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("UltimaVisita"+cmbPaciente.Text + ".pdf", FileMode.Create));
             doc.AddTitle("Ultima Visita " + cmbPaciente.Text);
             doc.AddCreator("Josue Revolorio");
             doc.Open();
