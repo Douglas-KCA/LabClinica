@@ -67,7 +67,7 @@ namespace Laboratorio
         {
             Document doc = new Document(PageSize.LETTER);
             //PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\Josue\Desktop\Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
             doc.AddTitle("Analisis "+cmbEtiqueta.Text);
             doc.AddCreator("Josue Revolorio");
             doc.Open();
