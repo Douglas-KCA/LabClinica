@@ -694,6 +694,11 @@ C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\L
 C:\Users\Usuario\Documents\GitHub\LabClinica\Proyecto\Laboratorio\bin\Debug\Laboratorio.exe.config
 C:\Users\Usuario\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.exe
 C:\Users\Usuario\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.pdb
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarEmpleado.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaContactoEmpleado.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaContactoPaciente.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmRealizarPago.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmReporteUltimaVisita.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarEmpleado.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaContactoEmpleado.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmConsultaContactoPaciente.resources
