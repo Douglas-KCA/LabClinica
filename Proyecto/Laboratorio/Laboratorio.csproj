@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clasConexion.cs" />
+    <Compile Include="clasCorreo.cs" />
     <Compile Include="clasTipoUsuario.cs" />
     <Compile Include="clasUsuario.cs" />
     <Compile Include="frmAnalisis.cs">
@@ -188,6 +189,12 @@
     </Compile>
     <Compile Include="frmEmpleados.Designer.cs">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnviarReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnviarReporte.Designer.cs">
+      <DependentUpon>frmEnviarReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEtiqueta.cs">
       <SubType>Form</SubType>
@@ -358,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnviarReporte.resx">
+      <DependentUpon>frmEnviarReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEtiqueta.resx">
       <DependentUpon>frmEtiqueta.cs</DependentUpon>

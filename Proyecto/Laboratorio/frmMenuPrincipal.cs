@@ -267,5 +267,11 @@ namespace Laboratorio
             frmReporteUltimaVisita ver = new frmReporteUltimaVisita();
             ver.Show();
         }
+
+        private void correoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEnviarReporte ver = new frmEnviarReporte();
+            ver.Show();
+        }
     }
 }

@@ -87,6 +87,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.label1 = new System.Windows.Forms.Label();
+            this.correoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -304,7 +305,8 @@
             // mReporte
             // 
             this.mReporte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pacienteToolStripMenuItem});
+            this.pacienteToolStripMenuItem,
+            this.correoToolStripMenuItem});
             this.mReporte.Font = new System.Drawing.Font("Calibri", 12F);
             this.mReporte.Name = "mReporte";
             this.mReporte.Size = new System.Drawing.Size(72, 23);
@@ -315,7 +317,7 @@
             this.pacienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ultimaVisitaToolStripMenuItem});
             this.pacienteToolStripMenuItem.Name = "pacienteToolStripMenuItem";
-            this.pacienteToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.pacienteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.pacienteToolStripMenuItem.Text = "Paciente";
             // 
             // ultimaVisitaToolStripMenuItem
@@ -579,6 +581,13 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
+            // correoToolStripMenuItem
+            // 
+            this.correoToolStripMenuItem.Name = "correoToolStripMenuItem";
+            this.correoToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.correoToolStripMenuItem.Text = "Correo";
+            this.correoToolStripMenuItem.Click += new System.EventHandler(this.correoToolStripMenuItem_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,5 +675,6 @@
         private System.Windows.Forms.ToolStripMenuItem pacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ultimaVisitaToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem correoToolStripMenuItem;
     }
 }
