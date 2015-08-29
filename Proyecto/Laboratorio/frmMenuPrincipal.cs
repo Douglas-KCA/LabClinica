@@ -12,6 +12,7 @@ namespace Laboratorio
 {
     public partial class frmMenuPrincipal : Form
     {
+        clasUsuario u = new clasUsuario();
         public frmMenuPrincipal(String tipo)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Laboratorio
                 mAnalisis.Enabled = false;
                 mOtros.Enabled = false;
             }
+            label1.Text = u.SCodigo;
         }
 
         public frmMenuPrincipal()
@@ -263,6 +265,12 @@ namespace Laboratorio
         private void ultimaVisitaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReporteUltimaVisita ver = new frmReporteUltimaVisita();
+            ver.Show();
+        }
+
+        private void correoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEnviarReporte ver = new frmEnviarReporte();
             ver.Show();
         }
     }
