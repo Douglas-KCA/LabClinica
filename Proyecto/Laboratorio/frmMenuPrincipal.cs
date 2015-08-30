@@ -276,7 +276,17 @@ namespace Laboratorio
 
         private void examenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             frmReporteTipoExamen ver = new frmReporteTipoExamen();
+            ver.Show();
+        }
+
+        private void disponibilidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteDisponibilidad ver = new frmReporteDisponibilidad();
             ver.Show();
         }
     }

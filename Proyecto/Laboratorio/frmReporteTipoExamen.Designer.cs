@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteTipoExamen));
             this.btnGenerar = new System.Windows.Forms.Button();
-            this.btnBuscarEmpleado = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbTipoExamen = new System.Windows.Forms.ComboBox();
             this.lblTipoExamen = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
@@ -50,14 +50,14 @@
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
-            // btnBuscarEmpleado
+            // btnBuscar
             // 
-            this.btnBuscarEmpleado.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarEmpleado.Image")));
-            this.btnBuscarEmpleado.Location = new System.Drawing.Point(295, 12);
-            this.btnBuscarEmpleado.Name = "btnBuscarEmpleado";
-            this.btnBuscarEmpleado.Size = new System.Drawing.Size(21, 21);
-            this.btnBuscarEmpleado.TabIndex = 66;
-            this.btnBuscarEmpleado.UseVisualStyleBackColor = true;
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.Location = new System.Drawing.Point(295, 12);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(21, 21);
+            this.btnBuscar.TabIndex = 66;
+            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // cmbTipoExamen
             // 
@@ -102,7 +102,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnGenerar);
-            this.Controls.Add(this.btnBuscarEmpleado);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.cmbTipoExamen);
             this.Controls.Add(this.lblTipoExamen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -117,7 +117,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnGenerar;
-        private System.Windows.Forms.Button btnBuscarEmpleado;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ComboBox cmbTipoExamen;
         private System.Windows.Forms.Label lblTipoExamen;
         private System.Windows.Forms.Button btnHome;
