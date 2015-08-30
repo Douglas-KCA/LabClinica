@@ -82,13 +82,23 @@
     <Compile Include="frmBuscarEmpleado.Designer.cs">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBuscarEtiqueta.cs" />
-    <Compile Include="frmBuscarEtiqueta.Designer.cs">
+    <Compile Include="frmBuscarEtiqueta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarEtiqueta.designer.cs">
       <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBuscarPaciente.cs" />
-    <Compile Include="frmBuscarPaciente.Designer.cs">
+    <Compile Include="frmBuscarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarPaciente.designer.cs">
       <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarSucursal.Designer.cs">
+      <DependentUpon>frmBuscarSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConsultaAnalisis.cs">
       <SubType>Form</SubType>
@@ -337,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarPaciente.resx">
       <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarSucursal.resx">
+      <DependentUpon>frmBuscarSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaAnalisis.resx">
       <DependentUpon>frmConsultaAnalisis.cs</DependentUpon>

@@ -215,7 +215,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNombre;
+        public System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         public System.Windows.Forms.ComboBox cmbEmpleado;
         private System.Windows.Forms.Label lblEmpleado;
@@ -225,8 +225,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblTipo;
-        private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.ComboBox cmbTipo;
+        public System.Windows.Forms.TextBox txtPass;
+        public System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Button btnBuscarEmpleado;
     }
 }

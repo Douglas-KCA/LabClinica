@@ -19,14 +19,59 @@ namespace Laboratorio
     public partial class frmBuscarEmpleado : Form
     {
         public string sFramePadre;
-        Form fPadre;
-        public frmBuscarEmpleado(Form x)
+        public string sSucursal, sPaciente, sEmpleado, sFecha, sHora, sMinuto, sEstado;
+        public string sUsuario, sPass, sTipo;
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form cuando es abierto por el reporte de ultima visita
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        public frmBuscarEmpleado(String padre, String empleado, String usuario, String pass, String tipo)
         {
             InitializeComponent();
-            fPadre = x;
+            sFramePadre = padre;
+            sEmpleado = empleado;
+            sUsuario = usuario;
+            sPass = pass;
+            sTipo = tipo;
             funActualizar();
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form cuando es avierto por crear cita
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        public frmBuscarEmpleado(String padre, String sucursal, String paciente, String empleado, String hora, String minuto, String fecha)
+        {
+            InitializeComponent();
+            sFramePadre = padre;
+            sSucursal = sucursal;
+            sPaciente = paciente;
+            sEmpleado = empleado;
+            sHora = hora;
+            sMinuto = minuto;
+            sFecha = fecha;
+            funActualizar();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form cuando es avierto por consultaro o modificar cita
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        public frmBuscarEmpleado(String padre, String sucursal, String paciente, String empleado, String fecha, String hora, String minuto, String estado)
+        {
+            InitializeComponent();
+            sFramePadre = padre;
+            sSucursal = sucursal;
+            sPaciente = paciente;
+            sEmpleado = empleado;
+            sFecha = fecha;
+            sHora = hora;
+            sMinuto = minuto;
+            sEstado = estado;
+            funActualizar();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmBuscarEmpleado()
         {
             InitializeComponent();
@@ -74,10 +119,33 @@ namespace Laboratorio
             if (sFramePadre == "frmUsuario")
             {
                 frmUsuario ver = new frmUsuario();
-                ver.cmbEmpleado.Text = grdEmpleado.Rows[grdEmpleado.CurrentCell.RowIndex].Cells[1].Value + " ";
+                ver.cmbEmpleado.Text = grdEmpleado.Rows[grdEmpleado.CurrentCell.RowIndex].Cells[1].Value + "";
+                ver.txtNombre.Text = sUsuario;
+                ver.txtPass.Text = sPass;
+                ver.cmbTipo.Text = sTipo;
                 ver.Show();
             }else if(sFramePadre == "frmConsultaCita"){
-                
+                frmConsultaCita ver = new frmConsultaCita();
+                ver.cmbActualizarSucursal.Text = sSucursal;
+                ver.cmbAcutalizarEmpleado.Text = grdEmpleado.Rows[grdEmpleado.CurrentCell.RowIndex].Cells[1].Value + "";
+                ver.cmbActualizarPaciente.Text = sPaciente;
+                ver.dtpActualizarCitas.Text = sFecha;
+                ver.cmbActualizarHora.Text = sHora;
+                ver.cmbActualizarMinutos.Text = sMinuto;
+                ver.cmbEstado.Text = sEstado;
+                ver.grpActualizar.Enabled = true;
+                ver.Show();
+            }
+            else if (sFramePadre == "frmIngresoCita")
+            {
+                frmIngresoCita ver = new frmIngresoCita();
+                ver.cmbSucursal.Text = sSucursal;
+                ver.cmbPaciente.Text = sPaciente;
+                ver.cmbEmpleado.Text = grdEmpleado.Rows[grdEmpleado.CurrentCell.RowIndex].Cells[1].Value + "";
+                ver.dtpCitas.Text = sFecha;
+                ver.cmbHora.Text = sHora;
+                ver.cmbMinutos.Text = sMinuto;
+                ver.Show();
             }
             this.Close();
         }
@@ -97,9 +165,40 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnAtras_Click(object sender, EventArgs e)
         {
+            if (sFramePadre == "frmUsuario")
+            {
+                frmUsuario ver = new frmUsuario();
+                ver.cmbEmpleado.Text = sEmpleado;
+                ver.txtNombre.Text = sUsuario;
+                ver.txtPass.Text = sPass;
+                ver.cmbTipo.Text = sTipo;
+                ver.Show();
+            }
+            else if (sFramePadre == "frmConsultaCita")
+            {
+                frmConsultaCita ver = new frmConsultaCita();
+                ver.cmbActualizarSucursal.Text = sSucursal;
+                ver.cmbAcutalizarEmpleado.Text = sEmpleado;
+                ver.cmbActualizarPaciente.Text = sPaciente;
+                ver.dtpActualizarCitas.Text = sFecha;
+                ver.cmbActualizarHora.Text = sHora;
+                ver.cmbActualizarMinutos.Text = sMinuto;
+                ver.cmbEstado.Text = sEstado;
+                ver.grpActualizar.Enabled = true;
+                ver.Show();
+            }
+            else if (sFramePadre == "frmIngresoCita")
+            {
+                frmIngresoCita ver = new frmIngresoCita();
+                ver.cmbSucursal.Text = sSucursal;
+                ver.cmbPaciente.Text = sPaciente;
+                ver.cmbEmpleado.Text = sEmpleado;
+                ver.dtpCitas.Text = sFecha;
+                ver.cmbHora.Text = sHora;
+                ver.cmbMinutos.Text = sMinuto;
+                ver.Show();
+            }
             this.Close();
-            frmUsuario ver = new frmUsuario();
-            ver.Show();
         }
 
         /*---------------------------------------------------------------------------------------------------------------------------------
@@ -202,6 +301,9 @@ namespace Laboratorio
             btnCancelar.Enabled = true;
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de nombre empleado
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
@@ -212,6 +314,9 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de apellido empleado
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))

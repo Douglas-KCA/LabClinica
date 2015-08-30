@@ -293,6 +293,7 @@
             this.button1.Size = new System.Drawing.Size(21, 21);
             this.button1.TabIndex = 43;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmbAcutalizarEmpleado
             // 
@@ -461,6 +462,7 @@
             this.txtApeEmpleado.Name = "txtApeEmpleado";
             this.txtApeEmpleado.Size = new System.Drawing.Size(222, 20);
             this.txtApeEmpleado.TabIndex = 49;
+            this.txtApeEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApeEmpleado_KeyPress);
             this.txtApeEmpleado.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApeEmpleado_KeyUp);
             // 
             // txtApePaciente
@@ -469,6 +471,7 @@
             this.txtApePaciente.Name = "txtApePaciente";
             this.txtApePaciente.Size = new System.Drawing.Size(228, 20);
             this.txtApePaciente.TabIndex = 48;
+            this.txtApePaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApePaciente_KeyPress);
             this.txtApePaciente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApePaciente_KeyUp);
             // 
             // lblApeEmpleado
@@ -532,6 +535,7 @@
             this.txtNomEmpleado.Name = "txtNomEmpleado";
             this.txtNomEmpleado.Size = new System.Drawing.Size(222, 20);
             this.txtNomEmpleado.TabIndex = 45;
+            this.txtNomEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEmpleado_KeyPress);
             this.txtNomEmpleado.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomEmpleado_KeyUp);
             // 
             // txtNomPaciente
@@ -540,6 +544,7 @@
             this.txtNomPaciente.Name = "txtNomPaciente";
             this.txtNomPaciente.Size = new System.Drawing.Size(228, 20);
             this.txtNomPaciente.TabIndex = 44;
+            this.txtNomPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomPaciente_KeyPress);
             this.txtNomPaciente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomPaciente_KeyUp);
             // 
             // txtSucursal
