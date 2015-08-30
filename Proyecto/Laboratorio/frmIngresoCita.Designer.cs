@@ -255,6 +255,7 @@
             this.btnBuscarEmpleado.Size = new System.Drawing.Size(21, 21);
             this.btnBuscarEmpleado.TabIndex = 63;
             this.btnBuscarEmpleado.UseVisualStyleBackColor = true;
+            this.btnBuscarEmpleado.Click += new System.EventHandler(this.btnBuscarEmpleado_Click);
             // 
             // button1
             // 
@@ -264,6 +265,7 @@
             this.button1.Size = new System.Drawing.Size(21, 21);
             this.button1.TabIndex = 64;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -273,6 +275,7 @@
             this.button2.Size = new System.Drawing.Size(21, 21);
             this.button2.TabIndex = 65;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmIngresoCita
             // 
@@ -313,16 +316,16 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ComboBox cmbSucursal;
+        public System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.DateTimePicker dtpCitas;
+        public System.Windows.Forms.DateTimePicker dtpCitas;
         private System.Windows.Forms.Label lblDosPuntos;
-        private System.Windows.Forms.ComboBox cmbMinutos;
-        private System.Windows.Forms.ComboBox cmbHora;
-        private System.Windows.Forms.ComboBox cmbPaciente;
+        public System.Windows.Forms.ComboBox cmbMinutos;
+        public System.Windows.Forms.ComboBox cmbHora;
+        public System.Windows.Forms.ComboBox cmbPaciente;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.ComboBox cmbEmpleado;
+        public System.Windows.Forms.ComboBox cmbEmpleado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBuscarEmpleado;
         private System.Windows.Forms.Button button1;

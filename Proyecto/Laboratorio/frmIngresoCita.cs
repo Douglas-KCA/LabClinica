@@ -196,5 +196,26 @@ namespace Laboratorio
             this.Close();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmBuscarSucursal ver = new frmBuscarSucursal("frmIngresoCita", cmbSucursal.Text, cmbPaciente.Text, cmbEmpleado.Text, cmbHora.Text, cmbMinutos.Text, dtpCitas.Text);
+            ver.Show();
+            this.Close();
+        }
+
+        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            frmBuscarPaciente ver = new frmBuscarPaciente("frmIngresoCita", cmbSucursal.Text, cmbPaciente.Text, cmbEmpleado.Text, cmbHora.Text, cmbMinutos.Text, dtpCitas.Text);
+            ver.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmBuscarEmpleado ver = new frmBuscarEmpleado("frmIngresoCita", cmbSucursal.Text, cmbPaciente.Text, cmbEmpleado.Text, cmbHora.Text, cmbMinutos.Text, dtpCitas.Text);
+            ver.Show();
+            this.Close();
+        }
+
     }
 }

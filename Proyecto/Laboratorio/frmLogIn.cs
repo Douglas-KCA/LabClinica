@@ -19,6 +19,9 @@ namespace Laboratorio
     public partial class frmLogIn : Form
     {
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmLogIn()
         {
             InitializeComponent();
