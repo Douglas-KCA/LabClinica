@@ -67,7 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clasConexion.cs" />
+    <Compile Include="clasCorreo.cs" />
     <Compile Include="clasTipoUsuario.cs" />
+    <Compile Include="clasUsuario.cs" />
     <Compile Include="frmAnalisis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +81,24 @@
     </Compile>
     <Compile Include="frmBuscarEmpleado.Designer.cs">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarEtiqueta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarEtiqueta.designer.cs">
+      <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarPaciente.designer.cs">
+      <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarSucursal.Designer.cs">
+      <DependentUpon>frmBuscarSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConsultaAnalisis.cs">
       <SubType>Form</SubType>
@@ -188,6 +208,12 @@
     <Compile Include="frmEmpleados.Designer.cs">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEnviarReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnviarReporte.Designer.cs">
+      <DependentUpon>frmEnviarReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEtiqueta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +267,18 @@
     </Compile>
     <Compile Include="frmRealizarPago.Designer.cs">
       <DependentUpon>frmRealizarPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteDisponibilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteDisponibilidad.Designer.cs">
+      <DependentUpon>frmReporteDisponibilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteTipoExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteTipoExamen.Designer.cs">
+      <DependentUpon>frmReporteTipoExamen.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteUltimaVisita.cs">
       <SubType>Form</SubType>
@@ -304,6 +342,15 @@
     <EmbeddedResource Include="frmBuscarEmpleado.resx">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarEtiqueta.resx">
+      <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarPaciente.resx">
+      <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarSucursal.resx">
+      <DependentUpon>frmBuscarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaAnalisis.resx">
       <DependentUpon>frmConsultaAnalisis.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +405,9 @@
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEnviarReporte.resx">
+      <DependentUpon>frmEnviarReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEtiqueta.resx">
       <DependentUpon>frmEtiqueta.cs</DependentUpon>
     </EmbeddedResource>
@@ -384,6 +434,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRealizarPago.resx">
       <DependentUpon>frmRealizarPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteDisponibilidad.resx">
+      <DependentUpon>frmReporteDisponibilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteTipoExamen.resx">
+      <DependentUpon>frmReporteTipoExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteUltimaVisita.resx">
       <DependentUpon>frmReporteUltimaVisita.cs</DependentUpon>

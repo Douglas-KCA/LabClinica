@@ -14,16 +14,27 @@ using System.IO;
 
 namespace Laboratorio
 {
+/*---------------------------------------------------------------------------------------------------------------------------------
+  Programador y Analista: Josue Revolorio
+  * Fecha de asignacion: 03/08/2015
+  * Fecha de entrega: 06/08/2015
+---------------------------------------------------------------------------------------------------------------------------------*/
     public partial class frmReporteUltimaVisita : Form
     {
-        String sCodigo, sEmpleado, sExamen, sSucursal;
+        String sCodigo, sEmpleado, sExamen, sSucursal, path;
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmReporteUltimaVisita()
         {
             InitializeComponent();
             funCargarCombos();
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los datos a los combos del programa al iniciar el form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void funCargarCombos()
         {
             String sPaciente;
@@ -43,12 +54,19 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que guarda los datos de la sucursal en la BD y las añade a la tabla en el form 
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             String[] Nombres = cmbPaciente.Text.Split(' ');
 
             Document doc = new Document(PageSize.LETTER);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("UltimaVisita"+cmbPaciente.Text + ".pdf", FileMode.Create));
+            path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string ruta = path + "/UltimaVisita";
+
+
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(ruta+cmbPaciente.Text + ".pdf", FileMode.Create));
             doc.AddTitle("Ultima Visita " + cmbPaciente.Text);
             doc.AddCreator("Josue Revolorio");
             doc.Open();
@@ -57,7 +75,10 @@ namespace Laboratorio
             iTextSharp.text.Font fFontSubTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             iTextSharp.text.Font fFontCuerpo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\laboratoriologo.png");
+            string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //C:\Users\Usuario\Documents
+            string ruta2 = mdoc + "/GitHub/LabClinica/Proyecto/Laboratorio/Img/laboratoriologo.png";
+
+            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(ruta2);
             imagenEncabezado.Alignment = Element.ALIGN_LEFT;
             imagenEncabezado.ScaleToFit(50f, 50f);
 
@@ -122,6 +143,24 @@ namespace Laboratorio
             doc.Close();
             writer.Close();
 
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que Regresa al menu principal
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra el grid a partir del parametro que se indica en el textbox
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            frmBuscarPaciente ver = new frmBuscarPaciente("frmReporteUltimaVisita",cmbPaciente.Text);
+            ver.Show();
+            this.Close();
         }
     }
 }

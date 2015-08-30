@@ -19,6 +19,9 @@ namespace Laboratorio
 
     public partial class frmConsultaAnalisis : Form
     {
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmConsultaAnalisis()
         {
             InitializeComponent();
@@ -28,6 +31,7 @@ namespace Laboratorio
             grpActualizar.Enabled = false;
             txtApellido.Enabled = txtMuestra.Enabled = txtNombre.Enabled = false;
         }
+
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que toma los valores de la fila seleccionada en el grid para mostrarlos en los campos de texto de edicion
         ---------------------------------------------------------------------------------------------------------------------------------*/
@@ -59,6 +63,7 @@ namespace Laboratorio
                 MessageBox.Show("Se produjo un error cargando el analisis", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que pobla el grid con los datos de la BD
         ---------------------------------------------------------------------------------------------------------------------------------*/
@@ -133,6 +138,10 @@ namespace Laboratorio
             txtNombre.Enabled = txtApellido.Enabled = true;
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de nombre paciente, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
             string sCodigo, sDescripcion, sEtiqueta, sMuestra= "", sPaciente= "";
@@ -183,6 +192,10 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de apellido paciente, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void txtApellido_KeyUp(object sender, KeyEventArgs e)
         {
             string sCodigo, sDescripcion, sEtiqueta, sMuestra = "", sPaciente = "";
@@ -234,6 +247,10 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de muestra, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void txtMuestra_KeyUp(object sender, KeyEventArgs e)
         {
             string sCodigo, sDescripcion, sEtiqueta, sMuestra= "", sPaciente= "";
@@ -347,6 +364,45 @@ namespace Laboratorio
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de nombre paciente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de apellido paciente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de muestra
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtMuestra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
 
     }

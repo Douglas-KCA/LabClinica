@@ -19,6 +19,9 @@ namespace Laboratorio
     public partial class frmLogIn : Form
     {
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmLogIn()
         {
             InitializeComponent();
@@ -39,11 +42,13 @@ namespace Laboratorio
             {
                 try
                 {
-                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ctipousuario FROM TrUSUARIO WHERE cnombreusuario = '{0}' AND cpasswordusuario = '{1}' ", txtUsuario.Text, txtPass.Text), clasConexion.funConexion());
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT ctipousuario, ncodusuario FROM TrUSUARIO WHERE cnombreusuario = '{0}' AND cpasswordusuario = '{1}' ", txtUsuario.Text, txtPass.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
                     if (mReader.Read())
                     {
                         sTipo = mReader.GetString(0);
+                        clasUsuario u = new clasUsuario();
+                        u.SCodigo = mReader.GetString(1);
                         if (sTipo == "secre")
                         {
                             frmMenuPrincipal ver = new frmMenuPrincipal(sTipo);

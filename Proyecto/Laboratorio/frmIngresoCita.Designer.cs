@@ -45,6 +45,9 @@
             this.cmbPaciente = new System.Windows.Forms.ComboBox();
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBuscarEmpleado = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,7 +131,7 @@
             this.cmbSucursal.FormattingEnabled = true;
             this.cmbSucursal.Location = new System.Drawing.Point(246, 46);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(427, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(398, 21);
             this.cmbSucursal.TabIndex = 19;
             // 
             // lblFecha
@@ -222,7 +225,7 @@
             this.cmbPaciente.FormattingEnabled = true;
             this.cmbPaciente.Location = new System.Drawing.Point(246, 83);
             this.cmbPaciente.Name = "cmbPaciente";
-            this.cmbPaciente.Size = new System.Drawing.Size(427, 21);
+            this.cmbPaciente.Size = new System.Drawing.Size(398, 21);
             this.cmbPaciente.TabIndex = 31;
             // 
             // cmbEmpleado
@@ -230,7 +233,7 @@
             this.cmbEmpleado.FormattingEnabled = true;
             this.cmbEmpleado.Location = new System.Drawing.Point(245, 116);
             this.cmbEmpleado.Name = "cmbEmpleado";
-            this.cmbEmpleado.Size = new System.Drawing.Size(427, 21);
+            this.cmbEmpleado.Size = new System.Drawing.Size(399, 21);
             this.cmbEmpleado.TabIndex = 33;
             // 
             // label1
@@ -244,12 +247,45 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Empleado:";
             // 
+            // btnBuscarEmpleado
+            // 
+            this.btnBuscarEmpleado.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarEmpleado.Image")));
+            this.btnBuscarEmpleado.Location = new System.Drawing.Point(650, 83);
+            this.btnBuscarEmpleado.Name = "btnBuscarEmpleado";
+            this.btnBuscarEmpleado.Size = new System.Drawing.Size(21, 21);
+            this.btnBuscarEmpleado.TabIndex = 63;
+            this.btnBuscarEmpleado.UseVisualStyleBackColor = true;
+            this.btnBuscarEmpleado.Click += new System.EventHandler(this.btnBuscarEmpleado_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(651, 115);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(21, 21);
+            this.button1.TabIndex = 64;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(650, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(21, 21);
+            this.button2.TabIndex = 65;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmIngresoCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 241);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBuscarEmpleado);
             this.Controls.Add(this.cmbEmpleado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbPaciente);
@@ -280,16 +316,19 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ComboBox cmbSucursal;
+        public System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.DateTimePicker dtpCitas;
+        public System.Windows.Forms.DateTimePicker dtpCitas;
         private System.Windows.Forms.Label lblDosPuntos;
-        private System.Windows.Forms.ComboBox cmbMinutos;
-        private System.Windows.Forms.ComboBox cmbHora;
-        private System.Windows.Forms.ComboBox cmbPaciente;
+        public System.Windows.Forms.ComboBox cmbMinutos;
+        public System.Windows.Forms.ComboBox cmbHora;
+        public System.Windows.Forms.ComboBox cmbPaciente;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.ComboBox cmbEmpleado;
+        public System.Windows.Forms.ComboBox cmbEmpleado;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBuscarEmpleado;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

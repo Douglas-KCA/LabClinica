@@ -18,6 +18,9 @@ namespace Laboratorio
 ---------------------------------------------------------------------------------------------------------------------------------*/
     public partial class frmConsultaCita : Form
     {
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmConsultaCita()
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace Laboratorio
             grpBuscar.Enabled = false;
             grpActualizar.Enabled = false;
         }
+
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que carga los datos a los combos del programa al iniciar el form
         ---------------------------------------------------------------------------------------------------------------------------------*/
@@ -727,12 +731,90 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que abre un form para busqueda del empleado de una manera mas eficiente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void button3_Click(object sender, EventArgs e)
         {
-            frmBuscarEmpleado buscar = new frmBuscarEmpleado();
-            buscar.sFramePadre = "frmConsultaCita";
-            buscar.Show();
-            //this.Hide();
+            frmBuscarEmpleado ver = new frmBuscarEmpleado("frmConsultaCita", cmbActualizarSucursal.Text, cmbActualizarPaciente.Text,
+                cmbAcutalizarEmpleado.Text, dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.Show();
+            this.Close();
+            
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que abre un form para busqueda del paciente de una manera mas eficiente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmBuscarPaciente ver = new frmBuscarPaciente("frmConsultaCita", cmbActualizarSucursal.Text,cmbActualizarPaciente.Text, cmbAcutalizarEmpleado.Text, 
+                dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.Show();
+            this.Close();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que abre un form para busqueda de la sucursal de una manera mas eficiente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmBuscarSucursal ver = new frmBuscarSucursal("frmConsultaCita", cmbActualizarSucursal.Text,cmbAcutalizarEmpleado.Text, cmbActualizarPaciente.Text,
+                dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.Show();
+            this.Close();
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de nombre paciente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtNomPaciente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de apellido paciente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtApePaciente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de nombre empleado
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtNomEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que previene la escritura de numeros y simbolos en el textbox de apellido empleado
+        ---------------------------------------------------------------------------------------------------------------------------------*/
+        private void txtApeEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
 
     }

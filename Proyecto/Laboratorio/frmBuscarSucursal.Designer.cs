@@ -1,6 +1,6 @@
 ﻿namespace Laboratorio
 {
-    partial class frmBuscarEmpleado
+    partial class frmBuscarSucursal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,69 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarEmpleado));
-            this.grdEmpleado = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarSucursal));
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblCodigoPaciente = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.grdEmpleado)).BeginInit();
+            this.grdSucursal = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ubicacionSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSucursal)).BeginInit();
             this.SuspendLayout();
-            // 
-            // grdEmpleado
-            // 
-            this.grdEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.Nombre});
-            this.grdEmpleado.Location = new System.Drawing.Point(169, 62);
-            this.grdEmpleado.Name = "grdEmpleado";
-            this.grdEmpleado.Size = new System.Drawing.Size(482, 261);
-            this.grdEmpleado.TabIndex = 42;
-            this.grdEmpleado.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdEmpleado_RowEnter);
-            // 
-            // Codigo
-            // 
-            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Codigo.Width = 65;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(83, 26);
+            this.txtNombre.Location = new System.Drawing.Point(172, 12);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(229, 20);
-            this.txtNombre.TabIndex = 41;
-            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
+            this.txtNombre.Size = new System.Drawing.Size(482, 20);
+            this.txtNombre.TabIndex = 47;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscarPaciente_KeyUp);
+            this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyUp);
             // 
             // lblCodigoPaciente
             // 
             this.lblCodigoPaciente.AutoSize = true;
             this.lblCodigoPaciente.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigoPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPaciente.Location = new System.Drawing.Point(8, 27);
+            this.lblCodigoPaciente.Location = new System.Drawing.Point(84, 13);
             this.lblCodigoPaciente.Name = "lblCodigoPaciente";
             this.lblCodigoPaciente.Size = new System.Drawing.Size(64, 19);
-            this.lblCodigoPaciente.TabIndex = 40;
+            this.lblCodigoPaciente.TabIndex = 46;
             this.lblCodigoPaciente.Text = "Nombre:";
             // 
             // panel1
@@ -99,10 +69,10 @@
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Location = new System.Drawing.Point(12, 61);
+            this.panel1.Location = new System.Drawing.Point(15, 47);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(133, 261);
-            this.panel1.TabIndex = 39;
+            this.panel1.TabIndex = 45;
             // 
             // btnAtras
             // 
@@ -148,43 +118,51 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtApellido
+            // grdSucursal
             // 
-            this.txtApellido.Location = new System.Drawing.Point(393, 26);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(253, 20);
-            this.txtApellido.TabIndex = 44;
-            this.txtApellido.Enter += new System.EventHandler(this.txtApellido_Enter);
-            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
-            this.txtApellido.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApellido_KeyUp);
+            this.grdSucursal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdSucursal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.nombreSucursal,
+            this.ubicacionSucursal});
+            this.grdSucursal.Location = new System.Drawing.Point(172, 47);
+            this.grdSucursal.Name = "grdSucursal";
+            this.grdSucursal.Size = new System.Drawing.Size(482, 261);
+            this.grdSucursal.TabIndex = 48;
+            this.grdSucursal.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdSucursal_RowEnter);
             // 
-            // label1
+            // Codigo
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(318, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 19);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Apellido:";
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
             // 
-            // frmBuscarEmpleado
+            // nombreSucursal
+            // 
+            this.nombreSucursal.HeaderText = "Nombre";
+            this.nombreSucursal.Name = "nombreSucursal";
+            // 
+            // ubicacionSucursal
+            // 
+            this.ubicacionSucursal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ubicacionSucursal.HeaderText = "Ubicacion";
+            this.ubicacionSucursal.Name = "ubicacionSucursal";
+            // 
+            // frmBuscarSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 334);
-            this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.grdEmpleado);
+            this.ClientSize = new System.Drawing.Size(667, 320);
+            this.ControlBox = false;
+            this.Controls.Add(this.grdSucursal);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblCodigoPaciente);
             this.Controls.Add(this.panel1);
-            this.Name = "frmBuscarEmpleado";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "frmBuscarSucursal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmBuscarEmpleado";
-            ((System.ComponentModel.ISupportInitialize)(this.grdEmpleado)).EndInit();
+            this.Text = "frmBuscarSucursal";
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdSucursal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,18 +170,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grdEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblCodigoPaciente;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label label1;
-
-
+        private System.Windows.Forms.DataGridView grdSucursal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreSucursal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ubicacionSucursal;
     }
 }
