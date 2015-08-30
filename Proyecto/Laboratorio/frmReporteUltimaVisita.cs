@@ -128,5 +128,12 @@ namespace Laboratorio
         {
             this.Close();
         }
+
+        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            frmBuscarPaciente ver = new frmBuscarPaciente("frmReporteUltimaVisita");
+            ver.Show();
+            this.Close();
+        }
     }
 }

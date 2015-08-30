@@ -82,6 +82,14 @@
     <Compile Include="frmBuscarEmpleado.Designer.cs">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarEtiqueta.cs" />
+    <Compile Include="frmBuscarEtiqueta.Designer.cs">
+      <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarPaciente.cs" />
+    <Compile Include="frmBuscarPaciente.Designer.cs">
+      <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConsultaAnalisis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarEmpleado.resx">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarEtiqueta.resx">
+      <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarPaciente.resx">
+      <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaAnalisis.resx">
       <DependentUpon>frmConsultaAnalisis.cs</DependentUpon>

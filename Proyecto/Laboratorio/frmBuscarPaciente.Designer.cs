@@ -1,6 +1,6 @@
 ﻿namespace Laboratorio
 {
-    partial class frmBuscarEmpleado
+    partial class frmBuscarPaciente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarEmpleado));
-            this.grdEmpleado = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarPaciente));
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.grdPaciente = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -38,23 +40,41 @@
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.grdEmpleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPaciente)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grdEmpleado
+            // txtApellido
             // 
-            this.grdEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.txtApellido.Location = new System.Drawing.Point(395, 15);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(253, 20);
+            this.txtApellido.TabIndex = 50;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
+            this.txtApellido.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApellido_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(320, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 19);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Apellido:";
+            // 
+            // grdPaciente
+            // 
+            this.grdPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPaciente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Nombre});
-            this.grdEmpleado.Location = new System.Drawing.Point(169, 62);
-            this.grdEmpleado.Name = "grdEmpleado";
-            this.grdEmpleado.Size = new System.Drawing.Size(482, 261);
-            this.grdEmpleado.TabIndex = 42;
-            this.grdEmpleado.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdEmpleado_RowEnter);
+            this.grdPaciente.Location = new System.Drawing.Point(171, 51);
+            this.grdPaciente.Name = "grdPaciente";
+            this.grdPaciente.Size = new System.Drawing.Size(482, 261);
+            this.grdPaciente.TabIndex = 48;
+            this.grdPaciente.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPaciente_RowEnter_1);
             // 
             // Codigo
             // 
@@ -74,23 +94,22 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(83, 26);
+            this.txtNombre.Location = new System.Drawing.Point(85, 15);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(229, 20);
-            this.txtNombre.TabIndex = 41;
-            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
+            this.txtNombre.TabIndex = 47;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscarPaciente_KeyUp);
+            this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyUp);
             // 
             // lblCodigoPaciente
             // 
             this.lblCodigoPaciente.AutoSize = true;
             this.lblCodigoPaciente.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigoPaciente.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPaciente.Location = new System.Drawing.Point(8, 27);
+            this.lblCodigoPaciente.Location = new System.Drawing.Point(10, 16);
             this.lblCodigoPaciente.Name = "lblCodigoPaciente";
             this.lblCodigoPaciente.Size = new System.Drawing.Size(64, 19);
-            this.lblCodigoPaciente.TabIndex = 40;
+            this.lblCodigoPaciente.TabIndex = 46;
             this.lblCodigoPaciente.Text = "Nombre:";
             // 
             // panel1
@@ -99,10 +118,10 @@
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Location = new System.Drawing.Point(12, 61);
+            this.panel1.Location = new System.Drawing.Point(14, 50);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(133, 261);
-            this.panel1.TabIndex = 39;
+            this.panel1.TabIndex = 45;
             // 
             // btnAtras
             // 
@@ -148,42 +167,23 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtApellido
-            // 
-            this.txtApellido.Location = new System.Drawing.Point(393, 26);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(253, 20);
-            this.txtApellido.TabIndex = 44;
-            this.txtApellido.Enter += new System.EventHandler(this.txtApellido_Enter);
-            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
-            this.txtApellido.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApellido_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(318, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 19);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Apellido:";
-            // 
-            // frmBuscarEmpleado
+            // frmBuscarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 334);
+            this.ClientSize = new System.Drawing.Size(673, 329);
+            this.ControlBox = false;
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.grdEmpleado);
+            this.Controls.Add(this.grdPaciente);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblCodigoPaciente);
             this.Controls.Add(this.panel1);
-            this.Name = "frmBuscarEmpleado";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "frmBuscarPaciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmBuscarEmpleado";
-            ((System.ComponentModel.ISupportInitialize)(this.grdEmpleado)).EndInit();
+            this.Text = "frmBuscarPaciente";
+            ((System.ComponentModel.ISupportInitialize)(this.grdPaciente)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,7 +192,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grdEmpleado;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView grdPaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.TextBox txtNombre;
@@ -201,9 +203,5 @@
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label label1;
-
-
     }
 }

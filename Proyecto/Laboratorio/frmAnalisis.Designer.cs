@@ -37,7 +37,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblEtiqueta = new System.Windows.Forms.Label();
             this.cmbEtiqueta = new System.Windows.Forms.ComboBox();
-            this.btnAgragarEtiqueta = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,13 +133,15 @@
             this.cmbEtiqueta.Size = new System.Drawing.Size(404, 21);
             this.cmbEtiqueta.TabIndex = 39;
             // 
-            // btnAgragarEtiqueta
+            // button1
             // 
-            this.btnAgragarEtiqueta.Image = ((System.Drawing.Image)(resources.GetObject("btnAgragarEtiqueta.Image")));
-            this.btnAgragarEtiqueta.Location = new System.Drawing.Point(647, 16);
-            this.btnAgragarEtiqueta.Name = "btnAgragarEtiqueta";
-            this.btnAgragarEtiqueta.Size = new System.Drawing.Size(25, 26);
-            this.btnAgragarEtiqueta.TabIndex = 45;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(648, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(21, 21);
+            this.button1.TabIndex = 44;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmAnalisis
             // 
@@ -147,7 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 225);
             this.ControlBox = false;
-            this.Controls.Add(this.btnAgragarEtiqueta);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbEtiqueta);
             this.Controls.Add(this.lblEtiqueta);
             this.Controls.Add(this.panel1);
@@ -172,7 +174,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblEtiqueta;
-        private System.Windows.Forms.ComboBox cmbEtiqueta;
-        private System.Windows.Forms.Label btnAgragarEtiqueta;
+        public  System.Windows.Forms.ComboBox cmbEtiqueta;
+        private System.Windows.Forms.Button button1;
     }
 }

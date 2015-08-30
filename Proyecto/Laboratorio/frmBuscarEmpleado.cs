@@ -74,7 +74,7 @@ namespace Laboratorio
             if (sFramePadre == "frmUsuario")
             {
                 frmUsuario ver = new frmUsuario();
-                ver.cmbEmpleado.Text = grdEmpleado.Rows[grdEmpleado.CurrentCell.RowIndex].Cells[1].Value + "";
+                ver.cmbEmpleado.Text = grdEmpleado.Rows[grdEmpleado.CurrentCell.RowIndex].Cells[1].Value + " ";
                 ver.Show();
             }else if(sFramePadre == "frmConsultaCita"){
                 
@@ -116,7 +116,7 @@ namespace Laboratorio
                     funActualizar();
                 }
                 else{
-                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT MaPERSONA.cnombrepersona, MaPersona.capellidopersona, TrEmpleado.ncodempleado FROM MaPERSONA, TrEMPLEADO WHERE MaPERSONA.cnombrepersona LIKE '{0}%' AND MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona", txtNombre.Text), clasConexion.funConexion());
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT MaPERSONA.cnombrepersona, MaPersona.capellidopersona, TrEMPLEADO.ncodempleado FROM MaPERSONA, TrEMPLEADO WHERE MaPERSONA.cnombrepersona LIKE '{0}%' AND MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona", txtNombre.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read()){
@@ -153,7 +153,7 @@ namespace Laboratorio
                 }
                 else
                 {
-                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT MaPERSONA.cnombrepersona, MaPersona.capellidopersona, TrEmpleado.ncodempleado FROM MaPERSONA, TrEMPLEADO WHERE MaPERSONA.capellidopersona LIKE '{0}%' AND MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona", txtApellido.Text), clasConexion.funConexion());
+                    MySqlCommand mComando = new MySqlCommand(String.Format("SELECT MaPERSONA.cnombrepersona, MaPersona.capellidopersona, TrEMPLEADO.ncodempleado FROM MaPERSONA, TrEMPLEADO WHERE MaPERSONA.capellidopersona LIKE '{0}%' AND MaPERSONA.ncodpersona = TrEMPLEADO.ncodpersona", txtApellido.Text), clasConexion.funConexion());
                     MySqlDataReader mReader = mComando.ExecuteReader();
 
                     while (mReader.Read())
@@ -200,6 +200,26 @@ namespace Laboratorio
         {
             btnAceptar.Enabled = true;
             btnCancelar.Enabled = true;
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }
