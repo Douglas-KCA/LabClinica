@@ -289,5 +289,17 @@ namespace Laboratorio
             frmReporteDisponibilidad ver = new frmReporteDisponibilidad();
             ver.Show();
         }
+
+        private void registroClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteRegistroClientes ver = new frmReporteRegistroClientes();
+            ver.Show();
+        }
+
+        private void fechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteFechaHora ver = new frmReporteFechaHora();
+            ver.Show();
+        }
     }
 }
