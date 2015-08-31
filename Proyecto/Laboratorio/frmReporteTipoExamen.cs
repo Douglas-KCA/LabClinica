@@ -16,79 +16,20 @@ namespace Laboratorio
 {
     public partial class frmReporteTipoExamen : Form
     {
-        string sCodigo;
-        string sNombre;
+        public string sFormTipoExamen;
+        public string sFormNombreExamen;
+
         public frmReporteTipoExamen()
         {
             InitializeComponent();
-            funCmbTipoExamen();
+            llenar();
         }
 
-        void funCmbTipoExamen()
+        void llenar()
         {
-            string sCodigo;
-            string sNombre;
-            cmbTipoExamen.Items.Clear();
-
-            try
-            {
-                MySqlCommand mComando = new MySqlCommand(String.Format(
-                "SELECT ncodtipo, cdesctipoexamen FROM MaTIPOEXAMEN "), clasConexion.funConexion());
-                MySqlDataReader mReader = mComando.ExecuteReader();
-
-                    while (mReader.Read())
-                    {
-                        sCodigo = mReader.GetString(0);
-                        sNombre = mReader.GetString(1);
-                        cmbTipoExamen.Items.Add(sCodigo + ". " + sNombre);
-                        sCodigo = "";
-                        sNombre = "";
-                    } 
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            txtTipoExamen.Text = sFormTipoExamen + " " + sFormNombreExamen;
         }
 
-        void funCortador()
-        {
-            string sCadena = cmbTipoExamen.SelectedItem.ToString()+"(";
-            sCodigo = "";
-            sNombre = "";
-            int estado = 0;
-            //int cont = 0;
-            for (int i = 0; i < sCadena.Length; i++)
-            {
-                switch (estado)
-                {
-                    case 0:
-                        if (sCadena.Substring(i, 1) != ".")
-                        {
-                            sCodigo += sCadena.Substring(i, 1);
-                        }
-                        else
-                        {
-                            //System.Console.WriteLine(sCod);
-                            i++;
-                            estado = 1;
-                        }
-                    break;
-                    case 1:
-                        if (sCadena.Substring(i, 1) != "(")
-                        {
-                            sNombre += sCadena.Substring(i, 1);
-                        }
-                        else
-                        {
-                            //System.Console.WriteLine(sExamen);
-                            //cont = i;
-                        }
-                    break;
-
-                }
-            }
-        }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -97,12 +38,11 @@ namespace Laboratorio
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            funCortador();
             //System.Console.WriteLine("Codigo: "+sCodigo+" Nombre: "+sNombre);
             
             Document doc = new Document(PageSize.LETTER);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Reporte, Examen " + sNombre + ".pdf", FileMode.Create));
-            doc.AddTitle("Reporte Examen " + sNombre);
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Reporte, Examen " + sFormNombreExamen + ".pdf", FileMode.Create));
+            doc.AddTitle("Reporte Examen " + sFormNombreExamen);
             doc.AddCreator("Dylan Corado");
             doc.Open();
 
@@ -116,7 +56,7 @@ namespace Laboratorio
 
             doc.Add(imagenEncabezado);
 
-            Paragraph parrafoTitulo = new Paragraph("TIPO DE EXAMEN \n"+sNombre, fFontTitulo);
+            Paragraph parrafoTitulo = new Paragraph("TIPO DE EXAMEN \n"+sFormNombreExamen, fFontTitulo);
             parrafoTitulo.Alignment = Element.ALIGN_CENTER;
             doc.Add(parrafoTitulo);
 
@@ -150,7 +90,7 @@ namespace Laboratorio
 
             try
             {
-                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT MaPERSONA.cnombrepersona, MaPERSONA.capellidopersona, TrCITA.dfechacita, TrCITA.choracita FROM MaPERSONA, TrSERVICIO, TrPACIENTE, MaFACTURA, TrCITA WHERE MaPERSONA.ncodpersona = TrPACIENTE.ncodpersona AND MaFACTURA.ncodfactura = TrSERVICIO.ncodfactura AND MaFACTURA.ncodpaciente = TrPACIENTE.ncodpaciente AND TrSERVICIO.ncodigocita = TrCITA.ncodigocita AND TrSERVICIO.ncodtipo = '{0}'", sCodigo), clasConexion.funConexion());
+                MySqlCommand mComando = new MySqlCommand(String.Format("SELECT MaPERSONA.cnombrepersona, MaPERSONA.capellidopersona, TrCITA.dfechacita, TrCITA.choracita FROM MaPERSONA, TrSERVICIO, TrPACIENTE, MaFACTURA, TrCITA WHERE MaPERSONA.ncodpersona = TrPACIENTE.ncodpersona AND MaFACTURA.ncodfactura = TrSERVICIO.ncodfactura AND MaFACTURA.ncodpaciente = TrPACIENTE.ncodpaciente AND TrSERVICIO.ncodigocita = TrCITA.ncodigocita AND TrSERVICIO.ncodtipo = '{0}'", sFormTipoExamen), clasConexion.funConexion());
                 MySqlDataReader mReader = mComando.ExecuteReader();
 
                 string sNombrePaciente;
@@ -195,6 +135,13 @@ namespace Laboratorio
             
             
                 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBuscarExamen ver = new frmBuscarExamen();
+            ver.Show();
+            this.Close();
         }
     }
 }

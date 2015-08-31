@@ -709,6 +709,11 @@ C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\L
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEnviarReporte.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEnviarReporte.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmReporteDisponibilidad.resources
+<<<<<<< HEAD
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarEtiqueta.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarPaciente.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarExamen.resources
+=======
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarEmpleado.resources
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarEtiqueta.resources
 C:\Users\Diego\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarPaciente.resources
@@ -747,3 +752,4 @@ C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Labora
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmReporteFechaHora.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmReporteRegistroClientes.resources
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmReporteTipoExamen.resources
+>>>>>>> master

@@ -85,6 +85,21 @@
     <Compile Include="frmBuscarEtiqueta.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="frmBuscarEtiqueta.Designer.cs">
+      <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarExamen.Designer.cs">
+      <DependentUpon>frmBuscarExamen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarPaciente.Designer.cs">
+=======
     <Compile Include="frmBuscarEtiqueta.designer.cs">
       <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
     </Compile>
@@ -92,6 +107,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBuscarPaciente.designer.cs">
+>>>>>>> master
       <DependentUpon>frmBuscarPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBuscarSucursal.cs">
@@ -362,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarEtiqueta.resx">
       <DependentUpon>frmBuscarEtiqueta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarExamen.resx">
+      <DependentUpon>frmBuscarExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarPaciente.resx">
       <DependentUpon>frmBuscarPaciente.cs</DependentUpon>

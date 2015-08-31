@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteTipoExamen));
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.cmbTipoExamen = new System.Windows.Forms.ComboBox();
             this.lblTipoExamen = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
+            this.txtTipoExamen = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGenerar
@@ -53,20 +53,12 @@
             // btnBuscar
             // 
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(295, 12);
+            this.btnBuscar.Location = new System.Drawing.Point(295, 10);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(21, 21);
             this.btnBuscar.TabIndex = 66;
             this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // cmbTipoExamen
-            // 
-            this.cmbTipoExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoExamen.FormattingEnabled = true;
-            this.cmbTipoExamen.Location = new System.Drawing.Point(100, 10);
-            this.cmbTipoExamen.Name = "cmbTipoExamen";
-            this.cmbTipoExamen.Size = new System.Drawing.Size(189, 21);
-            this.cmbTipoExamen.TabIndex = 65;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // lblTipoExamen
             // 
@@ -93,6 +85,14 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // txtTipoExamen
+            // 
+            this.txtTipoExamen.Enabled = false;
+            this.txtTipoExamen.Location = new System.Drawing.Point(104, 10);
+            this.txtTipoExamen.Name = "txtTipoExamen";
+            this.txtTipoExamen.Size = new System.Drawing.Size(185, 20);
+            this.txtTipoExamen.TabIndex = 1;
+            // 
             // frmReporteTipoExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,10 +100,10 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(324, 119);
             this.ControlBox = false;
+            this.Controls.Add(this.txtTipoExamen);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.cmbTipoExamen);
             this.Controls.Add(this.lblTipoExamen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmReporteTipoExamen";
@@ -118,8 +118,8 @@
 
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.ComboBox cmbTipoExamen;
         private System.Windows.Forms.Label lblTipoExamen;
         private System.Windows.Forms.Button btnHome;
+        public System.Windows.Forms.TextBox txtTipoExamen;
     }
 }
