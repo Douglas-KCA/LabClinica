@@ -709,3 +709,6 @@ C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\L
 C:\Users\Josue\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEnviarReporte.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmEnviarReporte.resources
 C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmReporteDisponibilidad.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarEtiqueta.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarPaciente.resources
+C:\Users\DylanIsaac\Documents\GitHub\LabClinica\Proyecto\Laboratorio\obj\Debug\Laboratorio.frmBuscarExamen.resources
