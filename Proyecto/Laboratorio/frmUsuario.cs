@@ -112,6 +112,7 @@ namespace Laboratorio
         private void btnBuscarEmpleado_Click(object sender, EventArgs e)
         {
             frmBuscarEmpleado ver = new frmBuscarEmpleado("frmUsuario", cmbEmpleado.Text, txtNombre.Text, txtPass.Text, cmbTipo.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
         }

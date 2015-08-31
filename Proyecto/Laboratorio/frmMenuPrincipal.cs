@@ -36,6 +36,8 @@ namespace Laboratorio
         private void ingresarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPaciente ver = new frmPaciente();
+            ver.MdiParent = this;
+            pictureBox1.Visible = false;
             ver.Show();
         }
 

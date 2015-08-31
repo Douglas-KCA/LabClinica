@@ -738,6 +738,7 @@ namespace Laboratorio
         {
             frmBuscarEmpleado ver = new frmBuscarEmpleado("frmConsultaCita", cmbActualizarSucursal.Text, cmbActualizarPaciente.Text,
                 cmbAcutalizarEmpleado.Text, dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
             
@@ -750,6 +751,7 @@ namespace Laboratorio
         {
             frmBuscarPaciente ver = new frmBuscarPaciente("frmConsultaCita", cmbActualizarSucursal.Text,cmbActualizarPaciente.Text, cmbAcutalizarEmpleado.Text, 
                 dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
         }
@@ -761,6 +763,7 @@ namespace Laboratorio
         {
             frmBuscarSucursal ver = new frmBuscarSucursal("frmConsultaCita", cmbActualizarSucursal.Text,cmbAcutalizarEmpleado.Text, cmbActualizarPaciente.Text,
                 dtpActualizarCitas.Text, cmbActualizarHora.Text, cmbActualizarMinutos.Text, cmbEstado.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
         }

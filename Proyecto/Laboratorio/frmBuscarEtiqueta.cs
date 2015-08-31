@@ -103,6 +103,7 @@ namespace Laboratorio
             {
                 frmAnalisis ver = new frmAnalisis();
                 ver.cmbEtiqueta.Text = grdEtiqueta.Rows[grdEtiqueta.CurrentCell.RowIndex].Cells[1].Value + "-" + grdEtiqueta.Rows[grdEtiqueta.CurrentCell.RowIndex].Cells[2].Value;
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             this.Close();
@@ -125,6 +126,7 @@ namespace Laboratorio
             if (sFramePadre == "frmAnalisis")
             {
                 frmAnalisis ver = new frmAnalisis();
+                ver.MdiParent = this.MdiParent;
                 ver.cmbEtiqueta.Text = sEtiqueta;
                 ver.Show();
             }

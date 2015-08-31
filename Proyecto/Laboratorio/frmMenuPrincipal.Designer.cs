@@ -726,7 +726,7 @@
         private System.Windows.Forms.ToolStripMenuItem seguroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresoToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem consultaYModificacionToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem mFactura;
         private System.Windows.Forms.ToolStripMenuItem smGenerarFactura;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
