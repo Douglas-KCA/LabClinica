@@ -51,9 +51,6 @@
             this.mExamenes = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmExamenesIngresar = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmConsultaryModifExamenes = new System.Windows.Forms.ToolStripMenuItem();
-            this.mCotizacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbmIngresarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbmModificarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.mReporte = new System.Windows.Forms.ToolStripMenuItem();
             this.pacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimaVisitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +60,7 @@
             this.correoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mAnalisis = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarYModificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +91,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.label1 = new System.Windows.Forms.Label();
-            this.fechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sbmCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +105,6 @@
             this.mCitas,
             this.mMuestra,
             this.mExamenes,
-            this.mCotizacion,
             this.mReporte,
             this.mAnalisis,
             this.mOtros});
@@ -285,36 +282,14 @@
             this.sbmConsultaryModifExamenes.Text = "Modificar y Consultar";
             this.sbmConsultaryModifExamenes.Click += new System.EventHandler(this.sbmConsultaryModifExamenes_Click);
             // 
-            // mCotizacion
-            // 
-            this.mCotizacion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sbmIngresarCotizacion,
-            this.sbmModificarCotizacion});
-            this.mCotizacion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mCotizacion.Name = "mCotizacion";
-            this.mCotizacion.Size = new System.Drawing.Size(88, 23);
-            this.mCotizacion.Text = "Cotizacion";
-            this.mCotizacion.Click += new System.EventHandler(this.mCotizacion_Click);
-            // 
-            // sbmIngresarCotizacion
-            // 
-            this.sbmIngresarCotizacion.Name = "sbmIngresarCotizacion";
-            this.sbmIngresarCotizacion.Size = new System.Drawing.Size(216, 24);
-            this.sbmIngresarCotizacion.Text = "Ingresar";
-            // 
-            // sbmModificarCotizacion
-            // 
-            this.sbmModificarCotizacion.Name = "sbmModificarCotizacion";
-            this.sbmModificarCotizacion.Size = new System.Drawing.Size(216, 24);
-            this.sbmModificarCotizacion.Text = "Modificar y Consultar";
-            // 
             // mReporte
             // 
             this.mReporte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pacienteToolStripMenuItem,
             this.examenToolStripMenuItem,
             this.correoToolStripMenuItem,
-            this.clientesToolStripMenuItem});
+            this.clientesToolStripMenuItem,
+            this.sbmCotizacion});
             this.mReporte.Font = new System.Drawing.Font("Calibri", 12F);
             this.mReporte.Name = "mReporte";
             this.mReporte.Size = new System.Drawing.Size(72, 23);
@@ -381,6 +356,13 @@
             this.registroClientesToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.registroClientesToolStripMenuItem.Text = "Registro Clientes";
             this.registroClientesToolStripMenuItem.Click += new System.EventHandler(this.registroClientesToolStripMenuItem_Click);
+            // 
+            // fechaToolStripMenuItem
+            // 
+            this.fechaToolStripMenuItem.Name = "fechaToolStripMenuItem";
+            this.fechaToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.fechaToolStripMenuItem.Text = "Fecha";
+            this.fechaToolStripMenuItem.Click += new System.EventHandler(this.fechaToolStripMenuItem_Click);
             // 
             // mAnalisis
             // 
@@ -636,12 +618,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
-            // fechaToolStripMenuItem
+            // sbmCotizacion
             // 
-            this.fechaToolStripMenuItem.Name = "fechaToolStripMenuItem";
-            this.fechaToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
-            this.fechaToolStripMenuItem.Text = "Fecha";
-            this.fechaToolStripMenuItem.Click += new System.EventHandler(this.fechaToolStripMenuItem_Click);
+            this.sbmCotizacion.Name = "sbmCotizacion";
+            this.sbmCotizacion.Size = new System.Drawing.Size(152, 24);
+            this.sbmCotizacion.Text = "Cotizacion";
+            this.sbmCotizacion.Click += new System.EventHandler(this.sbmCotizacion_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -688,9 +670,6 @@
         private System.Windows.Forms.ToolStripMenuItem mExamenes;
         private System.Windows.Forms.ToolStripMenuItem sbmExamenesIngresar;
         private System.Windows.Forms.ToolStripMenuItem sbmConsultaryModifExamenes;
-        private System.Windows.Forms.ToolStripMenuItem mCotizacion;
-        private System.Windows.Forms.ToolStripMenuItem sbmIngresarCotizacion;
-        private System.Windows.Forms.ToolStripMenuItem sbmModificarCotizacion;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolStripMenuItem mReporte;
         private System.Windows.Forms.ToolStripMenuItem mOtros;
@@ -737,5 +716,6 @@
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroClientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fechaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sbmCotizacion;
     }
 }

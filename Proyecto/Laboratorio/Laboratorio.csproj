@@ -202,6 +202,12 @@
     <Compile Include="frmConultaUsuario.Designer.cs">
       <DependentUpon>frmConultaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCotizacion.Designer.cs">
+      <DependentUpon>frmCotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConultaUsuario.resx">
       <DependentUpon>frmConultaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCotizacion.resx">
+      <DependentUpon>frmCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
