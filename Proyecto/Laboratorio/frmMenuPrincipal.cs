@@ -23,7 +23,7 @@ namespace Laboratorio
                 mPaciente.Enabled = false;
                 mEmpleado.Enabled = false;
                 mCitas.Enabled = false;
-                mCotizacion.Enabled = false;
+                //mCotizacion.Enabled = false;
                 mAnalisis.Enabled = false;
                 mOtros.Enabled = false;
             }
@@ -299,6 +299,12 @@ namespace Laboratorio
         private void fechaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReporteFechaHora ver = new frmReporteFechaHora();
+            ver.Show();
+        }
+
+        private void sbmCotizacion_Click(object sender, EventArgs e)
+        {
+            frmCotizacion ver = new frmCotizacion();
             ver.Show();
         }
     }

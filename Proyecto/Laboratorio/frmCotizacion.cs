@@ -21,7 +21,7 @@ namespace Laboratorio
         string sMuestra;
         string sCod;
         int iContador = 0;
-        int iTotal = 0;
+        double iTotal = 0;
         string sCodigoFactura;
         string sCodigoCita;
         string sNpoliza;
@@ -111,58 +111,46 @@ namespace Laboratorio
 
         void funFacturaPaciente()
         {
-            DateTime fecha = DateTime.Now;
-            // Creamos el documento con el tamaño de página tradicional
+            string sDia, sMes;
+            int imes;
+            DateTime Fecha = DateTime.Now;
+            imes = Fecha.Month;
+            if (imes < 10)
+            {
+                sMes = "0" + imes.ToString();
+
+            }
+            else
+            {
+                sMes = imes.ToString();
+            }
+            sDia = Fecha.Year.ToString() + "-" + sMes + "-" + Fecha.Day.ToString();
+
             Document doc = new Document(PageSize.LETTER);
-            // Indicamos donde vamos a guardar el documento
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Cotizacion-" + fecha.ToString() + ".pdf", FileMode.Create));
-
-            // Le colocamos el título y el autor
-            // **Nota: Esto no será visible en el documento
-            doc.AddTitle("Cotizacion PDF");
-            doc.AddCreator("Clinica");
-
-            // Abrimos el archivo
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Cotizacion -- " + sDia + ".pdf", FileMode.Create));
+            doc.AddTitle("Reporte Cotizacion " + sDia);
+            doc.AddCreator("Kevin Cajbon");
             doc.Open();
-            // Creamos el tipo de Font que vamos utilizar
+
+            iTextSharp.text.Font fFontTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font fFontSubTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font fFontCuerpo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\laboratoriologo.png");
+            imagenEncabezado.Alignment = Element.ALIGN_LEFT;
+            imagenEncabezado.ScaleToFit(50f, 50f);
+
+            doc.Add(imagenEncabezado);
+
+            Paragraph parrafoTitulo = new Paragraph("Cotizacion: \n" + sDia, fFontTitulo);
+            parrafoTitulo.Alignment = Element.ALIGN_CENTER;
+            doc.Add(parrafoTitulo);
+
+            Paragraph parrafoTitulo3 = new Paragraph("\n", fFontTitulo);
+            parrafoTitulo.Alignment = Element.ALIGN_CENTER;
+            doc.Add(parrafoTitulo3);
+
             iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
-
-            // Creamos una tabla para el encabezado
-            //PdfPTable tblEncabezado = new PdfPTable(2);
-            //tblEncabezado.WidthPercentage = 100;
-
-            // Configuramos el título de las columnas de la tabla
-            //PdfPCell clColumna1 = new PdfPCell(new Phrase("", _standardFont));
-            //clColumna1.BorderWidth = 0;
-            //PdfPCell clColumna2 = new PdfPCell(new Phrase("Fecha: " + sFecha, _standardFont));
-            //clColumna2.BorderWidth = 0;
-
-            // Añadimos las celdas a la tabla
-            //tblEncabezado.AddCell(clColumna1);
-            //tblEncabezado.AddCell(clColumna2);
-
-
-            //clColumna1 = new PdfPCell(new Phrase("Nombre: " + txtNombrePaciente.Text, _standardFont));
-            //clColumna1.BorderWidth = 0;
-            //clColumna2 = new PdfPCell(new Phrase("No. " + sCodigoFactura, _standardFont));
-            //clColumna2.BorderWidth = 0;
-
-            // Añadimos las celdas a la tabla
-            //tblEncabezado.AddCell(clColumna1);
-            //tblEncabezado.AddCell(clColumna2);
-
-            //clColumna1 = new PdfPCell(new Phrase("Nit: 3557338-4", _standardFont));
-            //clColumna1.BorderWidth = 0;
-            //clColumna2 = new PdfPCell(new Phrase("Direccion: Ciudad", _standardFont));
-            //clColumna2.BorderWidth = 0;
-
-            // Añadimos las celdas a la tabla
-            //tblEncabezado.AddCell(clColumna1);
-            //tblEncabezado.AddCell(clColumna2);
-
-            //Linea en blanco
-
 
             // Creamos una tabla para el detalle
             PdfPTable tblPrueba = new PdfPTable(3);
@@ -240,13 +228,13 @@ namespace Laboratorio
             tblPrueba.AddCell(clExamen);
             tblPrueba.AddCell(clPrecio);
 
-            clCantidad = new PdfPCell(new Phrase("", _standardFont));
+            clCantidad = new PdfPCell(new Phrase("TOTAL:", _standardFont));
             clCantidad.BorderWidth = 0;
 
             clExamen = new PdfPCell(new Phrase("", _standardFont));
             clExamen.BorderWidth = 0;
 
-            clPrecio = new PdfPCell(new Phrase("TOTAL: " + txtTotal.Text, _standardFont));
+            clPrecio = new PdfPCell(new Phrase(txtTotal.Text, _standardFont));
             clPrecio.BorderWidth = 0;
 
             tblPrueba.AddCell(clCantidad);
@@ -260,6 +248,7 @@ namespace Laboratorio
 
             doc.Close();
             writer.Close();
+            MessageBox.Show("Cotizacion generada con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //INSERCION EN LA TABLA DE DEUDA
             //int iCero = 0;
@@ -281,10 +270,10 @@ namespace Laboratorio
             {
                 funCortador(sCadena);
                 grdDatosExamenes.Rows.Insert(iContador, sCod, sExamen, sPrecio);
-                iTotal += Int32.Parse(sPrecio);
+                iTotal = iTotal + double.Parse(sPrecio);
                 txtTotal.Text = iTotal.ToString();
                 iContador++;
-                btnGuardar.Enabled = true;
+                btnGenerar.Enabled = true;
                 btnEliminar.Enabled = true;
             }
         }
@@ -295,10 +284,19 @@ namespace Laboratorio
             {
                 string sResta;
                 sResta = grdDatosExamenes.Rows[grdDatosExamenes.CurrentRow.Index].Cells[2].Value.ToString();
-                iTotal -= Int32.Parse(txtTotal.Text);
+                iTotal = iTotal - double.Parse(sResta);
+                txtTotal.Text = iTotal.ToString();
                 grdDatosExamenes.Rows.RemoveAt(grdDatosExamenes.CurrentRow.Index);
                 iContador--;
                 MessageBox.Show("Dato eliminado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea guardar los datos en un archivo PDF?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {                
+                funFacturaPaciente();
             }
         }
 

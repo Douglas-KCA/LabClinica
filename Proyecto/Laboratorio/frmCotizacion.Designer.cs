@@ -32,17 +32,16 @@
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnGenerar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.cmbExamen = new System.Windows.Forms.ComboBox();
             this.lblExamen = new System.Windows.Forms.Label();
             this.grdDatosExamenes = new System.Windows.Forms.DataGridView();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Examen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Muestra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.pnlBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatosExamenes)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +51,7 @@
             this.pnlBotones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlBotones.Controls.Add(this.btnHome);
             this.pnlBotones.Controls.Add(this.btnEliminar);
-            this.pnlBotones.Controls.Add(this.btnGuardar);
+            this.pnlBotones.Controls.Add(this.btnGenerar);
             this.pnlBotones.Controls.Add(this.btnAgregar);
             this.pnlBotones.Location = new System.Drawing.Point(12, 12);
             this.pnlBotones.Name = "pnlBotones";
@@ -88,19 +87,20 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnGuardar
+            // btnGenerar
             // 
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9.75F);
-            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(12, 29);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 50);
-            this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Enabled = false;
+            this.btnGenerar.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.btnGenerar.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerar.Image")));
+            this.btnGenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerar.Location = new System.Drawing.Point(12, 29);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(110, 50);
+            this.btnGenerar.TabIndex = 5;
+            this.btnGenerar.Text = "Generar";
+            this.btnGenerar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // btnAgregar
             // 
@@ -143,37 +143,12 @@
             this.grdDatosExamenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Examen,
-            this.Precio,
-            this.Muestra});
+            this.Precio});
             this.grdDatosExamenes.Location = new System.Drawing.Point(162, 78);
             this.grdDatosExamenes.Name = "grdDatosExamenes";
             this.grdDatosExamenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdDatosExamenes.Size = new System.Drawing.Size(495, 235);
             this.grdDatosExamenes.TabIndex = 42;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Examen
-            // 
-            this.Examen.HeaderText = "Examen";
-            this.Examen.Name = "Examen";
-            this.Examen.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // Muestra
-            // 
-            this.Muestra.HeaderText = "Muestra";
-            this.Muestra.Name = "Muestra";
-            this.Muestra.ReadOnly = true;
             // 
             // txtTotal
             // 
@@ -192,6 +167,24 @@
             this.lblTotal.Size = new System.Drawing.Size(45, 19);
             this.lblTotal.TabIndex = 44;
             this.lblTotal.Text = "Total:";
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Examen
+            // 
+            this.Examen.HeaderText = "Examen";
+            this.Examen.Name = "Examen";
+            this.Examen.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
             // 
             // frmCotizacion
             // 
@@ -222,16 +215,15 @@
         private System.Windows.Forms.Panel pnlBotones;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ComboBox cmbExamen;
         private System.Windows.Forms.Label lblExamen;
         private System.Windows.Forms.DataGridView grdDatosExamenes;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Examen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Muestra;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label lblTotal;
     }
 }
