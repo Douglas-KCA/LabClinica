@@ -18,6 +18,9 @@ namespace Laboratorio
 ---------------------------------------------------------------------------------------------------------------------------------*/
     public partial class frmConsultaSucursal : Form
     {
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmConsultaSucursal()
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace Laboratorio
             btnActualizar.Enabled = false;
             grpActualizar.Enabled = false;
         }
+
         /*---------------------------------------------------------------------------------------------------------------------------------
           Funcion que toma los valores de la fila seleccionada en el grid para mostrarlos en los campos de texto de edicion
         ---------------------------------------------------------------------------------------------------------------------------------*/
@@ -179,11 +183,18 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que Regresa al menu principal
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra los datos de la tabla en base a lo que se escribe en el textbox de nombre sucursal, 
+          se actualiza cada vez que se suelta una tecla
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
             string sCodigo;

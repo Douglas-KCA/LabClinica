@@ -22,6 +22,11 @@ namespace Laboratorio
 
     public partial class frmAnalisis : Form
     {
+        string path;
+
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmAnalisis()
         {
             InitializeComponent();
@@ -63,13 +68,16 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que genera un archivo PDF en el escritorio con el analisis realizado por el empleado
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void funReporteAnalisis()
         {
             Document doc = new Document(PageSize.LETTER);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Analisis-" + cmbEtiqueta.Text + ".pdf", FileMode.Create));
-            //String path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //String ruta = path + @"\Analisis-"+cmbEtiqueta+".pdf";
-            //PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(@ruta, FileMode.Create));
+            path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string ruta = path + "/Analisis-";
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(ruta + cmbEtiqueta.Text + ".pdf", FileMode.Create));
+            
 
             doc.AddTitle("Analisis "+cmbEtiqueta.Text);
             doc.AddCreator("Josue Revolorio");
@@ -79,10 +87,9 @@ namespace Laboratorio
             iTextSharp.text.Font fFontSubTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
             iTextSharp.text.Font fFontCuerpo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-            //string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //C:\Users\Usuario\Documents
-            //string ruta2 = mdoc + @"\GitHub\LabClinica\Proyecto\Laboratorio\Img\laboratoriologo.png";
-            //iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(ruta2);
-            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(@"C:\laboratoriologo.png");
+            string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);  //C:\Users\Usuario\Documents
+            string ruta2 = mdoc + "/GitHub/LabClinica/Proyecto/Laboratorio/Img/laboratoriologo.png";
+            iTextSharp.text.Image imagenEncabezado = iTextSharp.text.Image.GetInstance(ruta2);
             imagenEncabezado.Alignment = Element.ALIGN_LEFT;
             imagenEncabezado.ScaleToFit(50f, 50f);
 
@@ -109,6 +116,9 @@ namespace Laboratorio
 
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que Regresa al menu principal
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnHome_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -167,9 +177,13 @@ namespace Laboratorio
             }
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que abre un form para busqueda de etiquetas de una manera mas eficiente
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void button1_Click(object sender, EventArgs e)
         {
-            frmBuscarEtiqueta ver = new frmBuscarEtiqueta("frmAnalisis");
+            frmBuscarEtiqueta ver = new frmBuscarEtiqueta("frmAnalisis", cmbEtiqueta.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
         }

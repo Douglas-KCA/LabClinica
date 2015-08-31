@@ -18,6 +18,9 @@ namespace Laboratorio
     ---------------------------------------------------------------------------------------------------------------------------------*/
     public partial class frmUsuario : Form
     {
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que carga los componentes iniciales del form
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         public frmUsuario()
         {
             InitializeComponent();
@@ -103,12 +106,15 @@ namespace Laboratorio
             this.Close();
         }
 
+        /*---------------------------------------------------------------------------------------------------------------------------------
+          Funcion que filtra el grid a partir del parametro que se indica en el textbox
+        ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnBuscarEmpleado_Click(object sender, EventArgs e)
         {
-            this.Close();
-            frmBuscarEmpleado ver = new frmBuscarEmpleado();
-            ver.sFramePadre = "frmUsuario";
+            frmBuscarEmpleado ver = new frmBuscarEmpleado("frmUsuario", cmbEmpleado.Text, txtNombre.Text, txtPass.Text, cmbTipo.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
+            this.Close();
         }
     }
 }

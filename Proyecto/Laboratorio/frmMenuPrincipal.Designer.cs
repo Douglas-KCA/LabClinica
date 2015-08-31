@@ -51,14 +51,17 @@
             this.mExamenes = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmExamenesIngresar = new System.Windows.Forms.ToolStripMenuItem();
             this.sbmConsultaryModifExamenes = new System.Windows.Forms.ToolStripMenuItem();
-            this.mCotizacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbmIngresarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbmModificarCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.mReporte = new System.Windows.Forms.ToolStripMenuItem();
             this.pacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimaVisitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.examenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disponibilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.correoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sbmCotizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.mAnalisis = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarYModificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,9 +91,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disponibilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblCodigoUsuario = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +107,6 @@
             this.mCitas,
             this.mMuestra,
             this.mExamenes,
-            this.mCotizacion,
             this.mReporte,
             this.mAnalisis,
             this.mOtros});
@@ -282,35 +284,14 @@
             this.sbmConsultaryModifExamenes.Text = "Modificar y Consultar";
             this.sbmConsultaryModifExamenes.Click += new System.EventHandler(this.sbmConsultaryModifExamenes_Click);
             // 
-            // mCotizacion
-            // 
-            this.mCotizacion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sbmIngresarCotizacion,
-            this.sbmModificarCotizacion});
-            this.mCotizacion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mCotizacion.Name = "mCotizacion";
-            this.mCotizacion.Size = new System.Drawing.Size(88, 23);
-            this.mCotizacion.Text = "Cotizacion";
-            this.mCotizacion.Click += new System.EventHandler(this.mCotizacion_Click);
-            // 
-            // sbmIngresarCotizacion
-            // 
-            this.sbmIngresarCotizacion.Name = "sbmIngresarCotizacion";
-            this.sbmIngresarCotizacion.Size = new System.Drawing.Size(216, 24);
-            this.sbmIngresarCotizacion.Text = "Ingresar";
-            // 
-            // sbmModificarCotizacion
-            // 
-            this.sbmModificarCotizacion.Name = "sbmModificarCotizacion";
-            this.sbmModificarCotizacion.Size = new System.Drawing.Size(216, 24);
-            this.sbmModificarCotizacion.Text = "Modificar y Consultar";
-            // 
             // mReporte
             // 
             this.mReporte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pacienteToolStripMenuItem,
             this.examenToolStripMenuItem,
-            this.correoToolStripMenuItem});
+            this.correoToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.sbmCotizacion});
             this.mReporte.Font = new System.Drawing.Font("Calibri", 12F);
             this.mReporte.Name = "mReporte";
             this.mReporte.Size = new System.Drawing.Size(72, 23);
@@ -321,7 +302,7 @@
             this.pacienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ultimaVisitaToolStripMenuItem});
             this.pacienteToolStripMenuItem.Name = "pacienteToolStripMenuItem";
-            this.pacienteToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.pacienteToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.pacienteToolStripMenuItem.Text = "Paciente";
             // 
             // ultimaVisitaToolStripMenuItem
@@ -337,16 +318,60 @@
             this.tiposToolStripMenuItem,
             this.disponibilidadToolStripMenuItem});
             this.examenToolStripMenuItem.Name = "examenToolStripMenuItem";
-            this.examenToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.examenToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.examenToolStripMenuItem.Text = "Examen";
             this.examenToolStripMenuItem.Click += new System.EventHandler(this.examenToolStripMenuItem_Click);
+            // 
+            // tiposToolStripMenuItem
+            // 
+            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
+            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
+            this.tiposToolStripMenuItem.Text = "Tipos";
+            this.tiposToolStripMenuItem.Click += new System.EventHandler(this.tiposToolStripMenuItem_Click);
+            // 
+            // disponibilidadToolStripMenuItem
+            // 
+            this.disponibilidadToolStripMenuItem.Name = "disponibilidadToolStripMenuItem";
+            this.disponibilidadToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
+            this.disponibilidadToolStripMenuItem.Text = "Disponibilidad";
+            this.disponibilidadToolStripMenuItem.Click += new System.EventHandler(this.disponibilidadToolStripMenuItem_Click);
             // 
             // correoToolStripMenuItem
             // 
             this.correoToolStripMenuItem.Name = "correoToolStripMenuItem";
-            this.correoToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.correoToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.correoToolStripMenuItem.Text = "Correo";
             this.correoToolStripMenuItem.Click += new System.EventHandler(this.correoToolStripMenuItem_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroClientesToolStripMenuItem,
+            this.fechaToolStripMenuItem});
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // registroClientesToolStripMenuItem
+            // 
+            this.registroClientesToolStripMenuItem.Name = "registroClientesToolStripMenuItem";
+            this.registroClientesToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.registroClientesToolStripMenuItem.Text = "Registro Clientes";
+            this.registroClientesToolStripMenuItem.Click += new System.EventHandler(this.registroClientesToolStripMenuItem_Click);
+            // 
+            // fechaToolStripMenuItem
+            // 
+            this.fechaToolStripMenuItem.Name = "fechaToolStripMenuItem";
+            this.fechaToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.fechaToolStripMenuItem.Text = "Fecha";
+            this.fechaToolStripMenuItem.Click += new System.EventHandler(this.fechaToolStripMenuItem_Click);
+            // 
+            // sbmCotizacion
+            // 
+            this.sbmCotizacion.Name = "sbmCotizacion";
+            this.sbmCotizacion.Size = new System.Drawing.Size(145, 24);
+            this.sbmCotizacion.Text = "Cotizacion";
+            this.sbmCotizacion.Click += new System.EventHandler(this.sbmCotizacion_Click);
             // 
             // mAnalisis
             // 
@@ -567,6 +592,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(571, 246);
             this.pictureBox1.Name = "pictureBox1";
@@ -593,28 +619,39 @@
             // 
             this.helpProvider1.HelpNamespace = "C:\\Users\\Diego\\Desktop\\3ra Entrega\\ayuda\\Manual de Usuaro.chm";
             // 
-            // label1
+            // lblUsuario
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsuario.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(1050, 45);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(63, 19);
+            this.lblUsuario.TabIndex = 4;
+            this.lblUsuario.Text = "Usuario:";
             // 
-            // tiposToolStripMenuItem
+            // lblNombreUsuario
             // 
-            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
-            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
-            this.tiposToolStripMenuItem.Text = "Tipos";
-            this.tiposToolStripMenuItem.Click += new System.EventHandler(this.tiposToolStripMenuItem_Click);
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.Location = new System.Drawing.Point(1119, 45);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(17, 19);
+            this.lblNombreUsuario.TabIndex = 5;
+            this.lblNombreUsuario.Text = "_";
             // 
-            // disponibilidadToolStripMenuItem
+            // lblCodigoUsuario
             // 
-            this.disponibilidadToolStripMenuItem.Name = "disponibilidadToolStripMenuItem";
-            this.disponibilidadToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
-            this.disponibilidadToolStripMenuItem.Text = "Disponibilidad";
-            this.disponibilidadToolStripMenuItem.Click += new System.EventHandler(this.disponibilidadToolStripMenuItem_Click);
+            this.lblCodigoUsuario.AutoSize = true;
+            this.lblCodigoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigoUsuario.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoUsuario.Location = new System.Drawing.Point(1050, 94);
+            this.lblCodigoUsuario.Name = "lblCodigoUsuario";
+            this.lblCodigoUsuario.Size = new System.Drawing.Size(63, 19);
+            this.lblCodigoUsuario.TabIndex = 6;
+            this.lblCodigoUsuario.Text = "Usuario:";
+            this.lblCodigoUsuario.Visible = false;
             // 
             // frmMenuPrincipal
             // 
@@ -624,12 +661,15 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.ControlBox = false;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCodigoUsuario);
+            this.Controls.Add(this.lblNombreUsuario);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMenuPrincipal";
@@ -661,9 +701,6 @@
         private System.Windows.Forms.ToolStripMenuItem mExamenes;
         private System.Windows.Forms.ToolStripMenuItem sbmExamenesIngresar;
         private System.Windows.Forms.ToolStripMenuItem sbmConsultaryModifExamenes;
-        private System.Windows.Forms.ToolStripMenuItem mCotizacion;
-        private System.Windows.Forms.ToolStripMenuItem sbmIngresarCotizacion;
-        private System.Windows.Forms.ToolStripMenuItem sbmModificarCotizacion;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolStripMenuItem mReporte;
         private System.Windows.Forms.ToolStripMenuItem mOtros;
@@ -689,7 +726,7 @@
         private System.Windows.Forms.ToolStripMenuItem seguroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresoToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem consultaYModificacionToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem mFactura;
         private System.Windows.Forms.ToolStripMenuItem smGenerarFactura;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
@@ -702,10 +739,16 @@
         private System.Windows.Forms.ToolStripMenuItem realizarPagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ultimaVisitaToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem correoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem examenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disponibilidadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fechaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sbmCotizacion;
+        private System.Windows.Forms.Label lblUsuario;
+        public System.Windows.Forms.Label lblNombreUsuario;
+        public System.Windows.Forms.Label lblCodigoUsuario;
     }
 }
