@@ -116,6 +116,7 @@ namespace Laboratorio
             {
                 frmReporteUltimaVisita ver = new frmReporteUltimaVisita();
                 ver.cmbPaciente.Text = grdPaciente.Rows[grdPaciente.CurrentCell.RowIndex].Cells[1].Value + "";
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             else if (sFramePadre == "frmConsultaCita")
@@ -129,6 +130,7 @@ namespace Laboratorio
                 ver.cmbActualizarMinutos.Text = sMinuto;
                 ver.cmbEstado.Text = sEstado;
                 ver.grpActualizar.Enabled = true;
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             else if (sFramePadre == "frmIngresoCita")
@@ -140,6 +142,7 @@ namespace Laboratorio
                 ver.dtpCitas.Text = sFecha;
                 ver.cmbHora.Text = sHora;
                 ver.cmbMinutos.Text = sMinuto;
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             this.Close();
@@ -164,6 +167,7 @@ namespace Laboratorio
             {
                 frmReporteUltimaVisita ver = new frmReporteUltimaVisita();
                 ver.cmbPaciente.Text = sPaciente;
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             else if (sFramePadre == "frmConsultaCita")
@@ -177,6 +181,7 @@ namespace Laboratorio
                 ver.cmbActualizarMinutos.Text = sMinuto;
                 ver.cmbEstado.Text = sEstado;
                 ver.grpActualizar.Enabled = true;
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             else if (sFramePadre == "frmIngresoCita")
@@ -188,6 +193,7 @@ namespace Laboratorio
                 ver.dtpCitas.Text = sFecha;
                 ver.cmbHora.Text = sHora;
                 ver.cmbMinutos.Text = sMinuto;
+                ver.MdiParent = this.MdiParent;
                 ver.Show();
             }
             this.Close();

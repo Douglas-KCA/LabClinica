@@ -183,6 +183,7 @@ namespace Laboratorio
         private void button1_Click(object sender, EventArgs e)
         {
             frmBuscarEtiqueta ver = new frmBuscarEtiqueta("frmAnalisis", cmbEtiqueta.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
         }

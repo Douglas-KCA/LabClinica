@@ -159,6 +159,7 @@ namespace Laboratorio
         private void btnBuscarEmpleado_Click(object sender, EventArgs e)
         {
             frmBuscarPaciente ver = new frmBuscarPaciente("frmReporteUltimaVisita",cmbPaciente.Text);
+            ver.MdiParent = this.MdiParent;
             ver.Show();
             this.Close();
         }
