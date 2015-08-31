@@ -58,7 +58,11 @@
             this.pacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimaVisitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.examenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disponibilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.correoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mAnalisis = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarYModificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,8 +93,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.label1 = new System.Windows.Forms.Label();
-            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disponibilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -310,7 +313,8 @@
             this.mReporte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pacienteToolStripMenuItem,
             this.examenToolStripMenuItem,
-            this.correoToolStripMenuItem});
+            this.correoToolStripMenuItem,
+            this.clientesToolStripMenuItem});
             this.mReporte.Font = new System.Drawing.Font("Calibri", 12F);
             this.mReporte.Name = "mReporte";
             this.mReporte.Size = new System.Drawing.Size(72, 23);
@@ -341,12 +345,42 @@
             this.examenToolStripMenuItem.Text = "Examen";
             this.examenToolStripMenuItem.Click += new System.EventHandler(this.examenToolStripMenuItem_Click);
             // 
+            // tiposToolStripMenuItem
+            // 
+            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
+            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
+            this.tiposToolStripMenuItem.Text = "Tipos";
+            this.tiposToolStripMenuItem.Click += new System.EventHandler(this.tiposToolStripMenuItem_Click);
+            // 
+            // disponibilidadToolStripMenuItem
+            // 
+            this.disponibilidadToolStripMenuItem.Name = "disponibilidadToolStripMenuItem";
+            this.disponibilidadToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
+            this.disponibilidadToolStripMenuItem.Text = "Disponibilidad";
+            this.disponibilidadToolStripMenuItem.Click += new System.EventHandler(this.disponibilidadToolStripMenuItem_Click);
+            // 
             // correoToolStripMenuItem
             // 
             this.correoToolStripMenuItem.Name = "correoToolStripMenuItem";
             this.correoToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.correoToolStripMenuItem.Text = "Correo";
             this.correoToolStripMenuItem.Click += new System.EventHandler(this.correoToolStripMenuItem_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroClientesToolStripMenuItem,
+            this.fechaToolStripMenuItem});
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // registroClientesToolStripMenuItem
+            // 
+            this.registroClientesToolStripMenuItem.Name = "registroClientesToolStripMenuItem";
+            this.registroClientesToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.registroClientesToolStripMenuItem.Text = "Registro Clientes";
+            this.registroClientesToolStripMenuItem.Click += new System.EventHandler(this.registroClientesToolStripMenuItem_Click);
             // 
             // mAnalisis
             // 
@@ -602,19 +636,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
-            // tiposToolStripMenuItem
+            // fechaToolStripMenuItem
             // 
-            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
-            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
-            this.tiposToolStripMenuItem.Text = "Tipos";
-            this.tiposToolStripMenuItem.Click += new System.EventHandler(this.tiposToolStripMenuItem_Click);
-            // 
-            // disponibilidadToolStripMenuItem
-            // 
-            this.disponibilidadToolStripMenuItem.Name = "disponibilidadToolStripMenuItem";
-            this.disponibilidadToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
-            this.disponibilidadToolStripMenuItem.Text = "Disponibilidad";
-            this.disponibilidadToolStripMenuItem.Click += new System.EventHandler(this.disponibilidadToolStripMenuItem_Click);
+            this.fechaToolStripMenuItem.Name = "fechaToolStripMenuItem";
+            this.fechaToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.fechaToolStripMenuItem.Text = "Fecha";
+            this.fechaToolStripMenuItem.Click += new System.EventHandler(this.fechaToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -707,5 +734,8 @@
         private System.Windows.Forms.ToolStripMenuItem examenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disponibilidadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fechaToolStripMenuItem;
     }
 }

@@ -9,6 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+/*
+ * Programador y analista: Diego Alberto Taracena Morales
+ * 
+ * 
+ * */
+
 namespace Laboratorio
 {
     public partial class frmConsultaPacientes : Form

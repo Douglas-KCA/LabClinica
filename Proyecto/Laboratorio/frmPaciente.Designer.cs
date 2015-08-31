@@ -124,6 +124,7 @@
             // txtDpi
             // 
             this.txtDpi.Location = new System.Drawing.Point(290, 8);
+            this.txtDpi.MaxLength = 15;
             this.txtDpi.Name = "txtDpi";
             this.txtDpi.Size = new System.Drawing.Size(258, 20);
             this.txtDpi.TabIndex = 12;
@@ -249,7 +250,7 @@
             // 
             // dtpNacimiento
             // 
-            this.dtpNacimiento.CustomFormat = "yyyy-MM-dd";
+            this.dtpNacimiento.CustomFormat = "dd-MM-yyyy";
             this.dtpNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNacimiento.Location = new System.Drawing.Point(290, 123);
             this.dtpNacimiento.Name = "dtpNacimiento";
@@ -275,6 +276,7 @@
             // txtNit
             // 
             this.txtNit.Location = new System.Drawing.Point(290, 243);
+            this.txtNit.MaxLength = 10;
             this.txtNit.Name = "txtNit";
             this.txtNit.Size = new System.Drawing.Size(258, 20);
             this.txtNit.TabIndex = 42;
@@ -370,6 +372,7 @@
             // 
             this.txtTelefono.Enabled = false;
             this.txtTelefono.Location = new System.Drawing.Point(290, 185);
+            this.txtTelefono.MaxLength = 8;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(258, 20);
             this.txtTelefono.TabIndex = 53;
