@@ -33,7 +33,7 @@ namespace Laboratorio
         ---------------------------------------------------------------------------------------------------------------------------------*/
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            String sTipo;
+            String sTipo, sCodigo;
             if (String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtPass.Text))
             {
                 MessageBox.Show("Por favor llene nombre de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -47,26 +47,12 @@ namespace Laboratorio
                     if (mReader.Read())
                     {
                         sTipo = mReader.GetString(0);
-                        clasUsuario u = new clasUsuario();
-                        u.SCodigo = mReader.GetString(1);
-                        if (sTipo == "secre")
-                        {
-                            frmMenuPrincipal ver = new frmMenuPrincipal(sTipo);
-                            ver.Show();
-                            this.Hide();
-                        }
-                        else if (sTipo == "doc")
-                        {
-                            frmMenuPrincipal ver = new frmMenuPrincipal(sTipo);
-                            ver.Show();
-                            this.Hide();
-                        }
-                        else if (sTipo == "admin")
-                        {
-                            frmMenuPrincipal ver = new frmMenuPrincipal(sTipo);
-                            ver.Show();
-                            this.Hide();
-                        }
+                        sCodigo = mReader.GetString(1);
+                        frmMenuPrincipal ver = new frmMenuPrincipal(sTipo);
+                        ver.lblCodigoUsuario.Text = sCodigo;
+                        ver.lblNombreUsuario.Text = txtUsuario.Text;
+                        ver.Show();
+                        this.Hide();
                     }
                     else {
                         MessageBox.Show("Passwor o Usuario incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
